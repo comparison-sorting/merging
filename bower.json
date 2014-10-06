@@ -1,0 +1,19 @@
+{
+	"description": "sorting code bricks for JavaScript",
+	"ignore": [
+		"js/index.js",
+		"js/src",
+		"test",
+		"pkg.json",
+		"package.json",
+		".groc.json",
+		".travis.yml",
+		".gitignore",
+		"README.md"
+	],
+	"main": "js/dist/sort.js",
+	"name": "aureooms-js-sort",
+	"license": "AGPL-3.0",
+	"homepage": "http://aureooms.github.io/js-sort/",
+	"version": "0.0.0"
+}
