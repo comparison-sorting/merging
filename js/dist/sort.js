@@ -3,6 +3,499 @@
 	'use strict';
 
 
-/* js/src/dummy.js */
+/* js/src/merge */
+/* js/src/merge/binarymerge.js */
+
+
+/**
+ * Merges 2 arrays using the Hwang Lin algorithm.
+ *
+ *   /!\ j - i >= l - k
+ */
+
+var __binarymerge__ = function(delta, __binarysearch__, copy){
+
+	var binarysearch, hwanglin;
+
+	binarysearch = __binarysearch__(delta);
+
+	hwanglin = function(a, i, j, b, k, l, c, m){
+
+		var o, t, x, y;
+
+		o = m - i - k;
+		t = i, q, d, z;
+
+		x = Math.pow(2, Math.floor(Math.log((j-i)/(l-k))));
+		y = Math.floor((j-i) / x) + 1;
+
+
+		while (k < l && (i + x < j || (x = j - i))) {
+			t = i;
+			i = t + x;
+			while (k < l) {
+				if (delta(b[k], a[i]) >= 0) {
+					copy(a, t, i, c, o + t + k);
+					break;
+				}
+				q = binarysearch(b[k], a, t, i);
+				z = q[0] + q[1];
+				copy(a, t, z, c, o + t + k);
+				c[o + z + k] = b[k];
+				t = z;
+				++k;
+			}
+		}
+
+		copy(a, t, j, c, o + t + k);
+		copy(b, k, l, c, o + j + k);
+
+	};
+
+	return hwanglin;
+
+};
+
+exports.__binarymerge__ = __binarymerge__;
+
+/* js/src/merge/merge.js */
+
+
+var __merge__ = function(index, copy){
+
+	var merge = function(a, i, j, b, k, l, c, m){
+
+		var o, q, t;
+
+		o = m - i - k;
+		t = i;
+
+		for(; k < l; ++k){
+			q = index(b[k], a, i, j);
+			i = q[0] + q[1];
+			copy(a, t, i, c, o + t + k);
+			c[o + i + k] = b[k];
+			t = i;
+		}
+
+		copy(a, t, j, c, o + t + k);
+	};
+
+	return merge;
+
+};
+
+exports.__merge__ = __merge__;
+
+/* js/src/merge/tapemerge.js */
+
+
+var tapemerge = function (a, i, j, b, k, l, c, m, pred) {
+
+	var n;
+
+	n = m + j - i + l - k;
+
+	for (; m < n; ++m) {
+		if (k >= l || (i < j && pred(a[i], b[k]))) {
+			c[m] = a[i]; ++i;
+		}
+		else {
+			c[m] = b[k]; ++k;
+		}
+	}
+
+};
+
+exports.tapemerge = tapemerge;
+
+/* js/src/partition */
+/* js/src/partition/hoare.js */
+
+var hoare = function ( a, i, j, pred ) {
+
+	var t, k, p;
+
+	p = a[i];
+	k = i + 1;
+
+	--j;
+
+	while ( k <= j ) {
+
+		if ( pred( p, a[k] ) ) {
+
+			t    = a[k];
+			a[k] = a[j];
+			a[j] = t;
+
+			--j;
+		}
+
+		else {
+			++k;
+		}
+
+	}
+
+	a[i]   = a[k-1];
+	a[k-1] = p;
+
+	return k - 1;
+};
+
+exports.hoare = hoare;
+exports.partition = hoare;
+
+/* js/src/partition/lomuto.js */
+
+
+var lomuto = function ( a, i, j, pred ) {
+
+	// TODO. Currently using Hoare's algorithm.
+
+	var t, k, p;
+
+	p = a[i];
+	k = i + 1;
+
+	--j;
+
+	while ( k <= j ) {
+
+		if ( pred( p, a[k] ) ) {
+
+			t    = a[k];
+			a[k] = a[j];
+			a[j] = t;
+
+			--j;
+		}
+
+		else {
+			++k;
+		}
+
+	}
+
+	a[i]   = a[k-1];
+	a[k-1] = p;
+
+	return k - 1;
+};
+
+exports.lomuto = lomuto;
+
+/* js/src/predicate */
+/* js/src/predicate/dtop.js */
+
+
+/**
+ * Converts a binary delta operator to a binary predicate.
+ */
+
+var dtop = function ( delta ) {
+
+	var predicate = function ( a, b ) {
+
+		return delta( a, b ) < 0;
+
+	};
+
+	return predicate;
+
+};
+
+exports.dtop = dtop;
+
+/* js/src/predicate/lexicographical.js */
+
+/**
+ * Generates a binary lexicographical comparator predicate
+ * from a binary delta operator.
+ */
+
+var lexicographical = function ( delta ) {
+
+	/**
+	 * Compares 2 arrays a and b lexicographically.
+	 */
+
+	var predicate = function ( a, b ) {
+
+		var i, m, n, len, d;
+
+		m = a.length;
+		n = b.length;
+
+		len = Math.min( m, n );
+
+		for ( i = 0 ; i < len ; ++i ) {
+
+			d = delta( a[i], b[i] );
+
+			if ( d < 0 ) {
+				return true;
+			}
+
+			else if ( d > 0 ) {
+				return false;
+			}
+
+		}
+
+		return m <= n;
+
+	};
+
+	return predicate;
+
+};
+
+exports.lexicographical = lexicographical;
+
+/* js/src/predicate/negate.js */
+
+
+var negate = function ( predicate ) {
+
+	return function ( a, b ) {
+		return ! predicate ( a, b );
+	};
+
+};
+
+exports.negate = negate;
+
+/* js/src/predicate/ptod.js */
+
+
+/**
+ * Converts a binary predicate to a binary delta operator.
+ */
+
+var ptod = function ( predicate ) {
+
+	var delta = function ( a, b ) {
+
+		return predicate( a, b ) ? -1 : 1;
+
+	};
+
+	return delta;
+
+};
+
+exports.ptod = ptod;
+
+/* js/src/select */
+/* js/src/select/multiselect.js */
+
+
+var __multiselect__ = function (partition, search) {
+
+	var multiselect = function (k, l, r, a, i, j, pred, delta) {
+
+		var p, q;
+
+		if (j - i < 2 || r - l === 0) {
+			return;
+		}
+
+		p = partition(a, i, j, pred);
+		q = search(p, k, l, r, delta);
+
+		multiselect(k, l, q[1], a, i, p);
+		multiselect(k, q[0] + q[1], r, a, p + 1, j);
+	};
+
+	return multiselect;
+
+};
+
+exports.__multiselect__ = __multiselect__;
+
+/* js/src/select/quickselect.js */
+
+/**
+ * Template for the recursive implementation of quickselect.
+ *
+ */
+
+var __quickselect__ = function (partition) {
+
+	var quickselect = function (k, a, i, j, pred) {
+
+		var p;
+
+		if (j - i < 2) {
+			return;
+		}
+
+		p = partition(a, i, j, pred);
+
+		if (k < p) {
+			quickselect(k, a, i, p, pred);
+		}
+		else if (k > p) {
+			quickselect(k, a, p + 1, j, pred);
+		}
+	};
+
+	return quickselect;
+
+};
+
+exports.__quickselect__ = __quickselect__;
+
+/* js/src/sort */
+/* js/src/sort/bubblesort.js */
+
+
+
+var bubblesort = function ( a, i, j, pred ) {
+
+	var swapped, k, s, t;
+
+	s = j - 1;
+
+	do {
+
+		// we stop if the array is sorted
+		// i.e. if no swap was required
+		// in this step
+
+		swapped = false;
+
+		for ( k = i ; k < s ; ++k ) {
+
+			if ( !pred( a[k], a[k + 1] ) ) {
+
+				// swap boxes
+
+				t = a[k];
+				a[k] = a[k + 1];
+				a[k + 1] = t;
+
+				swapped = true;
+
+			}
+
+		}
+
+	} while ( swapped );
+};
+
+exports.bubblesort = bubblesort;
+
+/* js/src/sort/insertionsort.js */
+
+
+
+var insertionsort = function(a, i, j, pred){
+
+	var o, k, t;
+
+	for (k = i + 1; k < j; ++k) {
+
+		t = k;
+		o = a[t];
+
+		while (t --> i && !pred(a[t], o)) {
+			a[t + 1] = a[t];
+		}
+
+		a[t + 1] = o;
+	}
+};
+
+exports.insertionsort = insertionsort;
+
+/* js/src/sort/mergesort.js */
+
+
+var __mergesort__ = function (merge) {
+
+	var mergesort = function (a, i, j, d, l, r, pred) {
+
+		var p, t;
+
+		if(j - i < 2) return;
+
+		p = Math.floor((i + j) / 2);
+
+		mergesort(a, i, p, d, l, l + p - i, pred);
+		mergesort(a, p, j, d, l + p - i, r, pred);
+
+		merge(a, i, p, a, p, j, d, l, pred);
+
+		for(t = 0; t < j - i; ++t) {
+			a[i + t] = d[l + t];
+		}
+	};
+
+	return mergesort;
+
+};
+
+exports.__mergesort__ = __mergesort__;
+
+/* js/src/sort/quicksort.js */
+
+
+/**
+ * Template for the recursive implementation of quicksort.
+ *
+ *
+ */
+
+var __quicksort__ = function (partition) {
+
+	var quicksort = function (a, i, j, pred) {
+
+		var p;
+
+		if (j - i < 2) {
+			return;
+		}
+
+		p = partition(a, i, j, pred);
+
+		quicksort(a, i, p, pred);
+		quicksort(a, p + 1, j, pred);
+	};
+
+	return quicksort;
+
+};
+
+exports.__quicksort__ = __quicksort__;
+
+/* js/src/sort/selectionsort.js */
+
+
+var selectionsort = function (a, i, j, pred) {
+
+	var o, t, k;
+
+	for (; i < j; ++i) {
+		t = k = i;
+		o = a[t];
+
+		while (++t < j)
+			if (!pred(o, a[t])) {
+				o = a[t];
+				k = t;
+			}
+
+		if (k > i) {
+			a[k] = a[i];
+			a[i] = o;
+		}
+
+	}
+};
+
+exports.selectionsort = selectionsort;
 
 })(typeof exports === 'undefined' ? this['sort'] = {} : exports);

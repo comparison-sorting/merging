@@ -1,5 +1,8 @@
 
+
 var lomuto = function ( a, i, j, pred ) {
+
+	// TODO. Currently using Hoare's algorithm.
 
 	var t, k, p;
 

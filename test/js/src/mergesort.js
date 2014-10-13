@@ -1,4 +1,9 @@
-var util = require('util');
+var util, array, random, operator;
+
+util = require( "util" );
+array = require( "aureooms-js-array" );
+random = require( "aureooms-js-random" );
+operator = require( "aureooms-js-operator" );
 
 var check = function(ctor, n, pred) {
 	var name = util.format("mergesort (new %s(%d), %s)", ctor.name, n, pred);
@@ -6,14 +11,14 @@ var check = function(ctor, n, pred) {
 	test(name, function (assert) {
 
 		// SETUP RANDOM
-		var randint = algo.randint;
-		var sample = algo.sample_t(randint);
-		var shuffle = algo.shuffle_t(sample);
-		var iota = algo.iota;
+		var randint = random.randint;
+		var sample = random.__sample__(randint);
+		var shuffle = random.__shuffle__(sample);
+		var iota = array.iota;
 
 		// SETUP SORT
-		var tapemerge = algo.tapemerge_t(pred);
-		var mergesort = algo.mergesort_t(tapemerge);
+		var tapemerge = sort.__tapemerge__(pred);
+		var mergesort = sort.__mergesort__(tapemerge);
 
 		// SETUP ARRAY, DEST
 		var a = new ctor(n);

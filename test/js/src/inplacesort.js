@@ -1,6 +1,10 @@
-var util = require("util");
-var array = require("aureooms-js-array");
-var random = require("aureooms-js-random");
+
+var util, array, random, operator;
+
+util = require( "util" );
+array = require( "aureooms-js-array" );
+random = require( "aureooms-js-random" );
+operator = require( "aureooms-js-operator" );
 
 var check = function(tmpl, ctor, n, pred) {
 	var name = util.format("%s (new %s(%d), %s)", tmpl[0], ctor.name, n, pred);
@@ -44,7 +48,7 @@ var check = function(tmpl, ctor, n, pred) {
 
 var TMPL = [
 	['quicksort (hoare)', sort.__quicksort__(sort.hoare)],
-	['quicksort (lotumo)', sort.__quicksort__(sort.lotumo)],
+	['quicksort (lomuto)', sort.__quicksort__(sort.lomuto)],
 	['insertionsort', sort.insertionsort],
 	['selectionsort', sort.selectionsort],
 	['bubblesort', sort.bubblesort],

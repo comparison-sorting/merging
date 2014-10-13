@@ -1,4 +1,9 @@
-var util = require('util');
+var util, array, random, operator;
+
+util = require( "util" );
+array = require( "aureooms-js-array" );
+random = require( "aureooms-js-random" );
+operator = require( "aureooms-js-operator" );
 
 var check = function(tmpl, ctor, m, n, diff) {
 	var name = util.format("%s (new %s(%d, %d), %s)", tmpl[0], ctor.name, m, n, diff);
@@ -6,18 +11,18 @@ var check = function(tmpl, ctor, m, n, diff) {
 	test(name, function (assert) {
 
 		// SETUP RANDOM
-		var randint = algo.randint;
-		var sample = algo.__sample__(randint);
-		var shuffle = algo.__shuffle__(sample);
+		var randint = random.randint;
+		var sample = random.__sample__(randint);
+		var shuffle = random.__shuffle__(sample);
 
 		// SETUP UTILS
-		var copy = algo.copy;
+		var copy = array.copy;
 
 		// SETUP SORT
-		var pred = function(a, b){ return diff(a, b) < 0; };
-		var __binarysearch__ = algo._$_binarysearch_$_(algo.__pivotsearch__);
-		var partition = algo.__partition__(pred);
-		var quicksort = algo.__quicksort__(partition);
+		var pred = sort.dtop( diff );
+		var __binarysearch__ = search._$_binarysearch_$_(search.__pivotsearch__);
+		var partition = sort.__partition__(pred);
+		var quicksort = sort.__quicksort__(partition);
 		var merge = tmpl[1](diff, __binarysearch__, copy, pred);
 
 		// SETUP ARRAYS, DEST
@@ -57,13 +62,13 @@ var DIFF = [
 
 var TMPL = [
 	['merge', function(diff, __binarysearch__, copy, pred){
-		return algo.__merge__(__binarysearch__(diff), copy);
+		return sort.__merge__(__binarysearch__(diff), copy);
 	}],
 	['binarymerge', function(diff, __binarysearch__, copy, pred){
-		return algo.__binarymerge__(diff, __binarysearch__, copy);
+		return sort.__binarymerge__(diff, __binarysearch__, copy);
 	}],
 	['tapemerge', function(diff, __binarysearch__, copy, pred){
-		return algo.__tapemerge__(pred);
+		return sort.__tapemerge__(pred);
 	}],
 ];
 

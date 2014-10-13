@@ -1,4 +1,9 @@
-var util = require('util');
+var util, array, random, operator;
+
+util = require( "util" );
+array = require( "aureooms-js-array" );
+random = require( "aureooms-js-random" );
+operator = require( "aureooms-js-operator" );
 
 var check = function(ctor, n, pred) {
 	var name = util.format("quickselect (new %s(%d), %s)", ctor.name, n, pred);
@@ -6,16 +11,16 @@ var check = function(ctor, n, pred) {
 	test(name, function (assert) {
 
 		// SETUP RANDOM
-		var randint = algo.randint;
-		var sample = algo.sample_t(randint);
-		var shuffle = algo.shuffle_t(sample);
-		var iota = algo.iota;
-		var copy = algo.copy;
+		var randint = random.randint;
+		var sample = random.__sample__(randint);
+		var shuffle = random.__shuffle__(sample);
+		var iota = array.iota;
+		var copy = array.copy;
 
 		// SETUP SORT
-		var partition = algo.partition_t(pred);
-		var quicksort = algo.quicksort_t(partition);
-		var quickselect = algo.quickselect_t(partition);
+		var partition = sort.__partition__(pred);
+		var quicksort = sort.__quicksort__(partition);
+		var quickselect = sort.__quickselect__(partition);
 
 		// SETUP REF ARRAY
 		var ref = new ctor(n);

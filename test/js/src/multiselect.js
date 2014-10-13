@@ -1,4 +1,9 @@
-var util = require('util');
+var util, array, random, operator;
+
+util = require( "util" );
+array = require( "aureooms-js-array" );
+random = require( "aureooms-js-random" );
+operator = require( "aureooms-js-operator" );
 
 var check = function(ctor, n, pred) {
 	var name = util.format("multiselect (new %s(%d), %s)", ctor.name, n, pred);
@@ -6,24 +11,24 @@ var check = function(ctor, n, pred) {
 	test(name, function (assert) {
 
 		// SETUP RANDOM
-		var randint = algo.randint;
-		var sample = algo.sample_t(randint);
-		var shuffle = algo.shuffle_t(sample);
-		var iota = algo.iota;
-		var copy = algo.copy;
+		var randint = random.randint;
+		var sample = random.__sample__(randint);
+		var shuffle = random.__shuffle__(sample);
+		var iota = array.iota;
+		var copy = array.copy;
 
 		// SETUP INDEX SEARCH
-		var index_diff = function(a, b){ return a - b; };
-		var binarysearch_t = algo.binarysearch_tt(algo.pivotsearch_t);
-		var binarysearch = binarysearch_t(index_diff);
-		var index_pred = function(a, b){ return index_diff(a, b) < 0};
-		var index_partition = algo.partition_t(index_pred);
-		var index_quicksort = algo.quicksort_t(index_partition);
+		var index_diff = operator.sub;
+		var __binarysearch__ = search._$_binarysearch_$_(search.__pivotsearch__);
+		var binarysearch = __binarysearch__(index_diff);
+		var index_pred = sort.dtop( index_diff );
+		var index_partition = sort.__partition__(index_pred);
+		var index_quicksort = sort.__quicksort__(index_partition);
 
 		// SETUP SORT
-		var partition = algo.partition_t(pred);
-		var quicksort = algo.quicksort_t(partition);
-		var multiselect = algo.multiselect_t(partition, binarysearch);
+		var partition = sort.__partition__(pred);
+		var quicksort = sort.__quicksort__(partition);
+		var multiselect = sort.__multiselect__(partition, binarysearch);
 
 		// SETUP REF ARRAY
 		var ref = new ctor(n);
@@ -37,7 +42,7 @@ var check = function(ctor, n, pred) {
 
 		// TEST PREDICATE
 		var i = a.length;
-		
+
 		var len = randint(0, i + 1);
 		sample(len, a, 0, n);
 		var k = new ctor(len);
@@ -55,10 +60,10 @@ var check = function(ctor, n, pred) {
 };
 
 var PRED = [
-	function(a, b){ return a <  b; },
-	function(a, b){ return a <= b; },
-	function(a, b){ return a >  b; },
-	function(a, b){ return a >= b; }
+	operator.lt,
+	operator.le,
+	operator.gt,
+	operator.ge
 ];
 
 var N = [0, 1, 2, 10, 63, 64, 65];
