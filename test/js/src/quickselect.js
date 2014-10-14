@@ -18,7 +18,7 @@ var check = function(ctor, n, pred) {
 		var copy = array.copy;
 
 		// SETUP SORT
-		var partition = sort.__partition__(pred);
+		var partition = sort.partition;
 		var quicksort = sort.__quicksort__(partition);
 		var quickselect = sort.__quickselect__(partition);
 
@@ -26,7 +26,7 @@ var check = function(ctor, n, pred) {
 		var ref = new ctor(n);
 		iota(ref, 0, n, 0);
 		shuffle(ref, 0, n);
-		quicksort(ref, 0, n);
+		quicksort( pred, ref, 0, n);
 
 		// SETUP TEST ARRAY
 		var a = new ctor(n);
@@ -36,7 +36,7 @@ var check = function(ctor, n, pred) {
 		var i = a.length;
 		while (i--) {
 			shuffle(a, 0, n);
-			quickselect(i, a, 0, n);
+			quickselect(pred, a, 0, n, i);
 			deepEqual(a[i], ref[i], 'select #' + i);
 		}
 
@@ -45,10 +45,10 @@ var check = function(ctor, n, pred) {
 };
 
 var PRED = [
-	function(a, b){ return a <  b; },
-	function(a, b){ return a <= b; },
-	function(a, b){ return a >  b; },
-	function(a, b){ return a >= b; }
+	operator.lt,
+	operator.le,
+	operator.gt,
+	operator.ge
 ];
 
 var N = [0, 1, 2, 10, 31, 32, 33];

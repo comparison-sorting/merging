@@ -1,7 +1,7 @@
 
 
 
-var bubblesort = function ( a, i, j, pred ) {
+var bubblesort = function ( pred, a, i, j ) {
 
 	var swapped, k, s, t;
 

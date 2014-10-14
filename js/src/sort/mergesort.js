@@ -1,19 +1,23 @@
 
 
-var __mergesort__ = function (merge) {
+var __mergesort__ = function ( merge, copy ) {
 
-	var mergesort = function (a, i, j, d, l, r, pred) {
+	var mergesort = function ( predicate, a, i, j, d, l, r) {
 
 		var p, t;
 
-		if(j - i < 2) return;
+		if ( j - i < 2 ) {
+			return;
+		}
 
-		p = Math.floor((i + j) / 2);
+		p = Math.floor( ( i + j ) / 2 );
 
-		mergesort(a, i, p, d, l, l + p - i, pred);
-		mergesort(a, p, j, d, l + p - i, r, pred);
+		mergesort( predicate, a, i, p, d, l, l + p - i );
+		mergesort( predicate, a, p, j, d, l + p - i, r );
 
-		merge(a, i, p, a, p, j, d, l, pred);
+		merge( predicate, a, i, p, a, p, j, d, l );
+
+		//copy ( d, l, l + j - i, a, i );
 
 		for(t = 0; t < j - i; ++t) {
 			a[i + t] = d[l + t];

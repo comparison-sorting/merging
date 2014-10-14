@@ -1,7 +1,7 @@
 
 
 
-var insertionsort = function(a, i, j, pred){
+var insertionsort = function( pred, a, i, j ){
 
 	var o, k, t;
 

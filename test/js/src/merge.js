@@ -1,9 +1,11 @@
-var util, array, random, operator;
+var util, array, search, random, operator, functools;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
+search = require( "aureooms-js-search" );
 random = require( "aureooms-js-random" );
 operator = require( "aureooms-js-operator" );
+functools = require( "aureooms-js-functools" );
 
 var check = function(tmpl, ctor, m, n, diff) {
 	var name = util.format("%s (new %s(%d, %d), %s)", tmpl[0], ctor.name, m, n, diff);
@@ -20,21 +22,21 @@ var check = function(tmpl, ctor, m, n, diff) {
 
 		// SETUP SORT
 		var pred = sort.dtop( diff );
-		var __binarysearch__ = search._$_binarysearch_$_(search.__pivotsearch__);
-		var partition = sort.__partition__(pred);
+		var partition = sort.partition;
 		var quicksort = sort.__quicksort__(partition);
-		var merge = tmpl[1](diff, __binarysearch__, copy, pred);
+		var binarysearch = search.binarysearch;
+		var merge = tmpl[1](diff, binarysearch, copy, pred);
 
 		// SETUP ARRAYS, DEST
 		var a = new ctor(m), j;
 		for(j = 0; j < m; ++j) a[j] = randint(0, m);
 		shuffle(a, 0, m);
-		quicksort(a, 0, m);
+		quicksort( pred, a, 0, m);
 
 		var b = new ctor(n);
 		for(j = 0; j < n; ++j) b[j] = randint(0, n);
 		shuffle(b, 0, n);
-		quicksort(b, 0, n);
+		quicksort( pred, b, 0, n);
 
 		var d = new ctor(n + m);
 
@@ -46,7 +48,7 @@ var check = function(tmpl, ctor, m, n, diff) {
 		copy(a, 0, m, c, 0);
 		copy(b, 0, n, c, m);
 		shuffle(c, 0, n + m);
-		quicksort(c, 0, n + m);
+		quicksort( pred, c, 0, n + m);
 
 		deepEqual(d, c, 'check sorted');
 		deepEqual(a.length, m, 'check length a');
@@ -61,14 +63,18 @@ var DIFF = [
 ];
 
 var TMPL = [
-	['merge', function(diff, __binarysearch__, copy, pred){
-		return sort.__merge__(__binarysearch__(diff), copy);
+	['merge', function ( diff, binarysearch, copy, pred ) {
+		var index;
+
+		index = functools.partial( binarysearch, null, [diff] );
+
+		return sort.__merge__( index, copy );
 	}],
-	['binarymerge', function(diff, __binarysearch__, copy, pred){
-		return sort.__binarymerge__(diff, __binarysearch__, copy);
+	['binarymerge', function ( diff, binarysearch, copy, pred ) {
+		return sort.__binarymerge__( binarysearch, diff, copy );
 	}],
-	['tapemerge', function(diff, __binarysearch__, copy, pred){
-		return sort.__tapemerge__(pred);
+	['tapemerge', function ( diff, binarysearch, copy, pred ) {
+		return functools.partial( sort.tapemerge, null, [pred] );
 	}],
 ];
 

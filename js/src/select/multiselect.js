@@ -1,20 +1,25 @@
 
 
-var __multiselect__ = function (partition, search) {
+var __multiselect__ = function ( partition, index ) {
 
-	var multiselect = function (k, l, r, a, i, j, pred, delta) {
+	/**
+	 * As long as partition and index are O(n) multiselect is O( n log n )
+	 * on average.
+	 */
+
+	var multiselect = function ( pred, a, ai, aj, b, bi, bj ) {
 
 		var p, q;
 
-		if (j - i < 2 || r - l === 0) {
+		if ( aj - ai < 2 || bj - bi === 0 ) {
 			return;
 		}
 
-		p = partition(a, i, j, pred);
-		q = search(p, k, l, r, delta);
+		p = partition( pred, a, ai, aj );
+		q = index( b, bi, bj, p );
 
-		multiselect(k, l, q[1], a, i, p);
-		multiselect(k, q[0] + q[1], r, a, p + 1, j);
+		multiselect( pred, a,    ai,  p,  b,          bi, q[1] );
+		multiselect( pred, a, p + 1, aj,  b, q[0] + q[1],   bj );
 	};
 
 	return multiselect;

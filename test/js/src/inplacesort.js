@@ -25,8 +25,8 @@ var check = function(tmpl, ctor, n, pred) {
 		iota(a, 0, n, 0);
 
 		// SORT ARRAY
-		shuffle(a, 0, n);
-		sort(a, 0, n, pred);
+		shuffle( a, 0, n );
+		sort( pred, a, 0, n );
 
 		// TEST PREDICATE
 		var i = a.length;
@@ -55,8 +55,8 @@ var TMPL = [
 ];
 
 var PRED = [
-	function(a, b){ return a <= b; },
-	function(a, b){ return a >= b; }
+	operator.le,
+	operator.ge
 ];
 
 var N = [0, 1, 2, 10, 63, 64, 65];

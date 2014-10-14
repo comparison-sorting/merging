@@ -1,5 +1,7 @@
 
-var hoare = function ( a, i, j, pred ) {
+var hoare = function ( predicate, a, i, j ) {
+
+	// TODO. Currently using Lomuto's algorithm.
 
 	var t, k, p;
 
@@ -10,7 +12,7 @@ var hoare = function ( a, i, j, pred ) {
 
 	while ( k <= j ) {
 
-		if ( pred( p, a[k] ) ) {
+		if ( predicate( p, a[k] ) ) {
 
 			t    = a[k];
 			a[k] = a[j];

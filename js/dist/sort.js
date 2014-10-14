@@ -13,18 +13,14 @@
  *   /!\ j - i >= l - k
  */
 
-var __binarymerge__ = function(delta, __binarysearch__, copy){
+var __binarymerge__ = function ( binarysearch, delta, copy ) {
 
-	var binarysearch, hwanglin;
+	var hwanglin = function ( a, i, j, b, k, l, c, m ) {
 
-	binarysearch = __binarysearch__(delta);
-
-	hwanglin = function(a, i, j, b, k, l, c, m){
-
-		var o, t, x, y;
+		var o, t, x, y, q, d, z;
 
 		o = m - i - k;
-		t = i, q, d, z;
+		t = i;
 
 		x = Math.pow(2, Math.floor(Math.log((j-i)/(l-k))));
 		y = Math.floor((j-i) / x) + 1;
@@ -38,7 +34,7 @@ var __binarymerge__ = function(delta, __binarysearch__, copy){
 					copy(a, t, i, c, o + t + k);
 					break;
 				}
-				q = binarysearch(b[k], a, t, i);
+				q = binarysearch( delta, a, t, i, b[k] );
 				z = q[0] + q[1];
 				copy(a, t, z, c, o + t + k);
 				c[o + z + k] = b[k];
@@ -61,24 +57,27 @@ exports.__binarymerge__ = __binarymerge__;
 /* js/src/merge/merge.js */
 
 
-var __merge__ = function(index, copy){
+var __merge__ = function ( index, copy ) {
 
-	var merge = function(a, i, j, b, k, l, c, m){
+	var merge = function ( a, i, j, b, k, l, c, m ) {
 
 		var o, q, t;
 
 		o = m - i - k;
 		t = i;
 
-		for(; k < l; ++k){
-			q = index(b[k], a, i, j);
+		for (; k < l; ++k ) {
+
+			q = index( a, i, j, b[k] );
 			i = q[0] + q[1];
-			copy(a, t, i, c, o + t + k);
+
+			copy( a, t, i, c, o + t + k );
+
 			c[o + i + k] = b[k];
 			t = i;
 		}
 
-		copy(a, t, j, c, o + t + k);
+		copy( a, t, j, c, o + t + k );
 	};
 
 	return merge;
@@ -90,7 +89,7 @@ exports.__merge__ = __merge__;
 /* js/src/merge/tapemerge.js */
 
 
-var tapemerge = function (a, i, j, b, k, l, c, m, pred) {
+var tapemerge = function ( pred, a, i, j, b, k, l, c, m ) {
 
 	var n;
 
@@ -112,7 +111,9 @@ exports.tapemerge = tapemerge;
 /* js/src/partition */
 /* js/src/partition/hoare.js */
 
-var hoare = function ( a, i, j, pred ) {
+var hoare = function ( predicate, a, i, j ) {
+
+	// TODO. Currently using Lomuto's algorithm.
 
 	var t, k, p;
 
@@ -123,7 +124,7 @@ var hoare = function ( a, i, j, pred ) {
 
 	while ( k <= j ) {
 
-		if ( pred( p, a[k] ) ) {
+		if ( predicate( p, a[k] ) ) {
 
 			t    = a[k];
 			a[k] = a[j];
@@ -150,9 +151,7 @@ exports.partition = hoare;
 /* js/src/partition/lomuto.js */
 
 
-var lomuto = function ( a, i, j, pred ) {
-
-	// TODO. Currently using Hoare's algorithm.
+var lomuto = function ( predicate, a, i, j ) {
 
 	var t, k, p;
 
@@ -163,7 +162,7 @@ var lomuto = function ( a, i, j, pred ) {
 
 	while ( k <= j ) {
 
-		if ( pred( p, a[k] ) ) {
+		if ( predicate( p, a[k] ) ) {
 
 			t    = a[k];
 			a[k] = a[j];
@@ -292,21 +291,26 @@ exports.ptod = ptod;
 /* js/src/select/multiselect.js */
 
 
-var __multiselect__ = function (partition, search) {
+var __multiselect__ = function ( partition, index ) {
 
-	var multiselect = function (k, l, r, a, i, j, pred, delta) {
+	/**
+	 * As long as partition and index are O(n) multiselect is O( n log n )
+	 * on average.
+	 */
+
+	var multiselect = function ( pred, a, ai, aj, b, bi, bj ) {
 
 		var p, q;
 
-		if (j - i < 2 || r - l === 0) {
+		if ( aj - ai < 2 || bj - bi === 0 ) {
 			return;
 		}
 
-		p = partition(a, i, j, pred);
-		q = search(p, k, l, r, delta);
+		p = partition( pred, a, ai, aj );
+		q = index( b, bi, bj, p );
 
-		multiselect(k, l, q[1], a, i, p);
-		multiselect(k, q[0] + q[1], r, a, p + 1, j);
+		multiselect( pred, a,    ai,  p,  b,          bi, q[1] );
+		multiselect( pred, a, p + 1, aj,  b, q[0] + q[1],   bj );
 	};
 
 	return multiselect;
@@ -322,9 +326,9 @@ exports.__multiselect__ = __multiselect__;
  *
  */
 
-var __quickselect__ = function (partition) {
+var __quickselect__ = function ( partition ) {
 
-	var quickselect = function (k, a, i, j, pred) {
+	var quickselect = function ( predicate, a, i, j, k ) {
 
 		var p;
 
@@ -332,13 +336,13 @@ var __quickselect__ = function (partition) {
 			return;
 		}
 
-		p = partition(a, i, j, pred);
+		p = partition( predicate, a, i, j );
 
 		if (k < p) {
-			quickselect(k, a, i, p, pred);
+			quickselect( predicate, a, i, p, k );
 		}
 		else if (k > p) {
-			quickselect(k, a, p + 1, j, pred);
+			quickselect( predicate, a, p + 1, j, k );
 		}
 	};
 
@@ -353,7 +357,7 @@ exports.__quickselect__ = __quickselect__;
 
 
 
-var bubblesort = function ( a, i, j, pred ) {
+var bubblesort = function ( pred, a, i, j ) {
 
 	var swapped, k, s, t;
 
@@ -392,7 +396,7 @@ exports.bubblesort = bubblesort;
 
 
 
-var insertionsort = function(a, i, j, pred){
+var insertionsort = function( pred, a, i, j ){
 
 	var o, k, t;
 
@@ -414,20 +418,24 @@ exports.insertionsort = insertionsort;
 /* js/src/sort/mergesort.js */
 
 
-var __mergesort__ = function (merge) {
+var __mergesort__ = function ( merge, copy ) {
 
-	var mergesort = function (a, i, j, d, l, r, pred) {
+	var mergesort = function ( predicate, a, i, j, d, l, r) {
 
 		var p, t;
 
-		if(j - i < 2) return;
+		if ( j - i < 2 ) {
+			return;
+		}
 
-		p = Math.floor((i + j) / 2);
+		p = Math.floor( ( i + j ) / 2 );
 
-		mergesort(a, i, p, d, l, l + p - i, pred);
-		mergesort(a, p, j, d, l + p - i, r, pred);
+		mergesort( predicate, a, i, p, d, l, l + p - i );
+		mergesort( predicate, a, p, j, d, l + p - i, r );
 
-		merge(a, i, p, a, p, j, d, l, pred);
+		merge( predicate, a, i, p, a, p, j, d, l );
+
+		//copy ( d, l, l + j - i, a, i );
 
 		for(t = 0; t < j - i; ++t) {
 			a[i + t] = d[l + t];
@@ -449,9 +457,9 @@ exports.__mergesort__ = __mergesort__;
  *
  */
 
-var __quicksort__ = function (partition) {
+var __quicksort__ = function ( partition ) {
 
-	var quicksort = function (a, i, j, pred) {
+	var quicksort = function ( predicate, a, i, j ) {
 
 		var p;
 
@@ -459,10 +467,10 @@ var __quicksort__ = function (partition) {
 			return;
 		}
 
-		p = partition(a, i, j, pred);
+		p = partition( predicate, a, i, j );
 
-		quicksort(a, i, p, pred);
-		quicksort(a, p + 1, j, pred);
+		quicksort( predicate, a, i, p );
+		quicksort( predicate, a, p + 1, j );
 	};
 
 	return quicksort;
@@ -474,21 +482,25 @@ exports.__quicksort__ = __quicksort__;
 /* js/src/sort/selectionsort.js */
 
 
-var selectionsort = function (a, i, j, pred) {
+var selectionsort = function ( predicate, a, i, j ) {
 
 	var o, t, k;
 
-	for (; i < j; ++i) {
+	for ( ; i < j ; ++i ) {
+
 		t = k = i;
 		o = a[t];
 
-		while (++t < j)
-			if (!pred(o, a[t])) {
+		while ( ++t < j ) {
+
+			if ( ! predicate( o, a[t] ) ) {
 				o = a[t];
 				k = t;
 			}
 
-		if (k > i) {
+		}
+
+		if ( k > i ) {
 			a[k] = a[i];
 			a[i] = o;
 		}

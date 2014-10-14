@@ -6,18 +6,14 @@
  *   /!\ j - i >= l - k
  */
 
-var __binarymerge__ = function(delta, __binarysearch__, copy){
+var __binarymerge__ = function ( binarysearch, delta, copy ) {
 
-	var binarysearch, hwanglin;
+	var hwanglin = function ( a, i, j, b, k, l, c, m ) {
 
-	binarysearch = __binarysearch__(delta);
-
-	hwanglin = function(a, i, j, b, k, l, c, m){
-
-		var o, t, x, y;
+		var o, t, x, y, q, d, z;
 
 		o = m - i - k;
-		t = i, q, d, z;
+		t = i;
 
 		x = Math.pow(2, Math.floor(Math.log((j-i)/(l-k))));
 		y = Math.floor((j-i) / x) + 1;
@@ -31,7 +27,7 @@ var __binarymerge__ = function(delta, __binarysearch__, copy){
 					copy(a, t, i, c, o + t + k);
 					break;
 				}
-				q = binarysearch(b[k], a, t, i);
+				q = binarysearch( delta, a, t, i, b[k] );
 				z = q[0] + q[1];
 				copy(a, t, z, c, o + t + k);
 				c[o + z + k] = b[k];

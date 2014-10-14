@@ -6,9 +6,9 @@
  *
  */
 
-var __quicksort__ = function (partition) {
+var __quicksort__ = function ( partition ) {
 
-	var quicksort = function (a, i, j, pred) {
+	var quicksort = function ( predicate, a, i, j ) {
 
 		var p;
 
@@ -16,10 +16,10 @@ var __quicksort__ = function (partition) {
 			return;
 		}
 
-		p = partition(a, i, j, pred);
+		p = partition( predicate, a, i, j );
 
-		quicksort(a, i, p, pred);
-		quicksort(a, p + 1, j, pred);
+		quicksort( predicate, a, i, p );
+		quicksort( predicate, a, p + 1, j );
 	};
 
 	return quicksort;

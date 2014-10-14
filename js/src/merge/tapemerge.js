@@ -1,6 +1,6 @@
 
 
-var tapemerge = function (a, i, j, b, k, l, c, m, pred) {
+var tapemerge = function ( pred, a, i, j, b, k, l, c, m ) {
 
 	var n;
 

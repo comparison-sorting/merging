@@ -4,9 +4,9 @@
  *
  */
 
-var __quickselect__ = function (partition) {
+var __quickselect__ = function ( partition ) {
 
-	var quickselect = function (k, a, i, j, pred) {
+	var quickselect = function ( predicate, a, i, j, k ) {
 
 		var p;
 
@@ -14,13 +14,13 @@ var __quickselect__ = function (partition) {
 			return;
 		}
 
-		p = partition(a, i, j, pred);
+		p = partition( predicate, a, i, j );
 
 		if (k < p) {
-			quickselect(k, a, i, p, pred);
+			quickselect( predicate, a, i, p, k );
 		}
 		else if (k > p) {
-			quickselect(k, a, p + 1, j, pred);
+			quickselect( predicate, a, p + 1, j, k );
 		}
 	};
 

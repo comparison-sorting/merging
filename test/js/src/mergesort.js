@@ -15,10 +15,11 @@ var check = function(ctor, n, pred) {
 		var sample = random.__sample__(randint);
 		var shuffle = random.__shuffle__(sample);
 		var iota = array.iota;
+		var copy = array.copy;
 
 		// SETUP SORT
-		var tapemerge = sort.__tapemerge__(pred);
-		var mergesort = sort.__mergesort__(tapemerge);
+		var tapemerge = sort.tapemerge;
+		var mergesort = sort.__mergesort__( tapemerge, copy);
 
 		// SETUP ARRAY, DEST
 		var a = new ctor(n);
@@ -27,7 +28,7 @@ var check = function(ctor, n, pred) {
 
 		// SORT ARRAY
 		shuffle(a, 0, n);
-		mergesort(a, 0, n, d, 0, n);
+		mergesort( pred, a, 0, n, d, 0, n);
 
 		// TEST PREDICATE
 		var i = d.length;
@@ -48,10 +49,10 @@ var check = function(ctor, n, pred) {
 };
 
 var PRED = [
-	function(a, b){ return a <  b; },
-	function(a, b){ return a <= b; },
-	function(a, b){ return a >  b; },
-	function(a, b){ return a >= b; }
+	operator.lt,
+	operator.le,
+	operator.gt,
+	operator.ge
 ];
 
 var N = [0, 1, 2, 10, 63, 64, 65];
