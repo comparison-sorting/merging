@@ -1,10 +1,15 @@
 
 /**
+ * HYP : i < j
+ *
  * http://cs.stackexchange.com/a/24099/20711
  */
 
 var yaroslavskiy = function ( predicate, a, i, j ) {
 
+	var p, q, g, k, l;
+
+	--j;
 
 	// Choose outermost elements as pivots
 	if ( ! predicate( a[i], a[j] ) ) {

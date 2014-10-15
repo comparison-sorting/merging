@@ -3,7 +3,7 @@ var __dualpivotquicksort__ = function ( partition ) {
 
 	var dualpivotquicksort = function ( predicate, a, i, j ) {
 
-		var p, q, g, k, l;
+		var p, g, l;
 
 		if (j - i < 2) {
 			return;
@@ -13,9 +13,9 @@ var __dualpivotquicksort__ = function ( partition ) {
 		l = p[0];
 		g = p[1];
 
-		dualpivotquicksort(a,   i  , l);
-		dualpivotquicksort(a, l + 1, g);
-		dualpivotquicksort(a, g + 1, j);
+		dualpivotquicksort( predicate, a,   i  , l );
+		dualpivotquicksort( predicate, a, l + 1, g );
+		dualpivotquicksort( predicate, a, g + 1, j );
 	};
 
 	return dualpivotquicksort;
