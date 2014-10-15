@@ -13,3 +13,7 @@ sorting code bricks for JavaScript
 [![Code Climate](https://codeclimate.com/github/aureooms/js-sort.png)](https://codeclimate.com/github/aureooms/js-sort)
 [![NPM downloads per month](http://img.shields.io/npm/dm/aureooms-js-sort.svg)](https://www.npmjs.org/package/aureooms-js-sort)
 [![GitHub issues](http://img.shields.io/github/issues/aureooms/js-sort.svg)](https://github.com/aureooms/js-sort/issues)
+
+reference:
+
+  - https://kluedo.ub.uni-kl.de/frontdoor/index/index/docId/3463
