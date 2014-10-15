@@ -1,36 +1,59 @@
 
+
+/**
+ * HYP : i < j
+ */
+
 var hoare = function ( predicate, a, i, j ) {
 
-	// TODO. Currently using Lomuto's algorithm.
+	var x, t, o;
 
-	var t, k, p;
+	o = i;
+	x = a[o];
 
-	p = a[i];
-	k = i + 1;
+	while ( true ) {
 
-	--j;
-
-	while ( k <= j ) {
-
-		if ( predicate( p, a[k] ) ) {
-
-			t    = a[k];
-			a[k] = a[j];
-			a[j] = t;
+		while ( true ) {
 
 			--j;
+
+			if ( i >= j ) {
+				t    = a[o];
+				a[o] = a[j];
+				a[j] = t;
+				return j;
+			}
+
+			if ( predicate( a[j], x ) ) {
+				break;
+			}
 		}
 
-		else {
-			++k;
+		while ( true ) {
+
+			++i;
+
+			if ( i >= j ) {
+				t    = a[o];
+				a[o] = a[j];
+				a[j] = t;
+				return j;
+			}
+
+			if ( predicate( x, a[i] ) ) {
+				break;
+			}
 		}
+
+
+		// invariant i < j
+
+		t    = a[i];
+		a[i] = a[j];
+		a[j] = t;
 
 	}
 
-	a[i]   = a[k-1];
-	a[k-1] = p;
-
-	return k - 1;
 };
 
 exports.hoare = hoare;
