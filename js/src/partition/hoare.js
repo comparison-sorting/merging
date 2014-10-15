@@ -24,7 +24,7 @@ var hoare = function ( predicate, a, i, j ) {
 				return j;
 			}
 
-			if ( predicate( a[j], x ) ) {
+			else if ( predicate( a[j], x ) ) {
 				break;
 			}
 		}
@@ -40,7 +40,7 @@ var hoare = function ( predicate, a, i, j ) {
 				return j;
 			}
 
-			if ( predicate( x, a[i] ) ) {
+			else if ( predicate( x, a[i] ) ) {
 				break;
 			}
 		}
