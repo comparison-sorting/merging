@@ -279,6 +279,14 @@ var yaroslavskiy = function ( predicate, a, i, j ) {
 exports.yaroslavskiy = yaroslavskiy;
 
 /* js/src/predicate */
+/* js/src/predicate/decreasing.js */
+
+var decreasing = function ( a, b ) {
+	return b - a;
+};
+
+exports.decreasing = decreasing;
+
 /* js/src/predicate/dtop.js */
 
 
@@ -290,7 +298,7 @@ var dtop = function ( delta ) {
 
 	var predicate = function ( a, b ) {
 
-		return delta( a, b ) < 0;
+		return delta( a, b ) <= 0;
 
 	};
 
@@ -300,11 +308,51 @@ var dtop = function ( delta ) {
 
 exports.dtop = dtop;
 
+/* js/src/predicate/eqz.js */
+
+
+var eqz = function ( v ) {
+	return v === 0;
+};
+
+exports.eqz = eqz;
+
+/* js/src/predicate/gez.js */
+
+
+var gez = function ( v ) {
+	return v >= 0;
+};
+
+exports.gez = gez;
+
+/* js/src/predicate/gtz.js */
+
+
+var gtz = function ( v ) {
+	return v > 0;
+};
+
+exports.gtz = gtz;
+
+/* js/src/predicate/increasing.js */
+
+var increasing = function ( a, b ) {
+	return a - b;
+};
+
+exports.increasing = increasing;
+
 /* js/src/predicate/lexicographical.js */
 
 /**
- * Generates a binary lexicographical comparator predicate
+ * Generates a binary lexicographical comparator
  * from a binary delta operator.
+ *
+ * Delta should always return
+ *   - a negative value if a < b
+ *   - a positive value if a > b
+ *   - zero if a === b
  */
 
 var lexicographical = function ( delta ) {
@@ -313,7 +361,7 @@ var lexicographical = function ( delta ) {
 	 * Compares 2 arrays a and b lexicographically.
 	 */
 
-	var predicate = function ( a, b ) {
+	return function ( a, b ) {
 
 		var i, m, n, len, d;
 
@@ -326,38 +374,59 @@ var lexicographical = function ( delta ) {
 
 			d = delta( a[i], b[i] );
 
-			if ( d < 0 ) {
-				return true;
-			}
-
-			else if ( d > 0 ) {
-				return false;
+			if ( d < 0 || d > 0 ) {
+				return d;
 			}
 
 		}
 
-		return m <= n;
+		return m - n;
 
 	};
-
-	return predicate;
 
 };
 
 exports.lexicographical = lexicographical;
 
+/* js/src/predicate/lez.js */
+
+
+var lez = function ( v ) {
+	return v <= 0;
+};
+
+exports.lez = lez;
+
+/* js/src/predicate/ltz.js */
+
+
+var ltz = function ( v ) {
+	return v < 0;
+};
+
+exports.ltz = ltz;
+
 /* js/src/predicate/negate.js */
 
 
-var negate = function ( predicate ) {
+var negate = function ( delta ) {
 
 	return function ( a, b ) {
-		return ! predicate ( a, b );
+		return delta ( b, a );
 	};
 
 };
 
 exports.negate = negate;
+
+/* js/src/predicate/nez.js */
+
+
+var nez = function ( v ) {
+	return v !== 0;
+};
+
+exports.nez = nez;
 
 /* js/src/predicate/ptod.js */
 
@@ -379,6 +448,16 @@ var ptod = function ( predicate ) {
 };
 
 exports.ptod = ptod;
+
+/* js/src/predicate/sign.js */
+
+var sign = function ( v ) {
+
+	return v < 0 ? -1 : v > 0 ? 1 : 0;
+
+};
+
+exports.sign = sign;
 
 /* js/src/select */
 /* js/src/select/multiselect.js */

@@ -2,6 +2,11 @@
 /**
  * Generates a binary lexicographical comparator
  * from a binary delta operator.
+ *
+ * Delta should always return
+ *   - a negative value if a < b
+ *   - a positive value if a > b
+ *   - zero if a === b
  */
 
 var lexicographical = function ( delta ) {
