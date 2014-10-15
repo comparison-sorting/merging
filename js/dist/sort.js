@@ -208,6 +208,76 @@ var lomuto = function ( predicate, a, i, j ) {
 
 exports.lomuto = lomuto;
 
+/* js/src/partition/yaroslavskiy.js */
+
+/**
+ * HYP : i < j
+ *
+ * http://cs.stackexchange.com/a/24099/20711
+ */
+
+var yaroslavskiy = function ( predicate, a, i, j ) {
+
+	var p, q, g, k, l;
+
+	--j;
+
+	// Choose outermost elements as pivots
+	if ( ! predicate( a[i], a[j] ) ) {
+		swap(a, i, j);
+	}
+
+	p = a[i];
+	q = a[j];
+
+	// Partition a according to invariant below
+	l = i + 1;
+	g = j - 1;
+	k = l;
+
+	while ( k <= g ) {
+
+		if ( ! predicate( p, a[k] ) ) {
+
+			swap( a, k, l );
+			++l;
+
+		}
+
+		else if ( predicate( q , a[k] ) ) {
+
+			while ( ! predicate ( a[g], q ) && k < g ) {
+				--g;
+			}
+
+			swap( a, k, g );
+			--g;
+
+			if ( ! predicate( p, a[k] ) ) {
+
+				swap( a, k, l );
+				++l;
+
+			}
+
+		}
+
+		++k;
+	}
+
+	--l;
+	++g;
+
+	// Swap pivots to final place
+	swap( a, i, l );
+	swap( a, j, g );
+
+	return [l, g];
+
+};
+
+exports.yaroslavskiy = yaroslavskiy;
+
 /* js/src/predicate */
 /* js/src/predicate/dtop.js */
 
@@ -415,6 +485,33 @@ var bubblesort = function ( pred, a, i, j ) {
 
 exports.bubblesort = bubblesort;
 
+/* js/src/sort/dualpivotquicksort.js */
+
+var __dualpivotquicksort__ = function ( partition ) {
+
+	var dualpivotquicksort = function ( predicate, a, i, j ) {
+
+		var p, g, l;
+
+		if (j - i < 2) {
+			return;
+		}
+
+		p = partition( predicate, a, i, j );
+		l = p[0];
+		g = p[1];
+
+		dualpivotquicksort( predicate, a,   i  , l );
+		dualpivotquicksort( predicate, a, l + 1, g );
+		dualpivotquicksort( predicate, a, g + 1, j );
+	};
+
+	return dualpivotquicksort;
+
+};
+
+exports.__dualpivotquicksort__ = __dualpivotquicksort__;
+
 /* js/src/sort/insertionsort.js */
 
 
@@ -532,5 +629,20 @@ var selectionsort = function ( predicate, a, i, j ) {
 };
 
 exports.selectionsort = selectionsort;
+
+/* js/src/utils */
+/* js/src/utils/swap.js */
+
+var swap = function ( a, i, j ) {
+
+	var t;
+
+	t    = a[i];
+	a[i] = a[j];
+	a[j] = t;
+
+};
+
+exports.swap = swap;
 
 })(typeof exports === 'undefined' ? this['sort'] = {} : exports);
