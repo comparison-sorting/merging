@@ -49,6 +49,7 @@ var check = function(tmpl, ctor, n, pred) {
 var TMPL = [
 	['quicksort (hoare)', sort.__quicksort__(sort.hoare)],
 	['quicksort (lomuto)', sort.__quicksort__(sort.lomuto)],
+	['dualpivotquicksort (yaroslavskiy)', sort.__dualpivotquicksort__(sort.yaroslavskiy)],
 	['insertionsort', sort.insertionsort],
 	['selectionsort', sort.selectionsort],
 	['bubblesort', sort.bubblesort],
