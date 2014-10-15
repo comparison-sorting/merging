@@ -8,7 +8,7 @@ var dtop = function ( delta ) {
 
 	var predicate = function ( a, b ) {
 
-		return delta( a, b ) < 0;
+		return delta( a, b ) <= 0;
 
 	};
 

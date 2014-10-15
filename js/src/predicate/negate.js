@@ -1,9 +1,9 @@
 
 
-var negate = function ( predicate ) {
+var negate = function ( delta ) {
 
 	return function ( a, b ) {
-		return ! predicate ( a, b );
+		return - delta ( a, b );
 	};
 
 };
