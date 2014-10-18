@@ -5,8 +5,8 @@ array = require( "aureooms-js-array" );
 random = require( "aureooms-js-random" );
 operator = require( "aureooms-js-operator" );
 
-var check = function(ctor, n, pred) {
-	var name = util.format("mergesort (new %s(%d), %s)", ctor.name, n, pred);
+var check = function(ctor, n, diff) {
+	var name = util.format("mergesort (new %s(%d), %s)", ctor.name, n, diff);
 	console.log(name);
 	test(name, function (assert) {
 
@@ -28,14 +28,14 @@ var check = function(ctor, n, pred) {
 
 		// SORT ARRAY
 		shuffle(a, 0, n);
-		mergesort( pred, a, 0, n, d, 0, n);
+		mergesort( diff, a, 0, n, d, 0, n);
 
 		// TEST PREDICATE
 		var i = d.length;
 		var sorted = true;
 		if(i > 1){
 			while (--i) {
-				if ( !pred(d[i-1], d[i]) ) {
+				if ( diff( d[i-1], d[i] ) > 0 ) {
 					sorted = false;
 					break;
 				}
@@ -48,11 +48,9 @@ var check = function(ctor, n, pred) {
 	});
 };
 
-var PRED = [
-	operator.lt,
-	operator.le,
-	operator.gt,
-	operator.ge
+var DIFF = [
+	sort.increasing,
+	sort.decreasing
 ];
 
 var N = [0, 1, 2, 10, 63, 64, 65];
@@ -75,8 +73,8 @@ for (var k = 0; k < CTOR.length; k++) {
 			N[j] > Math.pow(2, CTOR[k].BYTES_PER_ELEMENT * 8)){
 				continue;
 		}
-		for (var i = 0; i < PRED.length; ++i) {
-			check(CTOR[k], N[j], PRED[i]);
+		for (var i = 0; i < DIFF.length; ++i) {
+			check(CTOR[k], N[j], DIFF[i]);
 		}
 	}
 }

@@ -1,15 +1,15 @@
 
 /**
  * Generates a binary lexicographical comparator
- * from a binary delta operator.
+ * from a binary difference operator.
  *
- * Delta should always return
+ * diff( a, b ) should always return
  *   - a negative value if a < b
  *   - a positive value if a > b
  *   - zero if a === b
  */
 
-var lexicographical = function ( delta ) {
+var lexicographical = function ( diff ) {
 
 	/**
 	 * Compares 2 arrays a and b lexicographically.
@@ -26,7 +26,7 @@ var lexicographical = function ( delta ) {
 
 		for ( i = 0 ; i < len ; ++i ) {
 
-			d = delta( a[i], b[i] );
+			d = diff( a[i], b[i] );
 
 			if ( d < 0 || d > 0 ) {
 				return d;

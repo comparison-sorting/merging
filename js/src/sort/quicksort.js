@@ -8,7 +8,7 @@
 
 var __quicksort__ = function ( partition ) {
 
-	var quicksort = function ( predicate, a, i, j ) {
+	var quicksort = function ( diff, a, i, j ) {
 
 		var p;
 
@@ -16,10 +16,10 @@ var __quicksort__ = function ( partition ) {
 			return;
 		}
 
-		p = partition( predicate, a, i, j );
+		p = partition( diff, a, i, j );
 
-		quicksort( predicate, a, i, p );
-		quicksort( predicate, a, p + 1, j );
+		quicksort( diff, a, i, p );
+		quicksort( diff, a, p + 1, j );
 	};
 
 	return quicksort;

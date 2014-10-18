@@ -4,7 +4,7 @@
  * HYP : i < j
  */
 
-var hoare = function ( predicate, a, i, j ) {
+var hoare = function ( diff, a, i, j ) {
 
 	var x, t, o;
 
@@ -24,7 +24,7 @@ var hoare = function ( predicate, a, i, j ) {
 				return j;
 			}
 
-			else if ( predicate( a[j], x ) ) {
+			else if ( diff( a[j], x ) <= 0 ) {
 				break;
 			}
 		}
@@ -40,7 +40,7 @@ var hoare = function ( predicate, a, i, j ) {
 				return j;
 			}
 
-			else if ( predicate( x, a[i] ) ) {
+			else if ( diff( x, a[i] ) <= 0 ) {
 				break;
 			}
 		}

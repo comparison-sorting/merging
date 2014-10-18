@@ -13,7 +13,7 @@
  *   /!\ j - i >= l - k
  */
 
-var __binarymerge__ = function ( binarysearch, delta, copy ) {
+var __binarymerge__ = function ( binarysearch, diff, copy ) {
 
 	var hwanglin = function ( a, i, j, b, k, l, c, m ) {
 
@@ -30,11 +30,11 @@ var __binarymerge__ = function ( binarysearch, delta, copy ) {
 			t = i;
 			i = t + x;
 			while (k < l) {
-				if (delta(b[k], a[i]) >= 0) {
+				if (diff(b[k], a[i]) >= 0) {
 					copy(a, t, i, c, o + t + k);
 					break;
 				}
-				q = binarysearch( delta, a, t, i, b[k] );
+				q = binarysearch( diff, a, t, i, b[k] );
 				z = q[0] + q[1];
 				copy(a, t, z, c, o + t + k);
 				c[o + z + k] = b[k];
@@ -89,14 +89,14 @@ exports.__merge__ = __merge__;
 /* js/src/merge/tapemerge.js */
 
 
-var tapemerge = function ( pred, a, i, j, b, k, l, c, m ) {
+var tapemerge = function ( diff, a, i, j, b, k, l, c, m ) {
 
 	var n;
 
 	n = m + j - i + l - k;
 
 	for (; m < n; ++m) {
-		if (k >= l || (i < j && pred(a[i], b[k]))) {
+		if ( k >= l || ( i < j && diff( a[i], b[k] ) <= 0 ) ) {
 			c[m] = a[i]; ++i;
 		}
 		else {
@@ -116,7 +116,7 @@ exports.tapemerge = tapemerge;
  * HYP : i < j
  */
 
-var hoare = function ( predicate, a, i, j ) {
+var hoare = function ( diff, a, i, j ) {
 
 	var x, t, o;
 
@@ -136,7 +136,7 @@ var hoare = function ( predicate, a, i, j ) {
 				return j;
 			}
 
-			else if ( predicate( a[j], x ) ) {
+			else if ( diff( a[j], x ) <= 0 ) {
 				break;
 			}
 		}
@@ -152,7 +152,7 @@ var hoare = function ( predicate, a, i, j ) {
 				return j;
 			}
 
-			else if ( predicate( x, a[i] ) ) {
+			else if ( diff( x, a[i] ) <= 0 ) {
 				break;
 			}
 		}
@@ -174,7 +174,7 @@ exports.partition = hoare;
 /* js/src/partition/lomuto.js */
 
 
-var lomuto = function ( predicate, a, i, j ) {
+var lomuto = function ( diff, a, i, j ) {
 
 	var t, k, p;
 
@@ -185,7 +185,7 @@ var lomuto = function ( predicate, a, i, j ) {
 
 	while ( k <= j ) {
 
-		if ( predicate( p, a[k] ) ) {
+		if ( diff( p, a[k] ) <= 0 ) {
 
 			t    = a[k];
 			a[k] = a[j];
@@ -216,14 +216,14 @@ exports.lomuto = lomuto;
  * http://cs.stackexchange.com/a/24099/20711
  */
 
-var yaroslavskiy = function ( predicate, a, i, j ) {
+var yaroslavskiy = function ( diff, a, i, j ) {
 
 	var p, q, g, k, l;
 
 	--j;
 
 	// Choose outermost elements as pivots
-	if ( ! predicate( a[i], a[j] ) ) {
+	if ( diff( a[i], a[j] ) > 0 ) {
 		swap(a, i, j);
 	}
 
@@ -237,23 +237,23 @@ var yaroslavskiy = function ( predicate, a, i, j ) {
 
 	while ( k <= g ) {
 
-		if ( ! predicate( p, a[k] ) ) {
+		if ( diff( p, a[k] ) > 0 ) {
 
 			swap( a, k, l );
 			++l;
 
 		}
 
-		else if ( predicate( q , a[k] ) ) {
+		else if ( diff( q , a[k] ) <= 0 ) {
 
-			while ( ! predicate ( a[g], q ) && k < g ) {
+			while ( diff ( a[g], q ) > 0 && k < g ) {
 				--g;
 			}
 
 			swap( a, k, g );
 			--g;
 
-			if ( ! predicate( p, a[k] ) ) {
+			if ( diff( p, a[k] ) > 0 ) {
 
 				swap( a, k, l );
 				++l;
@@ -287,54 +287,6 @@ var decreasing = function ( a, b ) {
 
 exports.decreasing = decreasing;
 
-/* js/src/predicate/dtop.js */
-
-
-/**
- * Converts a binary delta operator to a binary predicate.
- */
-
-var dtop = function ( delta ) {
-
-	var predicate = function ( a, b ) {
-
-		return delta( a, b ) <= 0;
-
-	};
-
-	return predicate;
-
-};
-
-exports.dtop = dtop;
-
-/* js/src/predicate/eqz.js */
-
-
-var eqz = function ( v ) {
-	return v === 0;
-};
-
-exports.eqz = eqz;
-
-/* js/src/predicate/gez.js */
-
-
-var gez = function ( v ) {
-	return v >= 0;
-};
-
-exports.gez = gez;
-
-/* js/src/predicate/gtz.js */
-
-
-var gtz = function ( v ) {
-	return v > 0;
-};
-
-exports.gtz = gtz;
-
 /* js/src/predicate/increasing.js */
 
 var increasing = function ( a, b ) {
@@ -347,15 +299,15 @@ exports.increasing = increasing;
 
 /**
  * Generates a binary lexicographical comparator
- * from a binary delta operator.
+ * from a binary difference operator.
  *
- * Delta should always return
+ * diff( a, b ) should always return
  *   - a negative value if a < b
  *   - a positive value if a > b
  *   - zero if a === b
  */
 
-var lexicographical = function ( delta ) {
+var lexicographical = function ( diff ) {
 
 	/**
 	 * Compares 2 arrays a and b lexicographically.
@@ -372,7 +324,7 @@ var lexicographical = function ( delta ) {
 
 		for ( i = 0 ; i < len ; ++i ) {
 
-			d = delta( a[i], b[i] );
+			d = diff( a[i], b[i] );
 
 			if ( d < 0 || d > 0 ) {
 				return d;
@@ -388,66 +340,18 @@ var lexicographical = function ( delta ) {
 
 exports.lexicographical = lexicographical;
 
-/* js/src/predicate/lez.js */
-
-
-var lez = function ( v ) {
-	return v <= 0;
-};
-
-exports.lez = lez;
-
-/* js/src/predicate/ltz.js */
-
-
-var ltz = function ( v ) {
-	return v < 0;
-};
-
-exports.ltz = ltz;
-
 /* js/src/predicate/negate.js */
 
 
-var negate = function ( delta ) {
+var negate = function ( diff ) {
 
 	return function ( a, b ) {
-		return delta ( b, a );
+		return diff ( b, a );
 	};
 
 };
 
 exports.negate = negate;
-
-/* js/src/predicate/nez.js */
-
-
-var nez = function ( v ) {
-	return v !== 0;
-};
-
-exports.nez = nez;
-
-/* js/src/predicate/ptod.js */
-
-
-/**
- * Converts a binary predicate to a binary delta operator.
- */
-
-var ptod = function ( predicate ) {
-
-	var delta = function ( a, b ) {
-
-		return predicate( a, b ) ? -1 : 1;
-
-	};
-
-	return delta;
-
-};
-
-exports.ptod = ptod;
 
 /* js/src/predicate/sign.js */
 
@@ -470,7 +374,7 @@ var __multiselect__ = function ( partition, index ) {
 	 * on average.
 	 */
 
-	var multiselect = function ( pred, a, ai, aj, b, bi, bj ) {
+	var multiselect = function ( diff, a, ai, aj, b, bi, bj ) {
 
 		var p, q;
 
@@ -478,11 +382,11 @@ var __multiselect__ = function ( partition, index ) {
 			return;
 		}
 
-		p = partition( pred, a, ai, aj );
+		p = partition( diff, a, ai, aj );
 		q = index( b, bi, bj, p );
 
-		multiselect( pred, a,    ai,  p,  b,          bi, q[1] );
-		multiselect( pred, a, p + 1, aj,  b, q[0] + q[1],   bj );
+		multiselect( diff, a,    ai,  p,  b,          bi, q[1] );
+		multiselect( diff, a, p + 1, aj,  b, q[0] + q[1],   bj );
 	};
 
 	return multiselect;
@@ -500,7 +404,7 @@ exports.__multiselect__ = __multiselect__;
 
 var __quickselect__ = function ( partition ) {
 
-	var quickselect = function ( predicate, a, i, j, k ) {
+	var quickselect = function ( diff, a, i, j, k ) {
 
 		var p;
 
@@ -508,13 +412,13 @@ var __quickselect__ = function ( partition ) {
 			return;
 		}
 
-		p = partition( predicate, a, i, j );
+		p = partition( diff, a, i, j );
 
 		if (k < p) {
-			quickselect( predicate, a, i, p, k );
+			quickselect( diff, a, i, p, k );
 		}
 		else if (k > p) {
-			quickselect( predicate, a, p + 1, j, k );
+			quickselect( diff, a, p + 1, j, k );
 		}
 	};
 
@@ -529,7 +433,7 @@ exports.__quickselect__ = __quickselect__;
 
 
 
-var bubblesort = function ( pred, a, i, j ) {
+var bubblesort = function ( diff, a, i, j ) {
 
 	var swapped, k, s, t;
 
@@ -545,7 +449,7 @@ var bubblesort = function ( pred, a, i, j ) {
 
 		for ( k = i ; k < s ; ++k ) {
 
-			if ( !pred( a[k], a[k + 1] ) ) {
+			if ( diff( a[k], a[k + 1] ) > 0 ) {
 
 				// swap boxes
 
@@ -568,7 +472,7 @@ exports.bubblesort = bubblesort;
 
 var __dualpivotquicksort__ = function ( partition ) {
 
-	var dualpivotquicksort = function ( predicate, a, i, j ) {
+	var dualpivotquicksort = function ( diff, a, i, j ) {
 
 		var p, g, l;
 
@@ -576,13 +480,13 @@ var __dualpivotquicksort__ = function ( partition ) {
 			return;
 		}
 
-		p = partition( predicate, a, i, j );
+		p = partition( diff, a, i, j );
 		l = p[0];
 		g = p[1];
 
-		dualpivotquicksort( predicate, a,   i  , l );
-		dualpivotquicksort( predicate, a, l + 1, g );
-		dualpivotquicksort( predicate, a, g + 1, j );
+		dualpivotquicksort( diff, a,   i  , l );
+		dualpivotquicksort( diff, a, l + 1, g );
+		dualpivotquicksort( diff, a, g + 1, j );
 	};
 
 	return dualpivotquicksort;
@@ -595,16 +499,16 @@ exports.__dualpivotquicksort__ = __dualpivotquicksort__;
 
 
 
-var insertionsort = function( pred, a, i, j ){
+var insertionsort = function( diff, a, i, j ){
 
 	var o, k, t;
 
-	for (k = i + 1; k < j; ++k) {
+	for ( k = i + 1 ; k < j ; ++k ) {
 
 		t = k;
 		o = a[t];
 
-		while (t --> i && !pred(a[t], o)) {
+		while ( t --> i && diff( a[t], o ) > 0 ) {
 			a[t + 1] = a[t];
 		}
 
@@ -619,7 +523,7 @@ exports.insertionsort = insertionsort;
 
 var __mergesort__ = function ( merge, copy ) {
 
-	var mergesort = function ( predicate, a, i, j, d, l, r) {
+	var mergesort = function ( diff, a, i, j, d, l, r) {
 
 		var p, t;
 
@@ -629,10 +533,10 @@ var __mergesort__ = function ( merge, copy ) {
 
 		p = Math.floor( ( i + j ) / 2 );
 
-		mergesort( predicate, a, i, p, d, l, l + p - i );
-		mergesort( predicate, a, p, j, d, l + p - i, r );
+		mergesort( diff, a, i, p, d, l, l + p - i );
+		mergesort( diff, a, p, j, d, l + p - i, r );
 
-		merge( predicate, a, i, p, a, p, j, d, l );
+		merge( diff, a, i, p, a, p, j, d, l );
 
 		//copy ( d, l, l + j - i, a, i );
 
@@ -658,7 +562,7 @@ exports.__mergesort__ = __mergesort__;
 
 var __quicksort__ = function ( partition ) {
 
-	var quicksort = function ( predicate, a, i, j ) {
+	var quicksort = function ( diff, a, i, j ) {
 
 		var p;
 
@@ -666,10 +570,10 @@ var __quicksort__ = function ( partition ) {
 			return;
 		}
 
-		p = partition( predicate, a, i, j );
+		p = partition( diff, a, i, j );
 
-		quicksort( predicate, a, i, p );
-		quicksort( predicate, a, p + 1, j );
+		quicksort( diff, a, i, p );
+		quicksort( diff, a, p + 1, j );
 	};
 
 	return quicksort;
@@ -681,7 +585,7 @@ exports.__quicksort__ = __quicksort__;
 /* js/src/sort/selectionsort.js */
 
 
-var selectionsort = function ( predicate, a, i, j ) {
+var selectionsort = function ( diff, a, i, j ) {
 
 	var o, t, k;
 
@@ -692,7 +596,7 @@ var selectionsort = function ( predicate, a, i, j ) {
 
 		while ( ++t < j ) {
 
-			if ( ! predicate( o, a[t] ) ) {
+			if ( diff( o, a[t] ) > 0 ) {
 				o = a[t];
 				k = t;
 			}

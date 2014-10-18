@@ -6,7 +6,7 @@
  *   /!\ j - i >= l - k
  */
 
-var __binarymerge__ = function ( binarysearch, delta, copy ) {
+var __binarymerge__ = function ( binarysearch, diff, copy ) {
 
 	var hwanglin = function ( a, i, j, b, k, l, c, m ) {
 
@@ -23,11 +23,11 @@ var __binarymerge__ = function ( binarysearch, delta, copy ) {
 			t = i;
 			i = t + x;
 			while (k < l) {
-				if (delta(b[k], a[i]) >= 0) {
+				if (diff(b[k], a[i]) >= 0) {
 					copy(a, t, i, c, o + t + k);
 					break;
 				}
-				q = binarysearch( delta, a, t, i, b[k] );
+				q = binarysearch( diff, a, t, i, b[k] );
 				z = q[0] + q[1];
 				copy(a, t, z, c, o + t + k);
 				c[o + z + k] = b[k];

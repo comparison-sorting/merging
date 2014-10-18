@@ -5,8 +5,8 @@ array = require( "aureooms-js-array" );
 random = require( "aureooms-js-random" );
 operator = require( "aureooms-js-operator" );
 
-var check = function(ctor, n, pred) {
-	var name = util.format("quickselect (new %s(%d), %s)", ctor.name, n, pred);
+var check = function(ctor, n, diff) {
+	var name = util.format("quickselect (new %s(%d), %s)", ctor.name, n, diff);
 	console.log(name);
 	test(name, function (assert) {
 
@@ -26,17 +26,17 @@ var check = function(ctor, n, pred) {
 		var ref = new ctor(n);
 		iota(ref, 0, n, 0);
 		shuffle(ref, 0, n);
-		quicksort( pred, ref, 0, n);
+		quicksort( diff, ref, 0, n);
 
 		// SETUP TEST ARRAY
 		var a = new ctor(n);
 		copy(ref, 0, n, a, 0);
 
-		// TEST PREDICATE
+		// TEST ALL INDEX SELECTION
 		var i = a.length;
 		while (i--) {
 			shuffle(a, 0, n);
-			quickselect(pred, a, 0, n, i);
+			quickselect(diff, a, 0, n, i);
 			deepEqual(a[i], ref[i], 'select #' + i);
 		}
 
@@ -44,11 +44,9 @@ var check = function(ctor, n, pred) {
 	});
 };
 
-var PRED = [
-	operator.lt,
-	operator.le,
-	operator.gt,
-	operator.ge
+var DIFF = [
+	sort.increasing,
+	sort.decreasing
 ];
 
 var N = [0, 1, 2, 10, 31, 32, 33];
@@ -71,8 +69,8 @@ for (var k = 0; k < CTOR.length; k++) {
 			N[j] > Math.pow(2, CTOR[k].BYTES_PER_ELEMENT * 8)){
 				continue;
 		}
-		for (var i = 0; i < PRED.length; ++i) {
-			check(CTOR[k], N[j], PRED[i]);
+		for (var i = 0; i < DIFF.length; ++i) {
+			check(CTOR[k], N[j], DIFF[i]);
 		}
 	}
 }

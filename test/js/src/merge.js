@@ -21,22 +21,21 @@ var check = function(tmpl, ctor, m, n, diff) {
 		var copy = array.copy;
 
 		// SETUP SORT
-		var pred = sort.dtop( diff );
 		var partition = sort.partition;
 		var quicksort = sort.__quicksort__(partition);
 		var binarysearch = search.binarysearch;
-		var merge = tmpl[1](diff, binarysearch, copy, pred);
+		var merge = tmpl[1](diff, binarysearch, copy);
 
 		// SETUP ARRAYS, DEST
 		var a = new ctor(m), j;
 		for(j = 0; j < m; ++j) a[j] = randint(0, m);
 		shuffle(a, 0, m);
-		quicksort( pred, a, 0, m);
+		quicksort( diff, a, 0, m);
 
 		var b = new ctor(n);
 		for(j = 0; j < n; ++j) b[j] = randint(0, n);
 		shuffle(b, 0, n);
-		quicksort( pred, b, 0, n);
+		quicksort( diff, b, 0, n);
 
 		var d = new ctor(n + m);
 
@@ -48,7 +47,7 @@ var check = function(tmpl, ctor, m, n, diff) {
 		copy(a, 0, m, c, 0);
 		copy(b, 0, n, c, m);
 		shuffle(c, 0, n + m);
-		quicksort( pred, c, 0, n + m);
+		quicksort( diff, c, 0, n + m);
 
 		deepEqual(d, c, 'check sorted');
 		deepEqual(a.length, m, 'check length a');
@@ -58,23 +57,23 @@ var check = function(tmpl, ctor, m, n, diff) {
 };
 
 var DIFF = [
-	function(a, b){ return a - b; },
-	function(a, b){ return b - a; }
+	sort.increasing,
+	sort.decreasing
 ];
 
 var TMPL = [
-	['merge', function ( diff, binarysearch, copy, pred ) {
+	['merge', function ( diff, binarysearch, copy ) {
 		var index;
 
 		index = functools.partial( binarysearch, null, [diff] );
 
 		return sort.__merge__( index, copy );
 	}],
-	['binarymerge', function ( diff, binarysearch, copy, pred ) {
+	['binarymerge', function ( diff, binarysearch, copy ) {
 		return sort.__binarymerge__( binarysearch, diff, copy );
 	}],
-	['tapemerge', function ( diff, binarysearch, copy, pred ) {
-		return functools.partial( sort.tapemerge, null, [pred] );
+	['tapemerge', function ( diff, binarysearch, copy ) {
+		return functools.partial( sort.tapemerge, null, [diff] );
 	}],
 ];
 

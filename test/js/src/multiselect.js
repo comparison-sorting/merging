@@ -7,8 +7,8 @@ random = require( "aureooms-js-random" );
 operator = require( "aureooms-js-operator" );
 functools = require( "aureooms-js-functools" );
 
-var check = function(ctor, n, pred) {
-	var name = util.format("multiselect (new %s(%d), %s)", ctor.name, n, pred);
+var check = function(ctor, n, diff) {
+	var name = util.format("multiselect (new %s(%d), %s)", ctor.name, n, diff);
 	console.log(name);
 	test(name, function (assert) {
 
@@ -20,11 +20,8 @@ var check = function(ctor, n, pred) {
 		var copy = array.copy;
 
 		// SETUP INDEX SEARCH
-		var index_diff = operator.sub;
+		var index_diff = sort.increasing;
 		var binarysearch = search.binarysearch;
-		var index_pred = sort.dtop( index_diff );
-		var index_partition = sort.partition;
-		var index_quicksort = sort.__quicksort__(index_partition);
 
 		// SETUP SORT
 		var partition = sort.partition;
@@ -38,24 +35,25 @@ var check = function(ctor, n, pred) {
 		var ref = new ctor(n);
 		iota(ref, 0, n, 0);
 		shuffle(ref, 0, n);
-		quicksort( pred, ref, 0, n );
+		quicksort( diff, ref, 0, n );
 
 		// SETUP TEST ARRAY
 		var a = new ctor(n);
 		copy(ref, 0, n, a, 0);
 
-		// TEST PREDICATE
+		// TEST PREDICATE <-- ??? be more explicit
 		var i = a.length;
 
 		var len = randint(0, i + 1);
 		sample(len, a, 0, n);
 		var k = new ctor(len);
 		copy(a, 0, len, k, 0);
-		index_quicksort( index_pred, k, 0, len );
+		quicksort( index_diff, k, 0, len );
 
 		shuffle(a, 0, n);
-		multiselect( pred, a, 0, n, k, 0, len);
-		while(len--){
+		multiselect( diff, a, 0, n, k, 0, len);
+
+		while( len-- ){
 			deepEqual(a[k[len]], ref[k[len]], 'select #' + k[len]);
 		}
 
@@ -63,11 +61,9 @@ var check = function(ctor, n, pred) {
 	});
 };
 
-var PRED = [
-	operator.lt,
-	operator.le,
-	operator.gt,
-	operator.ge
+var DIFF = [
+	sort.increasing,
+	sort.decreasing
 ];
 
 var N = [0, 1, 2, 10, 63, 64, 65];
@@ -90,8 +86,8 @@ for (var k = 0; k < CTOR.length; k++) {
 			N[j] > Math.pow(2, CTOR[k].BYTES_PER_ELEMENT * 8)){
 				continue;
 		}
-		for (var i = 0; i < PRED.length; ++i) {
-			check(CTOR[k], N[j], PRED[i]);
+		for (var i = 0; i < DIFF.length; ++i) {
+			check(CTOR[k], N[j], DIFF[i]);
 		}
 	}
 }

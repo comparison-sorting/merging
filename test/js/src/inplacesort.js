@@ -6,8 +6,8 @@ array = require( "aureooms-js-array" );
 random = require( "aureooms-js-random" );
 operator = require( "aureooms-js-operator" );
 
-var check = function(tmpl, ctor, n, pred) {
-	var name = util.format("%s (new %s(%d), %s)", tmpl[0], ctor.name, n, pred);
+var check = function(tmpl, ctor, n, diff) {
+	var name = util.format("%s (new %s(%d), %s)", tmpl[0], ctor.name, n, diff);
 	console.log(name);
 	test(name, function (assert) {
 
@@ -26,14 +26,14 @@ var check = function(tmpl, ctor, n, pred) {
 
 		// SORT ARRAY
 		shuffle( a, 0, n );
-		sort( pred, a, 0, n );
+		sort( diff, a, 0, n );
 
 		// TEST PREDICATE
 		var i = a.length;
 		var sorted = true;
 		if(i > 1){
 			while (--i) {
-				if ( !pred(a[i-1], a[i]) ) {
+				if ( diff( a[i-1], a[i] ) > 0 ) {
 					sorted = false;
 					break;
 				}
@@ -55,9 +55,9 @@ var TMPL = [
 	['bubblesort', sort.bubblesort],
 ];
 
-var PRED = [
-	operator.le,
-	operator.ge
+var DIFF = [
+	sort.increasing,
+	sort.decreasing
 ];
 
 var N = [0, 1, 2, 10, 63, 64, 65];
@@ -81,8 +81,8 @@ for (var t = 0; t < TMPL.length; ++t) {
 			if(CTOR[k].BYTES_PER_ELEMENT && N[j] > Math.pow(2, CTOR[k].BYTES_PER_ELEMENT * 8))
 				continue;
 
-			for (var i = 0; i < PRED.length; ++i) {
-				check(TMPL[t], CTOR[k], N[j], PRED[i]);
+			for (var i = 0; i < DIFF.length; ++i) {
+				check(TMPL[t], CTOR[k], N[j], DIFF[i]);
 			}
 		}
 	}

@@ -1,9 +1,9 @@
 
 
-var negate = function ( delta ) {
+var negate = function ( diff ) {
 
 	return function ( a, b ) {
-		return delta ( b, a );
+		return diff ( b, a );
 	};
 
 };

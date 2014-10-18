@@ -1,6 +1,6 @@
 
 
-var selectionsort = function ( predicate, a, i, j ) {
+var selectionsort = function ( diff, a, i, j ) {
 
 	var o, t, k;
 
@@ -11,7 +11,7 @@ var selectionsort = function ( predicate, a, i, j ) {
 
 		while ( ++t < j ) {
 
-			if ( ! predicate( o, a[t] ) ) {
+			if ( diff( o, a[t] ) > 0 ) {
 				o = a[t];
 				k = t;
 			}

@@ -5,14 +5,14 @@
  * http://cs.stackexchange.com/a/24099/20711
  */
 
-var yaroslavskiy = function ( predicate, a, i, j ) {
+var yaroslavskiy = function ( diff, a, i, j ) {
 
 	var p, q, g, k, l;
 
 	--j;
 
 	// Choose outermost elements as pivots
-	if ( ! predicate( a[i], a[j] ) ) {
+	if ( diff( a[i], a[j] ) > 0 ) {
 		swap(a, i, j);
 	}
 
@@ -26,23 +26,23 @@ var yaroslavskiy = function ( predicate, a, i, j ) {
 
 	while ( k <= g ) {
 
-		if ( ! predicate( p, a[k] ) ) {
+		if ( diff( p, a[k] ) > 0 ) {
 
 			swap( a, k, l );
 			++l;
 
 		}
 
-		else if ( predicate( q , a[k] ) ) {
+		else if ( diff( q , a[k] ) <= 0 ) {
 
-			while ( ! predicate ( a[g], q ) && k < g ) {
+			while ( diff ( a[g], q ) > 0 && k < g ) {
 				--g;
 			}
 
 			swap( a, k, g );
 			--g;
 
-			if ( ! predicate( p, a[k] ) ) {
+			if ( diff( p, a[k] ) > 0 ) {
 
 				swap( a, k, l );
 				++l;

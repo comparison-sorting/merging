@@ -6,7 +6,7 @@
 
 var __quickselect__ = function ( partition ) {
 
-	var quickselect = function ( predicate, a, i, j, k ) {
+	var quickselect = function ( diff, a, i, j, k ) {
 
 		var p;
 
@@ -14,13 +14,13 @@ var __quickselect__ = function ( partition ) {
 			return;
 		}
 
-		p = partition( predicate, a, i, j );
+		p = partition( diff, a, i, j );
 
 		if (k < p) {
-			quickselect( predicate, a, i, p, k );
+			quickselect( diff, a, i, p, k );
 		}
 		else if (k > p) {
-			quickselect( predicate, a, p + 1, j, k );
+			quickselect( diff, a, p + 1, j, k );
 		}
 	};
 

@@ -7,7 +7,7 @@ var __multiselect__ = function ( partition, index ) {
 	 * on average.
 	 */
 
-	var multiselect = function ( pred, a, ai, aj, b, bi, bj ) {
+	var multiselect = function ( diff, a, ai, aj, b, bi, bj ) {
 
 		var p, q;
 
@@ -15,11 +15,11 @@ var __multiselect__ = function ( partition, index ) {
 			return;
 		}
 
-		p = partition( pred, a, ai, aj );
+		p = partition( diff, a, ai, aj );
 		q = index( b, bi, bj, p );
 
-		multiselect( pred, a,    ai,  p,  b,          bi, q[1] );
-		multiselect( pred, a, p + 1, aj,  b, q[0] + q[1],   bj );
+		multiselect( diff, a,    ai,  p,  b,          bi, q[1] );
+		multiselect( diff, a, p + 1, aj,  b, q[0] + q[1],   bj );
 	};
 
 	return multiselect;
