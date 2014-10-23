@@ -3,41 +3,46 @@
 /**
  * Merges 2 arrays using the Hwang Lin algorithm.
  *
- *   /!\ j - i >= l - k
+ *   /!\ aj - ai >= bj - bi
  */
 
 var __binarymerge__ = function ( binarysearch, diff, copy ) {
 
-	var hwanglin = function ( a, i, j, b, k, l, c, m ) {
+	var hwanglin = function ( a, ai, aj, b, bi, bj, c, ci ) {
 
 		var o, t, x, y, q, d, z;
 
-		o = m - i - k;
-		t = i;
+		o = ci - ai - bi;
+		t = ai;
 
-		x = Math.pow(2, Math.floor(Math.log((j-i)/(l-k))));
-		y = Math.floor((j-i) / x) + 1;
+		x = Math.pow( 2, Math.floor( Math.log( ( aj - ai ) / ( bj - bi ) ) ) );
+		y = Math.floor( ( aj - ai ) / x ) + 1;
 
 
-		while (k < l && (i + x < j || (x = j - i))) {
-			t = i;
-			i = t + x;
-			while (k < l) {
-				if (diff(b[k], a[i]) >= 0) {
-					copy(a, t, i, c, o + t + k);
+		while ( bi < bj && ( ai + x < aj || ( x = aj - ai ) ) ) {
+
+			t = ai;
+			ai = t + x;
+
+			while ( bi < bj ) {
+
+				if ( diff( b[bi], a[ai] ) >= 0 ) {
+					copy( a, t, ai, c, o + t + bi );
 					break;
 				}
-				q = binarysearch( diff, a, t, i, b[k] );
+
+				q = binarysearch( diff, a, t, ai, b[bi] );
 				z = q[0] + q[1];
-				copy(a, t, z, c, o + t + k);
-				c[o + z + k] = b[k];
+
+				copy( a, t, z, c, o + t + bi );
+				c[o + z + bi] = b[bi];
 				t = z;
-				++k;
+				++bi;
 			}
 		}
 
-		copy(a, t, j, c, o + t + k);
-		copy(b, k, l, c, o + j + k);
+		copy( a, t, aj, c, o + t + bi );
+		copy( b, bi, bj, c, o + aj + bi );
 
 	};
 
