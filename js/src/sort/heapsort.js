@@ -58,7 +58,7 @@ var __heapsort__ = function ( arity ) {
 
 		// exhaust the max-heap
 
-		for ( ; k > i ; --k ) {
+		for ( --k ; k > i ; --k ) {
 
 			// put max element at the end of the array
 			// and percolate new max element down
@@ -68,7 +68,7 @@ var __heapsort__ = function ( arity ) {
 			a[k] = a[i];
 			a[i] = tmp;
 
-			current = k - i;
+			current = 0;
 
 			while ( true ) {
 
@@ -80,19 +80,19 @@ var __heapsort__ = function ( arity ) {
 				// if current node has no children
 				// then we are done
 
-				if ( candidate >= j ) {
+				if ( candidate >= k ) {
 					break;
 				}
 
 				// search for greatest child
 
-				t = Math.min( candidate + arity, j );
+				t = Math.min( candidate + arity, k );
 
 				y = candidate;
 
-				for ( ++y ; i < t ; ++y ) {
+				for ( ++y ; y < t ; ++y ) {
 
-					if ( compare( a[y], a[candidate] ) > 0 ) {
+					if ( diff( a[y], a[candidate] ) > 0 ) {
 						candidate = y;
 					}
 
@@ -103,7 +103,7 @@ var __heapsort__ = function ( arity ) {
 
 				current += i;
 
-				if ( compare( a[current], a[candidate] ) >= 0 ) {
+				if ( diff( a[current], a[candidate] ) >= 0 ) {
 					break;
 				}
 
