@@ -14,21 +14,27 @@ var check = function(tmpl, ctor, m, n, diff) {
 
 		// SETUP RANDOM
 		var randint = random.randint;
-		var sample = random.__sample__(randint);
-		var shuffle = random.__shuffle__(sample);
+		var sample = random.__sample__( randint );
+		var shuffle = random.__shuffle__( sample );
 
 		// SETUP UTILS
 		var copy = array.copy;
 
 		// SETUP SORT
 		var partition = sort.partition;
-		var quicksort = sort.__quicksort__(partition);
+		var quicksort = sort.__quicksort__( partition );
 		var binarysearch = search.binarysearch;
-		var merge = tmpl[1](diff, binarysearch, copy);
+		var merge = tmpl[1]( diff, binarysearch, copy );
 
 		// SETUP ARRAYS, DEST
-		var a = new ctor(m), j;
-		for(j = 0; j < m; ++j) a[j] = randint(0, m);
+		var a, j;
+
+		a = new ctor( m );
+
+		for ( j = 0 ; j < m ; ++j ) {
+			a[j] = randint( 0, m );
+		}
+
 		shuffle(a, 0, m);
 		quicksort( diff, a, 0, m);
 
@@ -65,7 +71,7 @@ var TMPL = [
 	['merge', function ( diff, binarysearch, copy ) {
 		var index;
 
-		index = functools.partial( binarysearch, null, [diff] );
+		index = functools.partial( binarysearch, [diff] );
 
 		return sort.__merge__( index, copy );
 	}],
@@ -73,11 +79,11 @@ var TMPL = [
 		return sort.__binarymerge__( binarysearch, diff, copy );
 	}],
 	['tapemerge', function ( diff, binarysearch, copy ) {
-		return functools.partial( sort.tapemerge, null, [diff] );
+		return functools.partial( sort.tapemerge, [diff] );
 	}],
 ];
 
-var N = [0, 1, 2, 10, 63, 64, 65]; // MUST BE IN ASCENDING ORDER !!
+var N = [0, 1, 2, 10, 63, 64, 65]; // MUST BE IN INCREASING ORDER !!
 
 var CTOR = [
 	Array,

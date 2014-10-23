@@ -14,8 +14,8 @@ var check = function(ctor, n, diff) {
 
 		// SETUP RANDOM
 		var randint = random.randint;
-		var sample = random.__sample__(randint);
-		var shuffle = random.__shuffle__(sample);
+		var sample = random.__sample__( randint );
+		var shuffle = random.__shuffle__( sample );
 		var iota = array.iota;
 		var copy = array.copy;
 
@@ -25,10 +25,10 @@ var check = function(ctor, n, diff) {
 
 		// SETUP SORT
 		var partition = sort.partition;
-		var quicksort = sort.__quicksort__(partition);
+		var quicksort = sort.__quicksort__( partition );
 
 		// SETUP SELECT
-		var index = functools.partial ( binarysearch, null, [index_diff] );
+		var index = functools.partial ( binarysearch, [index_diff] );
 		var multiselect = sort.__multiselect__( partition, index );
 
 		// SETUP REF ARRAY
@@ -39,25 +39,25 @@ var check = function(ctor, n, diff) {
 
 		// SETUP TEST ARRAY
 		var a = new ctor(n);
-		copy(ref, 0, n, a, 0);
+		copy( ref, 0, n, a, 0 );
 
 		// TEST PREDICATE <-- ??? be more explicit
 		var i = a.length;
 
-		var len = randint(0, i + 1);
-		sample(len, a, 0, n);
-		var k = new ctor(len);
-		copy(a, 0, len, k, 0);
+		var len = randint( 0, i + 1 );
+		sample( len, a, 0, n );
+		var k = new ctor( len );
+		copy( a, 0, len, k, 0 );
 		quicksort( index_diff, k, 0, len );
 
 		shuffle(a, 0, n);
 		multiselect( diff, a, 0, n, k, 0, len);
 
 		while( len-- ){
-			deepEqual(a[k[len]], ref[k[len]], 'select #' + k[len]);
+			deepEqual(a[k[len]], ref[k[len]], "select #" + k[len]);
 		}
 
-		deepEqual(a.length, n, 'check length');
+		deepEqual( a.length, n, "check length" );
 	});
 };
 
