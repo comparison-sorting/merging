@@ -45,25 +45,26 @@ var check = function( sort, ctor, n, diff ) {
 			}
 		}
 
-		ok( sorted, 'check sorted' );
-		deepEqual( a.length, n, 'check length a' );
+		ok( sorted, "check sorted" );
+		deepEqual( a.length, n, "check length a" );
 	});
 };
 
 itertools.product([
 
 [
-	['quicksort (hoare)', sort.__quicksort__(sort.hoare)],
-	['quicksort (lomuto)', sort.__quicksort__(sort.lomuto)],
-	['dualpivotquicksort (yaroslavskiy)', sort.__dualpivotquicksort__(sort.yaroslavskiy)],
-	['insertionsort', sort.insertionsort],
-	['selectionsort', sort.selectionsort],
-	['bubblesort', sort.bubblesort],
+	[ "heapsort (binary)", sort.__heapsort__( 2 ) ],
+	[ "quicksort (hoare)", sort.__quicksort__( sort.hoare ) ],
+	[ "quicksort (lomuto)", sort.__quicksort__( sort.lomuto ) ],
+	[ "dualpivotquicksort (yaroslavskiy)", sort.__dualpivotquicksort__( sort.yaroslavskiy ) ],
+	[ "insertionsort", sort.insertionsort ],
+	[ "selectionsort", sort.selectionsort ],
+	[ "bubblesort", sort.bubblesort ]
 ],
 
 [
-	[ "increasing", sort.increasing],
-	[ "decreasing", sort.decreasing]
+	[ "increasing", sort.increasing ],
+	[ "decreasing", sort.decreasing ]
 ],
 
 [0, 1, 2, 10, 63, 64, 65],
