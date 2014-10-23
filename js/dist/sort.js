@@ -10,41 +10,46 @@
 /**
  * Merges 2 arrays using the Hwang Lin algorithm.
  *
- *   /!\ j - i >= l - k
+ *   /!\ aj - ai >= bj - bi
  */
 
-var __binarymerge__ = function ( binarysearch, diff, copy ) {
+var __binarymerge__ = function ( binarysearch, copy ) {
 
-	var hwanglin = function ( a, i, j, b, k, l, c, m ) {
+	var hwanglin = function ( diff, a, ai, aj, b, bi, bj, c, ci ) {
 
 		var o, t, x, y, q, d, z;
 
-		o = m - i - k;
-		t = i;
+		o = ci - ai - bi;
+		t = ai;
 
-		x = Math.pow(2, Math.floor(Math.log((j-i)/(l-k))));
-		y = Math.floor((j-i) / x) + 1;
+		x = Math.pow( 2, Math.floor( Math.log( ( aj - ai ) / ( bj - bi ) ) ) );
+		y = Math.floor( ( aj - ai ) / x ) + 1;
 
 
-		while (k < l && (i + x < j || (x = j - i))) {
-			t = i;
-			i = t + x;
-			while (k < l) {
-				if (diff(b[k], a[i]) >= 0) {
-					copy(a, t, i, c, o + t + k);
+		while ( bi < bj && ( ai + x < aj || ( x = aj - ai ) ) ) {
+
+			t = ai;
+			ai = t + x;
+
+			while ( bi < bj ) {
+
+				if ( diff( b[bi], a[ai] ) >= 0 ) {
+					copy( a, t, ai, c, o + t + bi );
 					break;
 				}
-				q = binarysearch( diff, a, t, i, b[k] );
+
+				q = binarysearch( diff, a, t, ai, b[bi] );
 				z = q[0] + q[1];
-				copy(a, t, z, c, o + t + k);
-				c[o + z + k] = b[k];
+
+				copy( a, t, z, c, o + t + bi );
+				c[o + z + bi] = b[bi];
 				t = z;
-				++k;
+				++bi;
 			}
 		}
 
-		copy(a, t, j, c, o + t + k);
-		copy(b, k, l, c, o + j + k);
+		copy( a, t, aj, c, o + t + bi );
+		copy( b, bi, bj, c, o + aj + bi );
 
 	};
 
@@ -59,25 +64,25 @@ exports.__binarymerge__ = __binarymerge__;
 
 var __merge__ = function ( index, copy ) {
 
-	var merge = function ( a, i, j, b, k, l, c, m ) {
+	var merge = function ( diff, a, ai, aj, b, bi, bj, c, ci ) {
 
 		var o, q, t;
 
-		o = m - i - k;
-		t = i;
+		o = ci - ai - bi;
+		t = ai;
 
-		for (; k < l; ++k ) {
+		for ( ; bi < bj ; ++bi ) {
 
-			q = index( a, i, j, b[k] );
-			i = q[0] + q[1];
+			q = index( diff, a, ai, aj, b[bi] );
+			ai = q[0] + q[1];
 
-			copy( a, t, i, c, o + t + k );
+			copy( a, t, ai, c, o + t + bi );
 
-			c[o + i + k] = b[k];
-			t = i;
+			c[o + ai + bi] = b[bi];
+			t = ai;
 		}
 
-		copy( a, t, j, c, o + t + k );
+		copy( a, t, aj, c, o + t + bi );
 	};
 
 	return merge;
@@ -305,6 +310,8 @@ exports.increasing = increasing;
  *   - a negative value if a < b
  *   - a positive value if a > b
  *   - zero if a === b
+ *
+ * diff should express an increasing ordering
  */
 
 var lexicographical = function ( diff ) {
@@ -494,6 +501,137 @@ var __dualpivotquicksort__ = function ( partition ) {
 };
 
 exports.__dualpivotquicksort__ = __dualpivotquicksort__;
+
+/* js/src/sort/heapsort.js */
+
+
+/**
+ * Template for a raw implementation of heapsort.
+ *
+ *
+ */
+
+var __heapsort__ = function ( arity ) {
+
+	/**
+	 * Note that here we reverse the order of the
+	 * comparison operator since when we extract
+	 * values from the heap they can only be stored
+	 * at the end of the array. We thus build a max-heap
+	 * and then pop elements from it until it is empty.
+	 */
+
+	var heapsort = function ( diff, a, i, j ) {
+
+		var k, y, t, current, parent, candidate, tmp;
+
+		// construct the max-heap
+
+		for ( k = i + 1 ; k < j ; ++k ) {
+
+			current = k - i;
+
+			// while we are not the root
+
+			while ( current !== 0 ) {
+
+				// address of the parent in a zero-based
+				// d-ary heap
+
+				parent = i + ( ( current - 1 ) / arity | 0 );
+				current += i;
+
+				// if current value is smaller than its parent
+				// then we are done
+
+				if ( diff( a[current], a[parent] ) <= 0 ) {
+					break;
+				}
+
+				// otherwise
+				// swap with parent
+
+				tmp = a[current];
+				a[current] = a[parent];
+				a[parent] = tmp;
+
+				current = parent - i;
+
+			}
+
+		}
+
+		// exhaust the max-heap
+
+		for ( --k ; k > i ; --k ) {
+
+			// put max element at the end of the array
+			// and percolate new max element down
+			// the heap
+
+			tmp = a[k]
+			a[k] = a[i];
+			a[i] = tmp;
+
+			current = 0;
+
+			while ( true ) {
+
+				// address of the first child in a zero-based
+				// d-ary heap
+
+				candidate = i + arity * current + 1;
+
+				// if current node has no children
+				// then we are done
+
+				if ( candidate >= k ) {
+					break;
+				}
+
+				// search for greatest child
+
+				t = Math.min( candidate + arity, k );
+
+				y = candidate;
+
+				for ( ++y ; y < t ; ++y ) {
+
+					if ( diff( a[y], a[candidate] ) > 0 ) {
+						candidate = y;
+					}
+
+				}
+
+				// if current value is greater than its greatest
+				// child then we are done
+
+				current += i;
+
+				if ( diff( a[current], a[candidate] ) >= 0 ) {
+					break;
+				}
+
+				// otherwise
+				// swap with greatest child
+
+				tmp = a[current];
+				a[current] = a[candidate];
+				a[candidate] = tmp;
+
+				current = candidate - i;
+
+			}
+
+		}
+
+	};
+
+	return heapsort;
+
+};
+
+exports.__heapsort__ = __heapsort__;
 
 /* js/src/sort/insertionsort.js */
 
