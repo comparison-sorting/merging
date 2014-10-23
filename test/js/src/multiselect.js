@@ -1,4 +1,4 @@
-var util, array, search, random, operator, functools;
+var all, util, array, search, random, operator, functools, itertools, sample, shuffle;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
@@ -6,69 +6,72 @@ search = require( "aureooms-js-search" );
 random = require( "aureooms-js-random" );
 operator = require( "aureooms-js-operator" );
 functools = require( "aureooms-js-functools" );
+itertools = require( "aureooms-js-itertools" );
 
-var check = function(ctor, n, diff) {
-	var name = util.format("multiselect (new %s(%d), %s)", ctor.name, n, diff);
-	console.log(name);
-	test(name, function (assert) {
+sample = random.__sample__( random.randint );
+shuffle = random.__shuffle__( sample );
 
-		// SETUP RANDOM
-		var randint = random.randint;
-		var sample = random.__sample__( randint );
-		var shuffle = random.__shuffle__( sample );
-		var iota = array.iota;
-		var copy = array.copy;
+all = function ( partitionname, partition, diffname, diff, n, type ) {
 
-		// SETUP INDEX SEARCH
-		var index_diff = sort.increasing;
-		var binarysearch = search.binarysearch;
+	var title;
 
-		// SETUP SORT
-		var partition = sort.partition;
-		var quicksort = sort.__quicksort__( partition );
+	title = util.format( "multiselect %s (new %s(%d), %s)", partitionname, type.name, n, diffname );
+
+	console.log( title );
+
+	test( title, function () {
+
+		var index, multiselect, ref, a, i, len, k;
 
 		// SETUP SELECT
-		var index = functools.partial ( binarysearch, [index_diff] );
-		var multiselect = sort.__multiselect__( partition, index );
+		index = functools.partial ( search.binarysearch, [sort.increasing] );
+		multiselect = sort.__multiselect__( partition, index );
 
 		// SETUP REF ARRAY
-		var ref = new ctor(n);
-		iota(ref, 0, n, 0);
-		shuffle(ref, 0, n);
-		quicksort( diff, ref, 0, n );
+		ref = new type( n );
+		array.iota( ref, 0, n, 0 );
+		shuffle( ref, 0, n );
+		array.sort( diff, ref );
 
 		// SETUP TEST ARRAY
-		var a = new ctor(n);
-		copy( ref, 0, n, a, 0 );
+		a = new type( n );
+		array.copy( ref, 0, n, a, 0 );
 
-		// TEST PREDICATE <-- ??? be more explicit
-		var i = a.length;
+		// SELECT A SAMPLE OF THE INDEXES IN *a*
+		i = a.length;
 
-		var len = randint( 0, i + 1 );
+		len = random.randint( 0, i + 1 );
 		sample( len, a, 0, n );
-		var k = new ctor( len );
-		copy( a, 0, len, k, 0 );
-		quicksort( index_diff, k, 0, len );
+		k = new type( len );
+		array.copy( a, 0, len, k, 0 );
+		array.sort( sort.increasing, k );
 
-		shuffle(a, 0, n);
-		multiselect( diff, a, 0, n, k, 0, len);
+		shuffle( a, 0, n );
+		multiselect( diff, a, 0, n, k, 0, len );
 
-		while( len-- ){
-			deepEqual(a[k[len]], ref[k[len]], "select #" + k[len]);
+		while ( len-- ) {
+			deepEqual( a[k[len]], ref[k[len]], "select #" + k[len] );
 		}
 
 		deepEqual( a.length, n, "check length" );
 	});
 };
 
-var DIFF = [
-	sort.increasing,
-	sort.decreasing
-];
+itertools.product( [
 
-var N = [0, 1, 2, 10, 63, 64, 65];
+[
+	[ "hoare", sort.hoare ],
+	[ "lomuto", sort.lomuto ]
+],
 
-var CTOR = [
+[
+	[ "increasing", sort.increasing ],
+	[ "decreasing", sort.decreasing ]
+],
+
+[0, 1, 2, 10, 63, 64, 65],
+
+[
 	Array,
 	Int8Array,
 	Uint8Array,
@@ -78,17 +81,21 @@ var CTOR = [
 	Uint32Array,
 	Float32Array,
 	Float64Array
-];
+]
 
-for (var k = 0; k < CTOR.length; k++) {
-	for (var j = 0; j < N.length; j++) {
-		if(CTOR[k].BYTES_PER_ELEMENT &&
-			N[j] > Math.pow(2, CTOR[k].BYTES_PER_ELEMENT * 8)){
-				continue;
+], 1, [] ).forEach(
+
+	functools.partial( functools.star,
+
+		function ( partitionname, partition, diffname, diff, n, type ) {
+
+			if ( type.BYTES_PER_ELEMENT && n > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
+				return;
+			}
+
+			all( partitionname, partition, diffname, diff, n, type );
 		}
-		for (var i = 0; i < DIFF.length; ++i) {
-			check(CTOR[k], N[j], DIFF[i]);
-		}
-	}
-}
+	)
+
+);
 

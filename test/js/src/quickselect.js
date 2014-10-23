@@ -1,57 +1,62 @@
-var util, array, random, operator;
+var all, util, array, random, operator, functools, itertools, shuffle;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
 random = require( "aureooms-js-random" );
 operator = require( "aureooms-js-operator" );
+functools = require( "aureooms-js-functools" );
+itertools = require( "aureooms-js-itertools" );
 
-var check = function(ctor, n, diff) {
-	var name = util.format("quickselect (new %s(%d), %s)", ctor.name, n, diff);
-	console.log(name);
-	test(name, function (assert) {
+shuffle = random.__shuffle__( random.__sample__( random.randint ) );
 
-		// SETUP RANDOM
-		var randint = random.randint;
-		var sample = random.__sample__(randint);
-		var shuffle = random.__shuffle__(sample);
-		var iota = array.iota;
-		var copy = array.copy;
+all = function ( quickselectname, quickselect, diffname, diff, n, type ) {
 
-		// SETUP SORT
-		var partition = sort.partition;
-		var quicksort = sort.__quicksort__(partition);
-		var quickselect = sort.__quickselect__(partition);
+	var title;
+
+	title = util.format( "%s (new %s(%d), %s)", quickselectname, type.name, n, diffname );
+
+	console.log( title );
+
+	test( title, function () {
+
+		var a, i, ref;
 
 		// SETUP REF ARRAY
-		var ref = new ctor(n);
-		iota(ref, 0, n, 0);
-		shuffle(ref, 0, n);
-		quicksort( diff, ref, 0, n);
+		ref = new type( n );
+		array.iota(ref, 0, n, 0);
+		array.sort( diff, ref );
 
 		// SETUP TEST ARRAY
-		var a = new ctor(n);
-		copy(ref, 0, n, a, 0);
+		a = new type( n );
+		array.copy( ref, 0, n, a, 0 );
 
 		// TEST ALL INDEX SELECTION
-		var i = a.length;
-		while (i--) {
-			shuffle(a, 0, n);
-			quickselect(diff, a, 0, n, i);
-			deepEqual(a[i], ref[i], 'select #' + i);
+		i = a.length;
+		while ( i-- ) {
+			shuffle( a, 0, n );
+			quickselect( diff, a, 0, n, i );
+			deepEqual( a[i], ref[i], "select #" + i );
 		}
 
-		deepEqual(a.length, n, 'check length');
+		deepEqual( a.length, n, "check length" );
 	});
 };
 
-var DIFF = [
-	sort.increasing,
-	sort.decreasing
-];
+itertools.product( [
 
-var N = [0, 1, 2, 10, 31, 32, 33];
+[
+	[ "quickselect (hoare)", sort.__quickselect__( sort.hoare ) ],
+	[ "quickselect (lomuto)", sort.__quickselect__( sort.lomuto ) ]
+],
 
-var CTOR = [
+[
+	[ "increasing", sort.increasing ],
+	[ "decreasing", sort.decreasing ]
+],
+
+[0, 1, 2, 10, 31, 32, 33],
+
+[
 	Array,
 	Int8Array,
 	Uint8Array,
@@ -61,17 +66,20 @@ var CTOR = [
 	Uint32Array,
 	Float32Array,
 	Float64Array
-];
+]
 
-for (var k = 0; k < CTOR.length; k++) {
-	for (var j = 0; j < N.length; j++) {
-		if(CTOR[k].BYTES_PER_ELEMENT &&
-			N[j] > Math.pow(2, CTOR[k].BYTES_PER_ELEMENT * 8)){
-				continue;
-		}
-		for (var i = 0; i < DIFF.length; ++i) {
-			check(CTOR[k], N[j], DIFF[i]);
-		}
-	}
-}
+], 1, [] ).forEach(
 
+	functools.partial( functools.star,
+
+		function ( quickselectname, quickselect, diffname, diff, n, type ) {
+
+			if ( type.BYTES_PER_ELEMENT && n > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
+				return;
+			}
+
+			all( quickselectname, quickselect, diffname, diff, n, type );
+		}
+	)
+
+);
