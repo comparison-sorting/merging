@@ -8,11 +8,11 @@ operator = require( "aureooms-js-operator" );
 itertools = require( "aureooms-js-itertools" );
 functools = require( "aureooms-js-functools" );
 
-var check = function( sort, ctor, n, diff ) {
+var check = function( sortname, sort, ctor, n, diffname, diff ) {
 
 	var title;
 
-	title = util.format("%s (new %s(%d), %s)", sort.id, ctor.name, n, diff.id);
+	title = util.format("%s (new %s(%d), %s)", sortname, ctor.name, n, diffname);
 
 	console.log( title );
 
@@ -53,7 +53,11 @@ var check = function( sort, ctor, n, diff ) {
 itertools.product([
 
 [
+	[ "heapsort (unary)", sort.__heapsort__( 1 ) ],
 	[ "heapsort (binary)", sort.__heapsort__( 2 ) ],
+	[ "heapsort (ternary)", sort.__heapsort__( 3 ) ],
+	[ "heapsort (4-ary)", sort.__heapsort__( 4 ) ],
+	[ "heapsort (5-ary)", sort.__heapsort__( 5 ) ],
 	[ "quicksort (hoare)", sort.__quicksort__( sort.hoare ) ],
 	[ "quicksort (lomuto)", sort.__quicksort__( sort.lomuto ) ],
 	[ "dualpivotquicksort (yaroslavskiy)", sort.__dualpivotquicksort__( sort.yaroslavskiy ) ],
@@ -83,16 +87,13 @@ itertools.product([
 
 ], 1, []).forEach( function ( args ) {
 
-	functools.star( function ( sortid, sort, diffid, diff, size, type ) {
+	functools.star( function ( sortname, sort, diffname, diff, size, type ) {
 
 		if ( type.BYTES_PER_ELEMENT && size > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
 			return;
 		}
 
-		sort.id = sortid;
-		diff.id = diffid;
-
-		check( sort, type, size, diff );
+		check( sortname, sort, type, size, diffname, diff );
 
 	}, args );
 
