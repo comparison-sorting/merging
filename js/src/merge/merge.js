@@ -2,25 +2,25 @@
 
 var __merge__ = function ( index, copy ) {
 
-	var merge = function ( a, i, j, b, k, l, c, m ) {
+	var merge = function ( a, ai, aj, b, bi, bj, c, ci ) {
 
 		var o, q, t;
 
-		o = m - i - k;
-		t = i;
+		o = ci - ai - bi;
+		t = ai;
 
-		for (; k < l; ++k ) {
+		for ( ; bi < bj ; ++bi ) {
 
-			q = index( a, i, j, b[k] );
-			i = q[0] + q[1];
+			q = index( a, ai, aj, b[bi] );
+			ai = q[0] + q[1];
 
-			copy( a, t, i, c, o + t + k );
+			copy( a, t, ai, c, o + t + bi );
 
-			c[o + i + k] = b[k];
-			t = i;
+			c[o + ai + bi] = b[bi];
+			t = ai;
 		}
 
-		copy( a, t, j, c, o + t + k );
+		copy( a, t, aj, c, o + t + bi );
 	};
 
 	return merge;
