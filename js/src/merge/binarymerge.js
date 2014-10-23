@@ -6,9 +6,9 @@
  *   /!\ aj - ai >= bj - bi
  */
 
-var __binarymerge__ = function ( binarysearch, diff, copy ) {
+var __binarymerge__ = function ( binarysearch, copy ) {
 
-	var hwanglin = function ( a, ai, aj, b, bi, bj, c, ci ) {
+	var hwanglin = function ( diff, a, ai, aj, b, bi, bj, c, ci ) {
 
 		var o, t, x, y, q, d, z;
 
