@@ -7,6 +7,8 @@
  *   - a negative value if a < b
  *   - a positive value if a > b
  *   - zero if a === b
+ *
+ * diff should express an increasing ordering
  */
 
 var lexicographical = function ( diff ) {
