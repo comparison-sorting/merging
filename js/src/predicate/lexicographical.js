@@ -1,17 +1,17 @@
 
 /**
  * Generates a binary lexicographical comparator
- * from a binary difference operator.
+ * from a binary comparator.
  *
- * diff( a, b ) should always return
+ * compare( a, b ) should always return
  *   - a negative value if a < b
  *   - a positive value if a > b
  *   - zero if a === b
  *
- * diff should express an increasing ordering
+ * compare should express an increasing ordering
  */
 
-var lexicographical = function ( diff ) {
+var lexicographical = function ( compare ) {
 
 	/**
 	 * Compares 2 arrays a and b lexicographically.
@@ -28,7 +28,7 @@ var lexicographical = function ( diff ) {
 
 		for ( i = 0 ; i < len ; ++i ) {
 
-			d = diff( a[i], b[i] );
+			d = compare( a[i], b[i] );
 
 			if ( d < 0 || d > 0 ) {
 				return d;

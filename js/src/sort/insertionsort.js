@@ -1,7 +1,7 @@
 
 
 
-var insertionsort = function( diff, a, i, j ){
+var insertionsort = function ( compare, a, i, j ) {
 
 	var o, k, t;
 
@@ -10,7 +10,7 @@ var insertionsort = function( diff, a, i, j ){
 		t = k;
 		o = a[t];
 
-		while ( t --> i && diff( a[t], o ) > 0 ) {
+		while ( t --> i && compare( a[t], o ) > 0 ) {
 			a[t + 1] = a[t];
 		}
 

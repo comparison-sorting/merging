@@ -15,7 +15,7 @@
 
 var __binarymerge__ = function ( binarysearch, copy ) {
 
-	var hwanglin = function ( diff, a, ai, aj, b, bi, bj, c, ci ) {
+	var hwanglin = function ( compare, a, ai, aj, b, bi, bj, c, ci ) {
 
 		var o, t, x, y, q, d, z;
 
@@ -33,12 +33,12 @@ var __binarymerge__ = function ( binarysearch, copy ) {
 
 			while ( bi < bj ) {
 
-				if ( diff( b[bi], a[ai] ) >= 0 ) {
+				if ( compare( b[bi], a[ai] ) >= 0 ) {
 					copy( a, t, ai, c, o + t + bi );
 					break;
 				}
 
-				q = binarysearch( diff, a, t, ai, b[bi] );
+				q = binarysearch( compare, a, t, ai, b[bi] );
 				z = q[0] + q[1];
 
 				copy( a, t, z, c, o + t + bi );
@@ -64,7 +64,7 @@ exports.__binarymerge__ = __binarymerge__;
 
 var __merge__ = function ( index, copy ) {
 
-	var merge = function ( diff, a, ai, aj, b, bi, bj, c, ci ) {
+	var merge = function ( compare, a, ai, aj, b, bi, bj, c, ci ) {
 
 		var o, q, t;
 
@@ -73,7 +73,7 @@ var __merge__ = function ( index, copy ) {
 
 		for ( ; bi < bj ; ++bi ) {
 
-			q = index( diff, a, ai, aj, b[bi] );
+			q = index( compare, a, ai, aj, b[bi] );
 			ai = q[0] + q[1];
 
 			copy( a, t, ai, c, o + t + bi );
@@ -94,14 +94,14 @@ exports.__merge__ = __merge__;
 /* js/src/merge/tapemerge.js */
 
 
-var tapemerge = function ( diff, a, i, j, b, k, l, c, m ) {
+var tapemerge = function ( compare, a, i, j, b, k, l, c, m ) {
 
 	var n;
 
 	n = m + j - i + l - k;
 
 	for (; m < n; ++m) {
-		if ( k >= l || ( i < j && diff( a[i], b[k] ) <= 0 ) ) {
+		if ( k >= l || ( i < j && compare( a[i], b[k] ) <= 0 ) ) {
 			c[m] = a[i]; ++i;
 		}
 		else {
@@ -121,7 +121,7 @@ exports.tapemerge = tapemerge;
  * HYP : i < j
  */
 
-var hoare = function ( diff, a, i, j ) {
+var hoare = function ( compare, a, i, j ) {
 
 	var x, t, o;
 
@@ -141,7 +141,7 @@ var hoare = function ( diff, a, i, j ) {
 				return j;
 			}
 
-			else if ( diff( a[j], x ) <= 0 ) {
+			else if ( compare( a[j], x ) <= 0 ) {
 				break;
 			}
 		}
@@ -157,7 +157,7 @@ var hoare = function ( diff, a, i, j ) {
 				return j;
 			}
 
-			else if ( diff( x, a[i] ) <= 0 ) {
+			else if ( compare( x, a[i] ) <= 0 ) {
 				break;
 			}
 		}
@@ -179,7 +179,7 @@ exports.partition = hoare;
 /* js/src/partition/lomuto.js */
 
 
-var lomuto = function ( diff, a, i, j ) {
+var lomuto = function ( compare, a, i, j ) {
 
 	var t, k, p;
 
@@ -190,7 +190,7 @@ var lomuto = function ( diff, a, i, j ) {
 
 	while ( k <= j ) {
 
-		if ( diff( p, a[k] ) <= 0 ) {
+		if ( compare( p, a[k] ) <= 0 ) {
 
 			t    = a[k];
 			a[k] = a[j];
@@ -221,14 +221,14 @@ exports.lomuto = lomuto;
  * http://cs.stackexchange.com/a/24099/20711
  */
 
-var yaroslavskiy = function ( diff, a, i, j ) {
+var yaroslavskiy = function ( compare, a, i, j ) {
 
 	var p, q, g, k, l;
 
 	--j;
 
 	// Choose outermost elements as pivots
-	if ( diff( a[i], a[j] ) > 0 ) {
+	if ( compare( a[i], a[j] ) > 0 ) {
 		swap(a, i, j);
 	}
 
@@ -242,23 +242,23 @@ var yaroslavskiy = function ( diff, a, i, j ) {
 
 	while ( k <= g ) {
 
-		if ( diff( p, a[k] ) > 0 ) {
+		if ( compare( p, a[k] ) > 0 ) {
 
 			swap( a, k, l );
 			++l;
 
 		}
 
-		else if ( diff( q , a[k] ) <= 0 ) {
+		else if ( compare( q , a[k] ) <= 0 ) {
 
-			while ( diff ( a[g], q ) > 0 && k < g ) {
+			while ( compare ( a[g], q ) > 0 && k < g ) {
 				--g;
 			}
 
 			swap( a, k, g );
 			--g;
 
-			if ( diff( p, a[k] ) > 0 ) {
+			if ( compare( p, a[k] ) > 0 ) {
 
 				swap( a, k, l );
 				++l;
@@ -304,17 +304,17 @@ exports.increasing = increasing;
 
 /**
  * Generates a binary lexicographical comparator
- * from a binary difference operator.
+ * from a binary comparator.
  *
- * diff( a, b ) should always return
+ * compare( a, b ) should always return
  *   - a negative value if a < b
  *   - a positive value if a > b
  *   - zero if a === b
  *
- * diff should express an increasing ordering
+ * compare should express an increasing ordering
  */
 
-var lexicographical = function ( diff ) {
+var lexicographical = function ( compare ) {
 
 	/**
 	 * Compares 2 arrays a and b lexicographically.
@@ -331,7 +331,7 @@ var lexicographical = function ( diff ) {
 
 		for ( i = 0 ; i < len ; ++i ) {
 
-			d = diff( a[i], b[i] );
+			d = compare( a[i], b[i] );
 
 			if ( d < 0 || d > 0 ) {
 				return d;
@@ -350,10 +350,10 @@ exports.lexicographical = lexicographical;
 /* js/src/predicate/negate.js */
 
 
-var negate = function ( diff ) {
+var negate = function ( compare ) {
 
 	return function ( a, b ) {
-		return diff ( b, a );
+		return compare ( b, a );
 	};
 
 };
@@ -381,7 +381,7 @@ var __multiselect__ = function ( partition, index ) {
 	 * on average.
 	 */
 
-	var multiselect = function ( diff, a, ai, aj, b, bi, bj ) {
+	var multiselect = function ( compare, a, ai, aj, b, bi, bj ) {
 
 		var p, q;
 
@@ -389,11 +389,11 @@ var __multiselect__ = function ( partition, index ) {
 			return;
 		}
 
-		p = partition( diff, a, ai, aj );
+		p = partition( compare, a, ai, aj );
 		q = index( b, bi, bj, p );
 
-		multiselect( diff, a,    ai,  p,  b,          bi, q[1] );
-		multiselect( diff, a, p + 1, aj,  b, q[0] + q[1],   bj );
+		multiselect( compare, a,    ai,  p,  b,          bi, q[1] );
+		multiselect( compare, a, p + 1, aj,  b, q[0] + q[1],   bj );
 	};
 
 	return multiselect;
@@ -411,7 +411,7 @@ exports.__multiselect__ = __multiselect__;
 
 var __quickselect__ = function ( partition ) {
 
-	var quickselect = function ( diff, a, i, j, k ) {
+	var quickselect = function ( compare, a, i, j, k ) {
 
 		var p;
 
@@ -419,13 +419,13 @@ var __quickselect__ = function ( partition ) {
 			return;
 		}
 
-		p = partition( diff, a, i, j );
+		p = partition( compare, a, i, j );
 
 		if (k < p) {
-			quickselect( diff, a, i, p, k );
+			quickselect( compare, a, i, p, k );
 		}
 		else if (k > p) {
-			quickselect( diff, a, p + 1, j, k );
+			quickselect( compare, a, p + 1, j, k );
 		}
 	};
 
@@ -440,7 +440,7 @@ exports.__quickselect__ = __quickselect__;
 
 
 
-var bubblesort = function ( diff, a, i, j ) {
+var bubblesort = function ( compare, a, i, j ) {
 
 	var swapped, k, s, t;
 
@@ -456,7 +456,7 @@ var bubblesort = function ( diff, a, i, j ) {
 
 		for ( k = i ; k < s ; ++k ) {
 
-			if ( diff( a[k], a[k + 1] ) > 0 ) {
+			if ( compare( a[k], a[k + 1] ) > 0 ) {
 
 				// swap boxes
 
@@ -479,7 +479,7 @@ exports.bubblesort = bubblesort;
 
 var __dualpivotquicksort__ = function ( partition ) {
 
-	var dualpivotquicksort = function ( diff, a, i, j ) {
+	var dualpivotquicksort = function ( compare, a, i, j ) {
 
 		var p, g, l;
 
@@ -487,13 +487,13 @@ var __dualpivotquicksort__ = function ( partition ) {
 			return;
 		}
 
-		p = partition( diff, a, i, j );
+		p = partition( compare, a, i, j );
 		l = p[0];
 		g = p[1];
 
-		dualpivotquicksort( diff, a,   i  , l );
-		dualpivotquicksort( diff, a, l + 1, g );
-		dualpivotquicksort( diff, a, g + 1, j );
+		dualpivotquicksort( compare, a,   i  , l );
+		dualpivotquicksort( compare, a, l + 1, g );
+		dualpivotquicksort( compare, a, g + 1, j );
 	};
 
 	return dualpivotquicksort;
@@ -521,7 +521,7 @@ var __heapsort__ = function ( arity ) {
 	 * and then pop elements from it until it is empty.
 	 */
 
-	var heapsort = function ( diff, a, i, j ) {
+	var heapsort = function ( compare, a, i, j ) {
 
 		var k, y, t, current, parent, candidate, tmp;
 
@@ -544,7 +544,7 @@ var __heapsort__ = function ( arity ) {
 				// if current value is smaller than its parent
 				// then we are done
 
-				if ( diff( a[current], a[parent] ) <= 0 ) {
+				if ( compare( a[current], a[parent] ) <= 0 ) {
 					break;
 				}
 
@@ -569,7 +569,7 @@ var __heapsort__ = function ( arity ) {
 			// and percolate new max element down
 			// the heap
 
-			tmp = a[k]
+			tmp = a[k];
 			a[k] = a[i];
 			a[i] = tmp;
 
@@ -597,7 +597,7 @@ var __heapsort__ = function ( arity ) {
 
 				for ( ++y ; y < t ; ++y ) {
 
-					if ( diff( a[y], a[candidate] ) > 0 ) {
+					if ( compare( a[y], a[candidate] ) > 0 ) {
 						candidate = y;
 					}
 
@@ -608,7 +608,7 @@ var __heapsort__ = function ( arity ) {
 
 				current += i;
 
-				if ( diff( a[current], a[candidate] ) >= 0 ) {
+				if ( compare( a[current], a[candidate] ) >= 0 ) {
 					break;
 				}
 
@@ -637,7 +637,7 @@ exports.__heapsort__ = __heapsort__;
 
 
 
-var insertionsort = function( diff, a, i, j ){
+var insertionsort = function ( compare, a, i, j ) {
 
 	var o, k, t;
 
@@ -646,7 +646,7 @@ var insertionsort = function( diff, a, i, j ){
 		t = k;
 		o = a[t];
 
-		while ( t --> i && diff( a[t], o ) > 0 ) {
+		while ( t --> i && compare( a[t], o ) > 0 ) {
 			a[t + 1] = a[t];
 		}
 
@@ -661,7 +661,7 @@ exports.insertionsort = insertionsort;
 
 var __mergesort__ = function ( merge, copy ) {
 
-	var mergesort = function ( diff, a, i, j, d, l, r) {
+	var mergesort = function ( compare, a, i, j, d, l, r) {
 
 		var p, t;
 
@@ -671,10 +671,10 @@ var __mergesort__ = function ( merge, copy ) {
 
 		p = Math.floor( ( i + j ) / 2 );
 
-		mergesort( diff, a, i, p, d, l, l + p - i );
-		mergesort( diff, a, p, j, d, l + p - i, r );
+		mergesort( compare, a, i, p, d, l, l + p - i );
+		mergesort( compare, a, p, j, d, l + p - i, r );
 
-		merge( diff, a, i, p, a, p, j, d, l );
+		merge( compare, a, i, p, a, p, j, d, l );
 
 		//copy ( d, l, l + j - i, a, i );
 
@@ -700,7 +700,7 @@ exports.__mergesort__ = __mergesort__;
 
 var __quicksort__ = function ( partition ) {
 
-	var quicksort = function ( diff, a, i, j ) {
+	var quicksort = function ( compare, a, i, j ) {
 
 		var p;
 
@@ -708,10 +708,10 @@ var __quicksort__ = function ( partition ) {
 			return;
 		}
 
-		p = partition( diff, a, i, j );
+		p = partition( compare, a, i, j );
 
-		quicksort( diff, a, i, p );
-		quicksort( diff, a, p + 1, j );
+		quicksort( compare, a, i, p );
+		quicksort( compare, a, p + 1, j );
 	};
 
 	return quicksort;
@@ -723,7 +723,7 @@ exports.__quicksort__ = __quicksort__;
 /* js/src/sort/selectionsort.js */
 
 
-var selectionsort = function ( diff, a, i, j ) {
+var selectionsort = function ( compare, a, i, j ) {
 
 	var o, t, k;
 
@@ -734,7 +734,7 @@ var selectionsort = function ( diff, a, i, j ) {
 
 		while ( ++t < j ) {
 
-			if ( diff( o, a[t] ) > 0 ) {
+			if ( compare( o, a[t] ) > 0 ) {
 				o = a[t];
 				k = t;
 			}

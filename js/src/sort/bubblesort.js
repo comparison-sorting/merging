@@ -1,7 +1,7 @@
 
 
 
-var bubblesort = function ( diff, a, i, j ) {
+var bubblesort = function ( compare, a, i, j ) {
 
 	var swapped, k, s, t;
 
@@ -17,7 +17,7 @@ var bubblesort = function ( diff, a, i, j ) {
 
 		for ( k = i ; k < s ; ++k ) {
 
-			if ( diff( a[k], a[k + 1] ) > 0 ) {
+			if ( compare( a[k], a[k + 1] ) > 0 ) {
 
 				// swap boxes
 

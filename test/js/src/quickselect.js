@@ -9,11 +9,11 @@ itertools = require( "aureooms-js-itertools" );
 
 shuffle = random.__shuffle__( random.__sample__( random.randint ) );
 
-all = function ( quickselectname, quickselect, diffname, diff, n, type ) {
+all = function ( quickselectname, quickselect, comparename, compare, n, type ) {
 
 	var title;
 
-	title = util.format( "%s (new %s(%d), %s)", quickselectname, type.name, n, diffname );
+	title = util.format( "%s (new %s(%d), %s)", quickselectname, type.name, n, comparename );
 
 	console.log( title );
 
@@ -24,7 +24,7 @@ all = function ( quickselectname, quickselect, diffname, diff, n, type ) {
 		// SETUP REF ARRAY
 		ref = new type( n );
 		array.iota(ref, 0, n, 0);
-		array.sort( diff, ref );
+		array.sort( compare, ref );
 
 		// SETUP TEST ARRAY
 		a = new type( n );
@@ -34,7 +34,7 @@ all = function ( quickselectname, quickselect, diffname, diff, n, type ) {
 		i = a.length;
 		while ( i-- ) {
 			shuffle( a, 0, n );
-			quickselect( diff, a, 0, n, i );
+			quickselect( compare, a, 0, n, i );
 			deepEqual( a[i], ref[i], "select #" + i );
 		}
 
@@ -72,13 +72,13 @@ itertools.product( [
 
 	functools.partial( functools.star,
 
-		function ( quickselectname, quickselect, diffname, diff, n, type ) {
+		function ( quickselectname, quickselect, comparename, compare, n, type ) {
 
 			if ( type.BYTES_PER_ELEMENT && n > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
 				return;
 			}
 
-			all( quickselectname, quickselect, diffname, diff, n, type );
+			all( quickselectname, quickselect, comparename, compare, n, type );
 		}
 	)
 

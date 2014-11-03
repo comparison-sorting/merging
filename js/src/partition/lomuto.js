@@ -1,6 +1,6 @@
 
 
-var lomuto = function ( diff, a, i, j ) {
+var lomuto = function ( compare, a, i, j ) {
 
 	var t, k, p;
 
@@ -11,7 +11,7 @@ var lomuto = function ( diff, a, i, j ) {
 
 	while ( k <= j ) {
 
-		if ( diff( p, a[k] ) <= 0 ) {
+		if ( compare( p, a[k] ) <= 0 ) {
 
 			t    = a[k];
 			a[k] = a[j];

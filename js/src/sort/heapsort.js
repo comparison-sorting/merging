@@ -16,7 +16,7 @@ var __heapsort__ = function ( arity ) {
 	 * and then pop elements from it until it is empty.
 	 */
 
-	var heapsort = function ( diff, a, i, j ) {
+	var heapsort = function ( compare, a, i, j ) {
 
 		var k, y, t, current, parent, candidate, tmp;
 
@@ -39,7 +39,7 @@ var __heapsort__ = function ( arity ) {
 				// if current value is smaller than its parent
 				// then we are done
 
-				if ( diff( a[current], a[parent] ) <= 0 ) {
+				if ( compare( a[current], a[parent] ) <= 0 ) {
 					break;
 				}
 
@@ -64,7 +64,7 @@ var __heapsort__ = function ( arity ) {
 			// and percolate new max element down
 			// the heap
 
-			tmp = a[k]
+			tmp = a[k];
 			a[k] = a[i];
 			a[i] = tmp;
 
@@ -92,7 +92,7 @@ var __heapsort__ = function ( arity ) {
 
 				for ( ++y ; y < t ; ++y ) {
 
-					if ( diff( a[y], a[candidate] ) > 0 ) {
+					if ( compare( a[y], a[candidate] ) > 0 ) {
 						candidate = y;
 					}
 
@@ -103,7 +103,7 @@ var __heapsort__ = function ( arity ) {
 
 				current += i;
 
-				if ( diff( a[current], a[candidate] ) >= 0 ) {
+				if ( compare( a[current], a[candidate] ) >= 0 ) {
 					break;
 				}
 

@@ -2,7 +2,7 @@
 
 var __merge__ = function ( index, copy ) {
 
-	var merge = function ( diff, a, ai, aj, b, bi, bj, c, ci ) {
+	var merge = function ( compare, a, ai, aj, b, bi, bj, c, ci ) {
 
 		var o, q, t;
 
@@ -11,7 +11,7 @@ var __merge__ = function ( index, copy ) {
 
 		for ( ; bi < bj ; ++bi ) {
 
-			q = index( diff, a, ai, aj, b[bi] );
+			q = index( compare, a, ai, aj, b[bi] );
 			ai = q[0] + q[1];
 
 			copy( a, t, ai, c, o + t + bi );

@@ -1,9 +1,9 @@
 
 
-var negate = function ( diff ) {
+var negate = function ( compare ) {
 
 	return function ( a, b ) {
-		return diff ( b, a );
+		return compare ( b, a );
 	};
 
 };

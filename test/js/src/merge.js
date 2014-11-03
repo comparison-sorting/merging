@@ -8,11 +8,11 @@ operator = require( "aureooms-js-operator" );
 functools = require( "aureooms-js-functools" );
 itertools = require( "aureooms-js-itertools" );
 
-all = function ( diffname, diff, mergename, merge, m, n, type ) {
+all = function ( comparename, compare, mergename, merge, m, n, type ) {
 
 	var title;
 
-	title = util.format( "%s (new %s(%d, %d), %s)", mergename, type.name, m, n, diffname );
+	title = util.format( "%s (new %s(%d, %d), %s)", mergename, type.name, m, n, comparename );
 
 	console.log( title );
 
@@ -26,24 +26,24 @@ all = function ( diffname, diff, mergename, merge, m, n, type ) {
 			a[j] = random.randint( 0, m );
 		}
 
-		array.sort( diff, a );
+		array.sort( compare, a );
 
 		b = new type(n);
 		for ( j = 0 ; j < n ; ++j ) {
 			b[j] = random.randint( 0, n );
 		}
-		array.sort( diff, b );
+		array.sort( compare, b );
 
 		d = new type( n + m );
 
 		// MERGE ARRAYS
-		merge( diff, a, 0, m, b, 0, n, d, 0 );
+		merge( compare, a, 0, m, b, 0, n, d, 0 );
 
 		// REF
 		c = new type( n + m );
 		array.copy( a, 0, m, c, 0 );
 		array.copy( b, 0, n, c, m );
-		array.sort( diff, c );
+		array.sort( compare, c );
 
 		deepEqual( d, c, "check sorted" );
 		deepEqual( a.length, m, "check length a" );
@@ -84,7 +84,7 @@ itertools.product([
 
 	functools.partial( functools.star,
 
-		function ( diffname, diff, mergename, merge, m, n, type ) {
+		function ( comparename, compare, mergename, merge, m, n, type ) {
 
 			if ( type.BYTES_PER_ELEMENT && m > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
 				return;
@@ -94,7 +94,7 @@ itertools.product([
 				return;
 			}
 
-			all( diffname, diff, mergename, merge, m, n, type );
+			all( comparename, compare, mergename, merge, m, n, type );
 
 		}
 	)

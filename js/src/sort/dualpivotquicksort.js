@@ -1,7 +1,7 @@
 
 var __dualpivotquicksort__ = function ( partition ) {
 
-	var dualpivotquicksort = function ( diff, a, i, j ) {
+	var dualpivotquicksort = function ( compare, a, i, j ) {
 
 		var p, g, l;
 
@@ -9,13 +9,13 @@ var __dualpivotquicksort__ = function ( partition ) {
 			return;
 		}
 
-		p = partition( diff, a, i, j );
+		p = partition( compare, a, i, j );
 		l = p[0];
 		g = p[1];
 
-		dualpivotquicksort( diff, a,   i  , l );
-		dualpivotquicksort( diff, a, l + 1, g );
-		dualpivotquicksort( diff, a, g + 1, j );
+		dualpivotquicksort( compare, a,   i  , l );
+		dualpivotquicksort( compare, a, l + 1, g );
+		dualpivotquicksort( compare, a, g + 1, j );
 	};
 
 	return dualpivotquicksort;

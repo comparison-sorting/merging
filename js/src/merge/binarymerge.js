@@ -8,7 +8,7 @@
 
 var __binarymerge__ = function ( binarysearch, copy ) {
 
-	var hwanglin = function ( diff, a, ai, aj, b, bi, bj, c, ci ) {
+	var hwanglin = function ( compare, a, ai, aj, b, bi, bj, c, ci ) {
 
 		var o, t, x, y, q, d, z;
 
@@ -26,12 +26,12 @@ var __binarymerge__ = function ( binarysearch, copy ) {
 
 			while ( bi < bj ) {
 
-				if ( diff( b[bi], a[ai] ) >= 0 ) {
+				if ( compare( b[bi], a[ai] ) >= 0 ) {
 					copy( a, t, ai, c, o + t + bi );
 					break;
 				}
 
-				q = binarysearch( diff, a, t, ai, b[bi] );
+				q = binarysearch( compare, a, t, ai, b[bi] );
 				z = q[0] + q[1];
 
 				copy( a, t, z, c, o + t + bi );

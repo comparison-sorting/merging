@@ -9,11 +9,11 @@ itertools = require( "aureooms-js-itertools" );
 
 shuffle = random.__shuffle__( random.__sample__( random.randint ) );
 
-all = function( diffname, diff, mergesortname, mergesort, n, type ) {
+all = function( comparename, compare, mergesortname, mergesort, n, type ) {
 
 	var title;
 
-	title = util.format( "%s (new %s(%d), %s)", mergesortname, type.name, n, diffname );
+	title = util.format( "%s (new %s(%d), %s)", mergesortname, type.name, n, comparename );
 
 	console.log( title );
 
@@ -28,7 +28,7 @@ all = function( diffname, diff, mergesortname, mergesort, n, type ) {
 
 		// SORT ARRAY
 		shuffle( a, 0, n );
-		mergesort( diff, a, 0, n, d, 0, n );
+		mergesort( compare, a, 0, n, d, 0, n );
 
 		// TEST PREDICATE
 		i = d.length;
@@ -38,7 +38,7 @@ all = function( diffname, diff, mergesortname, mergesort, n, type ) {
 
 			while (--i) {
 
-				if ( diff( d[i-1], d[i] ) > 0 ) {
+				if ( compare( d[i-1], d[i] ) > 0 ) {
 					sorted = false;
 					break;
 				}
@@ -83,13 +83,13 @@ itertools.product( [
 
 	functools.partial( functools.star,
 
-		function ( diffname, diff, mergesortname, mergesort, n, type ) {
+		function ( comparename, compare, mergesortname, mergesort, n, type ) {
 
 			if ( type.BYTES_PER_ELEMENT && n > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
 				return;
 			}
 
-			all( diffname, diff, mergesortname, mergesort, n, type );
+			all( comparename, compare, mergesortname, mergesort, n, type );
 		}
 	)
 

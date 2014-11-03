@@ -11,11 +11,11 @@ itertools = require( "aureooms-js-itertools" );
 sample = random.__sample__( random.randint );
 shuffle = random.__shuffle__( sample );
 
-all = function ( partitionname, partition, diffname, diff, n, type ) {
+all = function ( partitionname, partition, comparename, compare, n, type ) {
 
 	var title;
 
-	title = util.format( "multiselect %s (new %s(%d), %s)", partitionname, type.name, n, diffname );
+	title = util.format( "multiselect %s (new %s(%d), %s)", partitionname, type.name, n, comparename );
 
 	console.log( title );
 
@@ -31,7 +31,7 @@ all = function ( partitionname, partition, diffname, diff, n, type ) {
 		ref = new type( n );
 		array.iota( ref, 0, n, 0 );
 		shuffle( ref, 0, n );
-		array.sort( diff, ref );
+		array.sort( compare, ref );
 
 		// SETUP TEST ARRAY
 		a = new type( n );
@@ -47,7 +47,7 @@ all = function ( partitionname, partition, diffname, diff, n, type ) {
 		array.sort( sort.increasing, k );
 
 		shuffle( a, 0, n );
-		multiselect( diff, a, 0, n, k, 0, len );
+		multiselect( compare, a, 0, n, k, 0, len );
 
 		while ( len-- ) {
 			deepEqual( a[k[len]], ref[k[len]], "select #" + k[len] );
@@ -87,15 +87,14 @@ itertools.product( [
 
 	functools.partial( functools.star,
 
-		function ( partitionname, partition, diffname, diff, n, type ) {
+		function ( partitionname, partition, comparename, compare, n, type ) {
 
 			if ( type.BYTES_PER_ELEMENT && n > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
 				return;
 			}
 
-			all( partitionname, partition, diffname, diff, n, type );
+			all( partitionname, partition, comparename, compare, n, type );
 		}
 	)
 
 );
-
