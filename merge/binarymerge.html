@@ -12,7 +12,7 @@
 		y = <span class="hljs-built_in">Math</span>.floor( ( aj - ai ) / x ) + <span class="hljs-number">1</span>;
 
 
-		<span class="hljs-keyword">while</span> ( bi &lt; bj &amp;&amp; ( ai + x &lt; aj || ( x = aj - ai ) ) ) {
+		<span class="hljs-keyword">while</span> ( bi &lt; bj &amp;&amp; ( ai + x &lt; aj || ( x = aj - ai - <span class="hljs-number">1</span> ) ) ) {
 
 			t = ai;
 			ai = t + x;
