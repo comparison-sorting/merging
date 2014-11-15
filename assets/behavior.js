@@ -389,6 +389,26 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           },
           "depth": 2,
           "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
+            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/utils/whole.js",
+            "projectPath": "js/src/utils/whole.js",
+            "targetPath": "utils/whole",
+            "pageTitle": "utils/whole",
+            "title": "whole"
+          },
+          "depth": 2,
+          "outline": []
         }
       ]
     }
