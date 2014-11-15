@@ -1,4 +1,6 @@
 
+
+
 var util, array, random, compare, operator, itertools, functools;
 
 util = require( "util" );
@@ -9,11 +11,13 @@ operator = require( "aureooms-js-operator" );
 itertools = require( "aureooms-js-itertools" );
 functools = require( "aureooms-js-functools" );
 
-var check = function ( sortname, sort, ctor, n, comparename, compare ) {
+var check = function ( sortname, arraysort, ctor, n, comparename, compare ) {
 
 	var title;
 
-	title = util.format("%s (new %s(%d), %s)", sortname, ctor.name, n, comparename);
+	arraysort = sort.whole( arraysort );
+
+	title = util.format("whole %s (new %s(%d), %s)", sortname, ctor.name, n, comparename);
 
 	console.log( title );
 
@@ -32,7 +36,7 @@ var check = function ( sortname, sort, ctor, n, comparename, compare ) {
 
 		// SORT ARRAY
 		shuffle( a, 0, n );
-		sort( compare, a, 0, n );
+		arraysort( compare, a );
 
 		// TEST PREDICATE
 		i = a.length;
@@ -88,13 +92,13 @@ itertools.product( [
 
 ], 1, [] ).forEach( function ( args ) {
 
-	functools.star( function ( sortname, sort, comparename, compare, size, type ) {
+	functools.star( function ( sortname, arraysort, comparename, compare, size, type ) {
 
 		if ( type.BYTES_PER_ELEMENT && size > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
 			return;
 		}
 
-		check( sortname, sort, type, size, comparename, compare );
+		check( sortname, arraysort, type, size, comparename, compare );
 
 	}, args );
 
