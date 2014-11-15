@@ -1,9 +1,10 @@
-var all, util, array, search, random, operator, functools, itertools;
+var all, util, array, search, random, compare, operator, functools, itertools;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
 search = require( "aureooms-js-search" );
 random = require( "aureooms-js-random" );
+compare = require( "aureooms-js-compare" );
 operator = require( "aureooms-js-operator" );
 functools = require( "aureooms-js-functools" );
 itertools = require( "aureooms-js-itertools" );
@@ -55,8 +56,8 @@ all = function ( comparename, compare, mergename, merge, m, n, type ) {
 itertools.product([
 
 [
-	[ "increasing", sort.increasing ],
-	[ "decreasing", sort.decreasing ]
+	[ "increasing", compare.increasing ],
+	[ "decreasing", compare.decreasing ]
 ],
 
 [
@@ -65,8 +66,8 @@ itertools.product([
 	[ "tapemerge" , sort.tapemerge ]
 ],
 
-[0, 1, 2, 10, 63, 64, 65], // MUST BE IN INCREASING ORDER !!
-[0, 1, 2, 10, 63, 64, 65], // MUST BE IN INCREASING ORDER !!
+[0, 1, 2, 10, 63, 64, 65],
+[0, 1, 2, 10, 63, 64, 65],
 
 [
 	Array,

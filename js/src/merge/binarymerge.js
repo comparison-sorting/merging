@@ -19,7 +19,7 @@ var __binarymerge__ = function ( binarysearch, copy ) {
 		y = Math.floor( ( aj - ai ) / x ) + 1;
 
 
-		while ( bi < bj && ( ai + x < aj || ( x = aj - ai ) ) ) {
+		while ( bi < bj && ( ai + x < aj || ( x = aj - ai - 1 ) ) ) {
 
 			t = ai;
 			ai = t + x;

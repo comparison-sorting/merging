@@ -1,9 +1,10 @@
-var all, util, array, search, random, operator, functools, itertools, sample, shuffle;
+var all, util, array, search, random, compare, operator, functools, itertools, sample, shuffle;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
 search = require( "aureooms-js-search" );
 random = require( "aureooms-js-random" );
+compare = require( "aureooms-js-compare" );
 operator = require( "aureooms-js-operator" );
 functools = require( "aureooms-js-functools" );
 itertools = require( "aureooms-js-itertools" );
@@ -11,7 +12,7 @@ itertools = require( "aureooms-js-itertools" );
 sample = random.__sample__( random.randint );
 shuffle = random.__shuffle__( sample );
 
-all = function ( partitionname, partition, comparename, compare, n, type ) {
+all = function ( partitionname, partition, comparename, comparator, n, type ) {
 
 	var title;
 
@@ -24,14 +25,14 @@ all = function ( partitionname, partition, comparename, compare, n, type ) {
 		var index, multiselect, ref, a, i, len, k;
 
 		// SETUP SELECT
-		index = functools.partial ( search.binarysearch, [sort.increasing] );
+		index = functools.partial ( search.binarysearch, [compare.increasing] );
 		multiselect = sort.__multiselect__( partition, index );
 
 		// SETUP REF ARRAY
 		ref = new type( n );
 		array.iota( ref, 0, n, 0 );
 		shuffle( ref, 0, n );
-		array.sort( compare, ref );
+		array.sort( comparator, ref );
 
 		// SETUP TEST ARRAY
 		a = new type( n );
@@ -44,10 +45,10 @@ all = function ( partitionname, partition, comparename, compare, n, type ) {
 		sample( len, a, 0, n );
 		k = new type( len );
 		array.copy( a, 0, len, k, 0 );
-		array.sort( sort.increasing, k );
+		array.sort( compare.increasing, k );
 
 		shuffle( a, 0, n );
-		multiselect( compare, a, 0, n, k, 0, len );
+		multiselect( comparator, a, 0, n, k, 0, len );
 
 		while ( len-- ) {
 			deepEqual( a[k[len]], ref[k[len]], "select #" + k[len] );
@@ -65,8 +66,8 @@ itertools.product( [
 ],
 
 [
-	[ "increasing", sort.increasing ],
-	[ "decreasing", sort.decreasing ]
+	[ "increasing", compare.increasing ],
+	[ "decreasing", compare.decreasing ]
 ],
 
 [0, 1, 2, 10, 63, 64, 65],

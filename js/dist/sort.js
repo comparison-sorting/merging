@@ -26,7 +26,7 @@ var __binarymerge__ = function ( binarysearch, copy ) {
 		y = Math.floor( ( aj - ai ) / x ) + 1;
 
 
-		while ( bi < bj && ( ai + x < aj || ( x = aj - ai ) ) ) {
+		while ( bi < bj && ( ai + x < aj || ( x = aj - ai - 1 ) ) ) {
 
 			t = ai;
 			ai = t + x;
@@ -284,92 +284,6 @@ var yaroslavskiy = function ( compare, a, i, j ) {
 exports.yaroslavskiy = yaroslavskiy;
 
 /* js/src/predicate */
-/* js/src/predicate/decreasing.js */
-
-var decreasing = function ( a, b ) {
-	return b - a;
-};
-
-exports.decreasing = decreasing;
-
-/* js/src/predicate/increasing.js */
-
-var increasing = function ( a, b ) {
-	return a - b;
-};
-
-exports.increasing = increasing;
-
-/* js/src/predicate/lexicographical.js */
-
-/**
- * Generates a binary lexicographical comparator
- * from a binary comparator.
- *
- * compare( a, b ) should always return
- *   - a negative value if a < b
- *   - a positive value if a > b
- *   - zero if a === b
- *
- * compare should express an increasing ordering
- */
-
-var lexicographical = function ( compare ) {
-
-	/**
-	 * Compares 2 arrays a and b lexicographically.
-	 */
-
-	return function ( a, b ) {
-
-		var i, m, n, len, d;
-
-		m = a.length;
-		n = b.length;
-
-		len = Math.min( m, n );
-
-		for ( i = 0 ; i < len ; ++i ) {
-
-			d = compare( a[i], b[i] );
-
-			if ( d < 0 || d > 0 ) {
-				return d;
-			}
-
-		}
-
-		return m - n;
-
-	};
-
-};
-
-exports.lexicographical = lexicographical;
-
-/* js/src/predicate/negate.js */
-
-
-var negate = function ( compare ) {
-
-	return function ( a, b ) {
-		return compare ( b, a );
-	};
-
-};
-
-exports.negate = negate;
-
-/* js/src/predicate/sign.js */
-
-var sign = function ( v ) {
-
-	return v < 0 ? -1 : v > 0 ? 1 : 0;
-
-};
-
-exports.sign = sign;
-
 /* js/src/select */
 /* js/src/select/multiselect.js */
 
