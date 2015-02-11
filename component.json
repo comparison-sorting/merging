@@ -1,0 +1,11 @@
+{
+	"description": "sorting code bricks for JavaScript",
+	"version": "3.1.0",
+	"repo": "aureooms/js-sort",
+	"scripts": [
+		"js/dist/sort.js"
+	],
+	"name": "aureooms-js-sort",
+	"license": "AGPL-3.0",
+	"main": "js/dist/sort.js"
+}
