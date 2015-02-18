@@ -13,8 +13,7 @@
 		"aureooms-js-compare": "^1.4.1",
 		"aureooms-js-random": "^0.0.4",
 		"aureooms-js-search": "^0.0.3",
-		"aureooms-js-array": "^2.0.2",
-		"aureooms-js-mem": "^1.0.1"
+		"aureooms-js-array": "^2.0.2"
 	},
 	"main": "js/dist/sort.js",
 	"bugs": {
