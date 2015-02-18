@@ -1,5 +1,5 @@
 {
-	"ns": "sort",
+	"name": "sort",
 	"code": {
 		"main": [
 			"js",
