@@ -283,7 +283,6 @@ var yaroslavskiy = function ( compare, a, i, j ) {
 
 exports.yaroslavskiy = yaroslavskiy;
 
-/* js/src/predicate */
 /* js/src/select */
 /* js/src/select/multiselect.js */
 
