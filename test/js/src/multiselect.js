@@ -1,11 +1,10 @@
-var all, util, array, search, random, compare, operator, functools, itertools, sample, shuffle;
+var all, util, array, search, random, compare, functools, itertools, sample, shuffle;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
 search = require( "aureooms-js-search" );
 random = require( "aureooms-js-random" );
 compare = require( "aureooms-js-compare" );
-operator = require( "aureooms-js-operator" );
 functools = require( "aureooms-js-functools" );
 itertools = require( "aureooms-js-itertools" );
 
