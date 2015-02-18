@@ -1,6 +1,6 @@
 {
 	"description": "sorting code bricks for JavaScript",
-	"version": "3.1.1",
+	"version": "3.1.2",
 	"repo": "aureooms/js-sort",
 	"scripts": [
 		"js/dist/sort.js"
