@@ -9,12 +9,12 @@
 		"aureooms-node-package": "^2.0.3",
 		"aureooms-js-itertools": "^0.2.0",
 		"aureooms-js-functools": "^1.0.0",
-		"aureooms-js-operator": "^0.1.3",
+		"aureooms-js-operator": "^1.0.1",
 		"aureooms-js-compare": "^1.4.1",
-		"aureooms-js-random": "^0.0.3",
-		"aureooms-js-search": "^0.0.2",
+		"aureooms-js-random": "^0.0.4",
+		"aureooms-js-search": "^0.0.3",
 		"aureooms-js-array": "^2.0.2",
-		"aureooms-js-mem": "^0.0.5"
+		"aureooms-js-mem": "^1.0.1"
 	},
 	"main": "js/dist/sort.js",
 	"bugs": {
