@@ -582,6 +582,11 @@ exports.insertionsort = insertionsort;
 
 var iterativemergesort = function ( merge , copy ) {
 
+	/**
+	 * Always makes at most A001855(n) comparisons.
+	 *
+	 */
+
 	var mergesort = function ( compare , a , ai , aj , b , bi ) {
 
 		var whole , left , center , right , mask , half ;
