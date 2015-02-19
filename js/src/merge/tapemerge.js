@@ -1,17 +1,25 @@
 
 
-var tapemerge = function ( compare, a, i, j, b, k, l, c, m ) {
+var tapemerge = function ( compare , a , ai , aj , b , bi , bj , c , ci ) {
 
-	var n;
+	var cj ;
 
-	n = m + j - i + l - k;
+	cj = ci + aj - ai + bj - bi ;
 
-	for (; m < n; ++m) {
-		if ( k >= l || ( i < j && compare( a[i], b[k] ) <= 0 ) ) {
-			c[m] = a[i]; ++i;
+	for ( ; ci < cj ; ++ci ) {
+
+		if ( bi >= bj || ( ai < aj && compare( a[ai] , b[bi] ) <= 0 ) ) {
+
+			c[ci] = a[ai] ;
+			++ai ;
+
 		}
+
 		else {
-			c[m] = b[k]; ++k;
+
+			c[ci] = b[bi] ;
+			++bi ;
+
 		}
 	}
 
