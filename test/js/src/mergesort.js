@@ -53,6 +53,15 @@ all = function( comparename, compare, mergesortname, mergesort, n, type ) {
 
 	});
 };
+var ims = sort.iterativemergesort( sort.tapemerge , array.copy ) ;
+
+var iterativemergesort = function ( compare , a , ai , aj , b , bi ) {
+
+	if ( ims( compare , a , ai , aj , b , bi ) !== b ) {
+		array.copy( a , ai , aj , b , bi ) ;
+	}
+
+} ;
 
 itertools.product( [
 
@@ -62,10 +71,11 @@ itertools.product( [
 ],
 
 [
-	[ "mergesort", sort.__mergesort__( sort.tapemerge, array.copy ) ]
+	[ "mergesort", sort.__mergesort__( sort.tapemerge, array.copy ) ] ,
+	[ "iterative mergesort" , iterativemergesort ]
 ],
 
-[0, 1, 2, 10, 63, 64, 65],
+[0 , 1 , 2 , 5 , 9 , 10 , 11 , 13 , 17 , 63 , 64 , 65 ] ,
 
 [
 	Array,
