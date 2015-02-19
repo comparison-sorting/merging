@@ -23,7 +23,7 @@ var hoare = function ( compare , a , i , j ) {
 				return j ;
 			}
 
-			else if ( compare( x , a[j] ) >= 0 ) {
+			else if ( compare( x , a[j] ) > 0 ) {
 				break ;
 			}
 		}
@@ -38,7 +38,7 @@ var hoare = function ( compare , a , i , j ) {
 				return j ;
 			}
 
-			else if ( compare( x , a[i] ) <= 0 ) {
+			else if ( compare( x , a[i] ) < 0 ) {
 				break ;
 			}
 		}
