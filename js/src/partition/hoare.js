@@ -18,9 +18,8 @@ var hoare = function ( compare, a, i, j ) {
 			--j;
 
 			if ( i >= j ) {
-				t    = a[o];
 				a[o] = a[j];
-				a[j] = t;
+				a[j] = x;
 				return j;
 			}
 
@@ -34,9 +33,8 @@ var hoare = function ( compare, a, i, j ) {
 			++i;
 
 			if ( i >= j ) {
-				t    = a[o];
 				a[o] = a[j];
-				a[j] = t;
+				a[j] = x;
 				return j;
 			}
 
