@@ -311,6 +311,26 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
+            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/iterativemergesort.js",
+            "projectPath": "js/src/sort/iterativemergesort.js",
+            "targetPath": "sort/iterativemergesort",
+            "pageTitle": "sort/iterativemergesort",
+            "title": "iterativemergesort"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
             "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/mergesort.js",
             "projectPath": "js/src/sort/mergesort.js",
             "targetPath": "sort/mergesort",

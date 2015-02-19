@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><title>sort/iterativemergesort</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="sort/iterativemergesort"><meta name="groc-project-path" content="js/src/sort/iterativemergesort.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-sort"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-sort/blob/master/js/src/sort/iterativemergesort.js">js/src/sort/iterativemergesort.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> iterativemergesort = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( merge , copy )</span> </span>{
+
+	<span class="hljs-keyword">var</span> mergesort = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( compare , a , ai , aj , b , bi )</span> </span>{
+
+		<span class="hljs-keyword">var</span> whole , left , center , right , mask , half ;
+		<span class="hljs-keyword">var</span> i , j , k ;
+		<span class="hljs-keyword">var</span> t , u , v , w , p ;
+		<span class="hljs-keyword">var</span> q , r , s ;
+		<span class="hljs-keyword">var</span> c ;
+
+		whole = aj - ai ;
+
+		left = <span class="hljs-number">0</span> ;
+		center = <span class="hljs-number">2</span> ;
+		right = <span class="hljs-number">0</span> ;
+
+		mask = <span class="hljs-number">1</span> ;
+		half = <span class="hljs-number">1</span> ;
+
+		<span class="hljs-keyword">while</span> ( half &lt; whole ) {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>assert  left &lt; center
+assert right &lt; center</p></div></div><div class="code"><div class="wrapper">			<span class="hljs-keyword">if</span> ( left === <span class="hljs-number">0</span> ) {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>assert right = 0</p></div></div><div class="code"><div class="wrapper">				t = u = v = w = p = <span class="hljs-number">0</span> ;
+
+				j = whole ;
+				i = left = j &amp; mask ;
+
+				q = ai ;
+				r = q + left ;
+				s = bi ;
+
+			}
+
+			<span class="hljs-keyword">else</span> {
+
+				<span class="hljs-keyword">if</span> ( right === <span class="hljs-number">0</span> ) {
+
+					t = ai ;
+					u = ai + left ;
+					v = u ;
+					w = u + half ;
+					p = bi ;
+
+					left += half ;
+					i = left ;
+
+					right = ( whole - left ) &amp; mask ;
+					j = whole - right ;
+
+					r = aj ;
+
+				}
+
+				<span class="hljs-keyword">else</span> {
+
+					t = ai ;
+					u = ai + left ;
+					v = aj - right ;
+					w = aj ;
+					p = bi ;
+
+					i = left ;
+					left += right ;
+
+					j = whole - right ;
+					r = ai + j ;
+					right = ( whole - left ) &amp; mask ;
+					j -= right ;
+
+				}
+
+				q = ai + j ;
+				s = bi + whole - right ;
+
+			}
+
+			merge( compare , a , t , u , a , v , w , b , p ) ;
+
+			copy( a , q , r , b , s ) ;
+
+			<span class="hljs-keyword">for</span> ( k = i ; k &lt; j ; k += center ) {
+
+				t = ai + k ;
+				u = t + half ;
+				v = t + center ;
+
+				merge( compare , a , t , u , a , u , v , b , bi + left + k - i ) ;
+
+			}
+
+			c = a ;
+			a = b ;
+			b = c ;
+
+			aj = bi + whole ;
+			bi = ai ;
+			ai = aj - whole ;
+
+			mask |= center ;
+			half &lt;&lt;= <span class="hljs-number">1</span> ;
+			center &lt;&lt;= <span class="hljs-number">1</span> ;
+
+		}
+
+		<span class="hljs-keyword">return</span> a ;
+
+	} ;
+
+	<span class="hljs-keyword">return</span> mergesort ;
+
+} ;
+
+exports.iterativemergesort = iterativemergesort ;</div></div></div></div></body></html>
