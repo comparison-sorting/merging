@@ -55,10 +55,38 @@ all = function( comparename, compare, mergesortname, mergesort, n, type ) {
 };
 var ims = sort.iterativemergesort( sort.tapemerge , array.copy ) ;
 
-var iterativemergesort = function ( compare , a , ai , aj , b , bi ) {
+var iterativemergesort = function ( compare , a , ai , aj , b , bi , bj ) {
 
 	if ( ims( compare , a , ai , aj , b , bi ) !== b ) {
 		array.copy( a , ai , aj , b , bi ) ;
+	}
+
+} ;
+
+var ms = sort.__mergesort__( sort.tapemerge ) ;
+
+var mergesort = function ( compare , a , ai , aj , b , bi , bj ) {
+
+	var n = aj - ai ;
+	var k = 0 ;
+
+	while ( n > 0 && ( n & 1 !== 1 ) ) {
+		n >>>= 1 ;
+		++k ;
+	}
+
+	if ( n === 1 ) {
+		if ( k & 1 ) {
+			ms( compare , a , ai , aj , b , bi , bj ) ;
+		}
+		else {
+			ms( compare , b , bi , bj , a , ai , aj ) ;
+			array.copy( a , ai , aj , b , bi ) ;
+		}
+	}
+	else {
+		array.copy( a , ai , aj , b , bi ) ;
+		ms( compare , a , ai , aj , b , bi , bj ) ;
 	}
 
 } ;
@@ -71,7 +99,7 @@ itertools.product( [
 ],
 
 [
-	[ "mergesort", sort.__mergesort__( sort.tapemerge, array.copy ) ] ,
+	[ "mergesort", mergesort ] ,
 	[ "iterative mergesort" , iterativemergesort ]
 ],
 

@@ -1,31 +1,34 @@
 
 
-var __mergesort__ = function ( merge, copy ) {
+var __mergesort__ = function ( merge ) {
 
-	var mergesort = function ( compare, a, i, j, d, l, r) {
+	/**
+	 * if n = 2^k then
+	 *    input is in a if k is odd
+	 *    input is in b if k is even
+	 * otherwise input is in both a and b
+	 * output is in b
+	 */
 
-		var p, t;
+	var mergesort = function ( compare , a , ai , aj , b , bi , bj ) {
 
-		if ( j - i < 2 ) {
-			return;
+		var p ;
+
+		if ( aj - ai < 2 ) {
+			return ;
 		}
 
-		p = Math.floor( ( i + j ) / 2 );
+		p = Math.floor( ( ai + aj ) / 2 ) ;
 
-		mergesort( compare, a, i, p, d, l, l + p - i );
-		mergesort( compare, a, p, j, d, l + p - i, r );
+		mergesort( compare , b , bi , bi + p - ai , a , ai , p ) ;
+		mergesort( compare , b , bi + p - ai , bj , a , p , aj ) ;
 
-		merge( compare, a, i, p, a, p, j, d, l );
+		merge( compare , a , ai , p , a , p , aj , b , bi ) ;
 
-		//copy ( d, l, l + j - i, a, i );
+	} ;
 
-		for(t = 0; t < j - i; ++t) {
-			a[i + t] = d[l + t];
-		}
-	};
+	return mergesort ;
 
-	return mergesort;
+} ;
 
-};
-
-exports.__mergesort__ = __mergesort__;
+exports.__mergesort__ = __mergesort__ ;
