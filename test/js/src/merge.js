@@ -18,7 +18,7 @@ all = function ( comparename, compare, mergename, merge, m, n, type ) {
 
 	test( title, function () {
 
-		var a, b, c, d, j;
+		var a, b, d, j;
 
 		a = new type( m );
 
@@ -39,13 +39,7 @@ all = function ( comparename, compare, mergename, merge, m, n, type ) {
 		// MERGE ARRAYS
 		merge( compare, a, 0, m, b, 0, n, d, 0 );
 
-		// REF
-		c = new type( n + m );
-		array.copy( a, 0, m, c, 0 );
-		array.copy( b, 0, n, c, m );
-		array.sort( compare, c );
-
-		deepEqual( d, c, "check sorted" );
+		deepEqual( sort.issorted( compare , d , 0 , n + m ) , n + m , "check sorted" );
 		deepEqual( a.length, m, "check length a" );
 		deepEqual( b.length, n, "check length b" );
 		deepEqual( d.length, n + m, "check length d" );

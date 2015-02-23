@@ -19,7 +19,7 @@ var check = function ( sortname, arraysort, ctor, n, comparename, compare ) {
 
 	test( title, function () {
 
-		var randint, sample, shuffle, a, i, sorted;
+		var randint, sample, shuffle, a;
 
 		// SETUP RANDOM
 		randint = random.randint;
@@ -34,19 +34,7 @@ var check = function ( sortname, arraysort, ctor, n, comparename, compare ) {
 		shuffle( a, 0, n );
 		arraysort( compare, a );
 
-		// TEST PREDICATE
-		i = a.length;
-		sorted = true;
-		if ( i > 1 ) {
-			while ( --i ) {
-				if ( compare( a[i-1], a[i] ) > 0 ) {
-					sorted = false;
-					break;
-				}
-			}
-		}
-
-		ok( sorted, "check sorted" );
+		deepEqual( sort.issorted( compare , a , 0 , n ) , n , "check sorted" );
 		deepEqual( a.length, n, "check length a" );
 	} );
 };

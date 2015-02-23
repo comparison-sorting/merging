@@ -8,7 +8,7 @@ compare = require( "aureooms-js-compare" );
 itertools = require( "aureooms-js-itertools" );
 functools = require( "aureooms-js-functools" );
 
-var check = function ( sortname, sort, ctor, n, comparename, compare ) {
+var check = function ( sortname, method, ctor, n, comparename, compare ) {
 
 	var title;
 
@@ -18,7 +18,7 @@ var check = function ( sortname, sort, ctor, n, comparename, compare ) {
 
 	test( title, function () {
 
-		var randint, sample, shuffle, a, i, sorted;
+		var randint, sample, shuffle, a;
 
 		// SETUP RANDOM
 		randint = random.randint;
@@ -31,22 +31,13 @@ var check = function ( sortname, sort, ctor, n, comparename, compare ) {
 
 		// SORT ARRAY
 		shuffle( a, 0, n );
-		sort( compare, a, 0, n );
+		method( compare, a, 0, n );
 
 		// TEST PREDICATE
-		i = a.length;
-		sorted = true;
-		if ( i > 1 ) {
-			while ( --i ) {
-				if ( compare( a[i-1], a[i] ) > 0 ) {
-					sorted = false;
-					break;
-				}
-			}
-		}
 
-		ok( sorted, "check sorted" );
+		deepEqual( sort.issorted( compare , a , 0 , n ) , n , "check sorted" ) ;
 		deepEqual( a.length, n, "check length a" );
+
 	} );
 };
 

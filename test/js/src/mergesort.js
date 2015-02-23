@@ -19,7 +19,7 @@ all = function( comparename, compare, mergesortname, mergesort, n, type ) {
 
 	test( title, function () {
 
-		var a, d, i, sorted;
+		var a, d;
 
 		// SETUP ARRAY, DEST
 		a = new type( n );
@@ -30,24 +30,7 @@ all = function( comparename, compare, mergesortname, mergesort, n, type ) {
 		shuffle( a, 0, n );
 		mergesort( compare, a, 0, n, d, 0, n );
 
-		// TEST PREDICATE
-		i = d.length;
-		sorted = true;
-
-		if ( i > 1 ) {
-
-			while (--i) {
-
-				if ( compare( d[i-1], d[i] ) > 0 ) {
-					sorted = false;
-					break;
-				}
-
-			}
-
-		}
-
-		ok( sorted, "check sorted" );
+		deepEqual( sort.issorted( compare , d , 0 , n ) , n , "check sorted" );
 		deepEqual( a.length, n, "check length a" );
 		deepEqual( d.length, n, "check length d" );
 

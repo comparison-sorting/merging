@@ -6,6 +6,8 @@
 
 var issorted = function ( compare , array , left , right ) {
 
+	if ( left >= right ) return right ;
+
 	while ( ++left < right ) {
 
 		if ( compare( array[left-1] , array[left] ) > 0 ) {
