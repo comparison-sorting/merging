@@ -401,11 +401,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/utils/swap.js",
-            "projectPath": "js/src/utils/swap.js",
-            "targetPath": "utils/swap",
-            "pageTitle": "utils/swap",
-            "title": "swap"
+            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/utils/issorted.js",
+            "projectPath": "js/src/utils/issorted.js",
+            "targetPath": "utils/issorted",
+            "pageTitle": "utils/issorted",
+            "title": "issorted"
           },
           "depth": 2,
           "outline": []
