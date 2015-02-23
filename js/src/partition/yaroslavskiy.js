@@ -5,64 +5,81 @@
  * http://cs.stackexchange.com/a/24099/20711
  */
 
-var yaroslavskiy = function ( compare, a, i, j ) {
+var yaroslavskiy = function ( compare , a , i , j ) {
 
-	var p, q, g, k, l;
+	var p , q , g , k , l , t ;
 
-	--j;
+	--j ;
 
 	// Choose outermost elements as pivots
-	if ( compare( a[i], a[j] ) > 0 ) {
-		swap(a, i, j);
+	if ( compare( a[i] , a[j] ) > 0 ) {
+
+		t    = a[i] ;
+		a[i] = a[j] ;
+		a[j] =    t ;
+
 	}
 
-	p = a[i];
-	q = a[j];
+	p = a[i] ;
+	q = a[j] ;
 
 	// Partition a according to invariant below
-	l = i + 1;
-	g = j - 1;
-	k = l;
+	l = i + 1 ;
+	g = j - 1 ;
+	k = l ;
 
 	while ( k <= g ) {
 
-		if ( compare( p, a[k] ) > 0 ) {
+		if ( compare( p , a[k] ) > 0 ) {
 
-			swap( a, k, l );
-			++l;
+			t    = a[k] ;
+			a[k] = a[l] ;
+			a[l] =    t ;
+
+			++l ;
 
 		}
 
 		else if ( compare( q , a[k] ) <= 0 ) {
 
-			while ( compare ( a[g], q ) > 0 && k < g ) {
-				--g;
+			while ( compare ( a[g] , q ) > 0 && k < g ) {
+				--g ;
 			}
 
-			swap( a, k, g );
-			--g;
+			t    = a[k] ;
+			a[k] = a[g] ;
+			a[g] =    t ;
+			--g ;
 
 			if ( compare( p, a[k] ) > 0 ) {
 
-				swap( a, k, l );
-				++l;
+				t    = a[k] ;
+				a[k] = a[l] ;
+				a[l] =    t ;
+				++l ;
 
 			}
 
 		}
 
-		++k;
+		++k ;
 	}
 
-	--l;
-	++g;
+	--l ;
+	++g ;
 
 	// Swap pivots to final place
-	swap( a, i, l );
-	swap( a, j, g );
 
-	return [l, g];
+	t    = a[i] ;
+	a[i] = a[l] ;
+	a[l] =    t ;
 
-};
+	t    = a[j] ;
+	a[j] = a[g] ;
+	a[g] =    t ;
 
-exports.yaroslavskiy = yaroslavskiy;
+	return [ l , g ] ;
+
+} ;
+
+exports.yaroslavskiy = yaroslavskiy ;
