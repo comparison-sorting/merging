@@ -1,46 +1,34 @@
-<!DOCTYPE html><html lang="en"><head><title>merge/binarymerge</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="merge/binarymerge"><meta name="groc-project-path" content="js/src/merge/binarymerge.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-sort"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-sort/blob/master/js/src/merge/binarymerge.js">js/src/merge/binarymerge.js</a></div></div><div id="document"><div class="segment"></div><div class="segment"><div class="comments "><div class="wrapper"><p>Merges 2 arrays using the Hwang Lin algorithm.</p>
-<p>  /!\ aj - ai &gt;= bj - bi</p></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> __binarymerge__ = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( binarysearch, copy )</span> </span>{
+<!DOCTYPE html><html lang="en"><head><title>merge/binarymerge</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="merge/binarymerge"><meta name="groc-project-path" content="js/src/merge/binarymerge.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-sort"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-sort/blob/master/js/src/merge/binarymerge.js">js/src/merge/binarymerge.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> __binarymerge__ = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( binarysearch , copy )</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Merges 2 arrays using the Hwang Lin algorithm.</p>
+<p>  /!\ aj - ai &gt;= bj - bi</p></div></div><div class="code"><div class="wrapper">	<span class="hljs-keyword">var</span> hwanglin = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( compare , a , ai , aj , b , bi , bj , c , ci )</span> </span>{
 
-	<span class="hljs-keyword">var</span> hwanglin = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( compare, a, ai, aj, b, bi, bj, c, ci )</span> </span>{
+		<span class="hljs-keyword">var</span> m , n , o , t , g , q , d , z ;
 
-		<span class="hljs-keyword">var</span> o, t, x, y, q, d, z;
+		o = ci - ai - bi ;
+		t = ai ;
 
-		o = ci - ai - bi;
-		t = ai;
+		m = aj - ai ;
+		n = bj - ai ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>g is the size of a block</p></div></div><div class="code"><div class="wrapper">		g = <span class="hljs-built_in">Math</span>.pow( <span class="hljs-number">2</span> , <span class="hljs-built_in">Math</span>.floor( <span class="hljs-built_in">Math</span>.log( m / n ) / <span class="hljs-built_in">Math</span>.log( <span class="hljs-number">2</span> ) ) ) ;
 
-		x = <span class="hljs-built_in">Math</span>.pow( <span class="hljs-number">2</span>, <span class="hljs-built_in">Math</span>.floor( <span class="hljs-built_in">Math</span>.log( ( aj - ai ) / ( bj - bi ) ) / <span class="hljs-built_in">Math</span>.log( <span class="hljs-number">2</span> ) ) );
-		y = <span class="hljs-built_in">Math</span>.floor( ( aj - ai ) / x ) + <span class="hljs-number">1</span>;
+		blocks : <span class="hljs-keyword">while</span> ( bi &lt; bj &amp;&amp; ( ai + g &lt; aj || ( g = aj - ai - <span class="hljs-number">1</span> ) ) ) {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>for each block</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>t is the inner left bound</p></div></div><div class="code"><div class="wrapper">			t = ai ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>ai is the inner right bound</p></div></div><div class="code"><div class="wrapper">			ai = t + g ;
 
+			<span class="hljs-keyword">while</span> ( bi &lt; bj ) {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>we will try to insert b_i in this block</p></div></div><div class="code"><div class="wrapper">				<span class="hljs-keyword">if</span> ( compare( b[bi] , a[ai] ) &gt;= <span class="hljs-number">0</span> ) {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>b_i must be inserted to the left of this block
+we copy the block to the output array and continue
+with the next block</p></div></div><div class="code"><div class="wrapper">					copy( a , t , ai , c , o + t + bi ) ;
+					<span class="hljs-keyword">continue</span> blocks ;
 
-		<span class="hljs-keyword">while</span> ( bi &lt; bj &amp;&amp; ( ai + x &lt; aj || ( x = aj - ai - <span class="hljs-number">1</span> ) ) ) {
+				}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>b_i is inside this block and smaller than a_i
+we search its insertion position using a binary search algorithm</p></div></div><div class="code"><div class="wrapper">				q = binarysearch( compare , a , t , ai , b[bi] ) ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>z is the insertion position</p></div></div><div class="code"><div class="wrapper">				z = q[<span class="hljs-number">0</span>] + q[<span class="hljs-number">1</span>] ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>copy everything to the left of the insertion position
+to the output array</p></div></div><div class="code"><div class="wrapper">				copy( a , t , z , c , o + t + bi ) ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>copy b_i to its insertion position in the output array</p></div></div><div class="code"><div class="wrapper">				c[o + bi + z] = b[bi] ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>update the inner left bound of the block</p></div></div><div class="code"><div class="wrapper">				t = z ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>go to the next b_i</p></div></div><div class="code"><div class="wrapper">				++bi ;
 
-			t = ai;
-			ai = t + x;
-
-			<span class="hljs-keyword">while</span> ( bi &lt; bj ) {
-
-				<span class="hljs-keyword">if</span> ( compare( b[bi], a[ai] ) &gt;= <span class="hljs-number">0</span> ) {
-					copy( a, t, ai, c, o + t + bi );
-					<span class="hljs-keyword">break</span>;
-				}
-
-				q = binarysearch( compare, a, t, ai, b[bi] );
-				z = q[<span class="hljs-number">0</span>] + q[<span class="hljs-number">1</span>];
-
-				copy( a, t, z, c, o + t + bi );
-				c[o + z + bi] = b[bi];
-				t = z;
-				++bi;
 			}
-		}
 
-		copy( a, t, aj, c, o + t + bi );
-		copy( b, bi, bj, c, o + aj + bi );
+		}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>remaining elements are copied to the output array</p></div></div><div class="code"><div class="wrapper">		copy( a ,  t , aj , c , o +  t + bi ) ;
+		copy( b , bi , bj , c , o + aj + bi ) ;
 
-	};
+	} ;
 
-	<span class="hljs-keyword">return</span> hwanglin;
+	<span class="hljs-keyword">return</span> hwanglin ;
 
-};
+} ;
 
-exports.__binarymerge__ = __binarymerge__;</div></div></div></div></body></html>
+exports.__binarymerge__ = __binarymerge__ ;</div></div></div></div></body></html>
