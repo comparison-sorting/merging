@@ -22,7 +22,7 @@ var __binarymerge__ = function ( binarysearch, copy ) {
 		o = ci - ai - bi;
 		t = ai;
 
-		x = Math.pow( 2, Math.floor( Math.log( ( aj - ai ) / ( bj - bi ) ) ) );
+		x = Math.pow( 2, Math.floor( Math.log( ( aj - ai ) / ( bj - bi ) ) / Math.log( 2 ) ) );
 		y = Math.floor( ( aj - ai ) / x ) + 1;
 
 
