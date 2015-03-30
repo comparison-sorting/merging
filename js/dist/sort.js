@@ -17,14 +17,12 @@ var __binarymerge__ = function ( binarysearch, copy ) {
 
 	var hwanglin = function ( compare, a, ai, aj, b, bi, bj, c, ci ) {
 
-		var o, t, x, y, q, d, z;
+		var o, t, x, q, d, z;
 
 		o = ci - ai - bi;
 		t = ai;
 
 		x = Math.pow( 2, Math.floor( Math.log( ( aj - ai ) / ( bj - bi ) ) / Math.log( 2 ) ) );
-		y = Math.floor( ( aj - ai ) / x ) + 1;
-
 
 		while ( bi < bj && ( ai + x < aj || ( x = aj - ai - 1 ) ) ) {
 
