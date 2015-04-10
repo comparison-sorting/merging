@@ -14,16 +14,23 @@ Sorting code bricks for JavaScript.
 [![NPM downloads per month](http://img.shields.io/npm/dm/aureooms-js-sort.svg?style=flat)](https://www.npmjs.org/package/aureooms-js-sort)
 [![GitHub issues](http://img.shields.io/github/issues/aureooms/js-sort.svg?style=flat)](https://github.com/aureooms/js-sort/issues)
 
+Can be managed through [bower](https://github.com/bower/bower),
+[component](https://github.com/componentjs/component), or
+[npm](https://github.com/npm/npm).
+
+```js
+let sort = require( "aureooms-js-sort" ) ;
+```
+
 Example usage:
 
 ```js
-compare = require( "aureooms-js-compare" ) ;
-sort = require( "aureooms-js-sort" ) ;
+let compare = require( "aureooms-js-compare" ) ;
 
 /** quicksort using hoare partitioning */
-quicksort = sort.__quicksort__( sort.hoare ) ;
+let quicksort = sort.__quicksort__( sort.hoare ) ;
 
-a = [ 1 , 6 , 5 , 3 , 2 , 4 ] ;
+let a = [ 1 , 6 , 5 , 3 , 2 , 4 ] ;
 
 quicksort( compare.increasing , a , 0 , a.length ) ;
 
@@ -36,19 +43,19 @@ a ; // [ 6 , 5 , 4 , 3 , 2 , 1 ]
 // but also
 
 /** binary heapsort */
-heapsort = sort.__heapsort__( 2 ) ;
+let heapsort = sort.__heapsort__( 2 ) ;
 /** ternary heapsort */
-heapsort = sort.__heapsort__( 3 ) ;
+let heapsort = sort.__heapsort__( 3 ) ;
 /** quicksort (lomuto) */
-quicksort = sort.__quicksort__( sort.lomuto ) ;
+let quicksort = sort.__quicksort__( sort.lomuto ) ;
 /** dualpivotquicksort (yaroslavskiy) */
-quicksort = sort.__dualpivotquicksort__( sort.yaroslavskiy ) ;
+let quicksort = sort.__dualpivotquicksort__( sort.yaroslavskiy ) ;
 /** insertionsort */
-insertionsort = sort.insertionsort ;
+let insertionsort = sort.insertionsort ;
 /** selectionsort */
-selectionsort = sort.selectionsort ;
+let selectionsort = sort.selectionsort ;
 /** bubblesort */
-bubblesort = sort.bubblesort ;
+let bubblesort = sort.bubblesort ;
 ```
 
 Reference:
