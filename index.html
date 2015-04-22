@@ -9,15 +9,20 @@
 <a href="https://david-dm.org/aureooms/js-sort#info=devDependencies"><img src="http://img.shields.io/david/dev/aureooms/js-sort.svg?style=flat" alt="devDependencies Status"></a>
 <a href="https://codeclimate.com/github/aureooms/js-sort"><img src="http://img.shields.io/codeclimate/github/aureooms/js-sort.svg?style=flat" alt="Code Climate"></a>
 <a href="https://www.npmjs.org/package/aureooms-js-sort"><img src="http://img.shields.io/npm/dm/aureooms-js-sort.svg?style=flat" alt="NPM downloads per month"></a>
-<a href="https://github.com/aureooms/js-sort/issues"><img src="http://img.shields.io/github/issues/aureooms/js-sort.svg?style=flat" alt="GitHub issues"></a></p>
+<a href="https://github.com/aureooms/js-sort/issues"><img src="http://img.shields.io/github/issues/aureooms/js-sort.svg?style=flat" alt="GitHub issues"></a>
+<a href="http://inch-ci.org/github/aureooms/js-sort"><img src="http://inch-ci.org/github/aureooms/js-sort.svg?branch=master&amp;style=shields" alt="Inline docs"></a></p>
+<p>Can be managed through <a href="https://github.com/duojs/duo">duo</a>,
+<a href="https://github.com/componentjs/component">component</a>,
+<a href="https://github.com/bower/bower">bower</a>, or
+<a href="https://github.com/npm/npm">npm</a>.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> sort = <span class="hljs-built_in">require</span>( <span class="hljs-string">"aureooms-js-sort"</span> ) ;</code></pre>
 <p>Example usage:</p>
-<pre><code class="lang-js">compare = <span class="hljs-built_in">require</span>( <span class="hljs-string">"aureooms-js-compare"</span> ) ;
-sort = <span class="hljs-built_in">require</span>( <span class="hljs-string">"aureooms-js-sort"</span> ) ;
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> compare = <span class="hljs-built_in">require</span>( <span class="hljs-string">"aureooms-js-compare"</span> ) ;
 
 <span class="hljs-comment">/** quicksort using hoare partitioning */</span>
-quicksort = sort.__quicksort__( sort.hoare ) ;
+<span class="hljs-keyword">let</span> quicksort = sort.__quicksort__( sort.hoare ) ;
 
-a = [ <span class="hljs-number">1</span> , <span class="hljs-number">6</span> , <span class="hljs-number">5</span> , <span class="hljs-number">3</span> , <span class="hljs-number">2</span> , <span class="hljs-number">4</span> ] ;
+<span class="hljs-keyword">let</span> a = [ <span class="hljs-number">1</span> , <span class="hljs-number">6</span> , <span class="hljs-number">5</span> , <span class="hljs-number">3</span> , <span class="hljs-number">2</span> , <span class="hljs-number">4</span> ] ;
 
 quicksort( compare.increasing , a , <span class="hljs-number">0</span> , a.length ) ;
 
@@ -30,19 +35,19 @@ a ; <span class="hljs-comment">// [ 6 , 5 , 4 , 3 , 2 , 1 ]</span>
 <span class="hljs-comment">// but also</span>
 
 <span class="hljs-comment">/** binary heapsort */</span>
-heapsort = sort.__heapsort__( <span class="hljs-number">2</span> ) ;
+<span class="hljs-keyword">let</span> heapsort = sort.__heapsort__( <span class="hljs-number">2</span> ) ;
 <span class="hljs-comment">/** ternary heapsort */</span>
-heapsort = sort.__heapsort__( <span class="hljs-number">3</span> ) ;
+<span class="hljs-keyword">let</span> heapsort = sort.__heapsort__( <span class="hljs-number">3</span> ) ;
 <span class="hljs-comment">/** quicksort (lomuto) */</span>
-quicksort = sort.__quicksort__( sort.lomuto ) ;
+<span class="hljs-keyword">let</span> quicksort = sort.__quicksort__( sort.lomuto ) ;
 <span class="hljs-comment">/** dualpivotquicksort (yaroslavskiy) */</span>
-quicksort = sort.__dualpivotquicksort__( sort.yaroslavskiy ) ;
+<span class="hljs-keyword">let</span> quicksort = sort.__dualpivotquicksort__( sort.yaroslavskiy ) ;
 <span class="hljs-comment">/** insertionsort */</span>
-insertionsort = sort.insertionsort ;
+<span class="hljs-keyword">let</span> insertionsort = sort.insertionsort ;
 <span class="hljs-comment">/** selectionsort */</span>
-selectionsort = sort.selectionsort ;
+<span class="hljs-keyword">let</span> selectionsort = sort.selectionsort ;
 <span class="hljs-comment">/** bubblesort */</span>
-bubblesort = sort.bubblesort ;</code></pre>
+<span class="hljs-keyword">let</span> bubblesort = sort.bubblesort ;</code></pre>
 <p>Reference:</p>
 <ul>
 <li><a href="https://kluedo.ub.uni-kl.de/frontdoor/index/index/docId/3463">https://kluedo.ub.uni-kl.de/frontdoor/index/index/docId/3463</a></li>
