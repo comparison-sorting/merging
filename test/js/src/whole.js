@@ -19,19 +19,14 @@ var check = function ( sortname, arraysort, ctor, n, comparename, compare ) {
 
 	test( title, function () {
 
-		var randint, sample, shuffle, a;
-
-		// SETUP RANDOM
-		randint = random.randint;
-		sample = random.__sample__( randint );
-		shuffle = random.__shuffle__( sample );
+		var a;
 
 		// SETUP ARRAY
 		a = new ctor(n);
 		array.iota( a, 0, n, 0 );
 
 		// SORT ARRAY
-		shuffle( a, 0, n );
+		random.shuffle( a, 0, n );
 		arraysort( compare, a );
 
 		deepEqual( sort.issorted( compare , a , 0 , n ) , n , "check sorted" );

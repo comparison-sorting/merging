@@ -1,4 +1,4 @@
-var all, util, array, search, random, compare, functools, itertools, sample, shuffle;
+var all, util, array, search, random, compare, functools, itertools ;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
@@ -7,9 +7,6 @@ random = require( "aureooms-js-random" );
 compare = require( "aureooms-js-compare" );
 functools = require( "aureooms-js-functools" );
 itertools = require( "aureooms-js-itertools" );
-
-sample = random.__sample__( random.randint );
-shuffle = random.__shuffle__( sample );
 
 all = function ( partitionname, partition, comparename, comparator, n, type ) {
 
@@ -30,7 +27,7 @@ all = function ( partitionname, partition, comparename, comparator, n, type ) {
 		// SETUP REF ARRAY
 		ref = new type( n );
 		array.iota( ref, 0, n, 0 );
-		shuffle( ref, 0, n );
+		random.shuffle( ref, 0, n );
 		array.sort( comparator, ref );
 
 		// SETUP TEST ARRAY
@@ -41,12 +38,12 @@ all = function ( partitionname, partition, comparename, comparator, n, type ) {
 		i = a.length;
 
 		len = random.randint( 0, i + 1 );
-		sample( len, a, 0, n );
+		random.sample( len, a, 0, n );
 		k = new type( len );
 		array.copy( a, 0, len, k, 0 );
 		array.sort( compare.increasing, k );
 
-		shuffle( a, 0, n );
+		random.shuffle( a, 0, n );
 		multiselect( comparator, a, 0, n, k, 0, len );
 
 		while ( len-- ) {

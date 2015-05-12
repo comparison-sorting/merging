@@ -1,4 +1,4 @@
-var all, util, array, random, compare, functools, itertools, shuffle;
+var all, util, array, random, compare, functools, itertools;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
@@ -6,8 +6,6 @@ random = require( "aureooms-js-random" );
 compare = require( "aureooms-js-compare" );
 functools = require( "aureooms-js-functools" );
 itertools = require( "aureooms-js-itertools" );
-
-shuffle = random.__shuffle__( random.__sample__( random.randint ) );
 
 all = function ( quickselectname, quickselect, comparename, compare, n, type ) {
 
@@ -33,7 +31,7 @@ all = function ( quickselectname, quickselect, comparename, compare, n, type ) {
 		// TEST ALL INDEX SELECTION
 		i = a.length;
 		while ( i-- ) {
-			shuffle( a, 0, n );
+			random.shuffle( a, 0, n );
 			quickselect( compare, a, 0, n, i );
 			deepEqual( a[i], ref[i], "select #" + i );
 		}

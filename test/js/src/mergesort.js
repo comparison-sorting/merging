@@ -1,4 +1,4 @@
-var all, util, array, random, compare, functools, itertools, shuffle;
+var all, util, array, random, compare, functools, itertools ;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
@@ -6,8 +6,6 @@ random = require( "aureooms-js-random" );
 compare = require( "aureooms-js-compare" );
 functools = require( "aureooms-js-functools" );
 itertools = require( "aureooms-js-itertools" );
-
-shuffle = random.__shuffle__( random.__sample__( random.randint ) );
 
 all = function( comparename, compare, mergesortname, mergesort, n, type ) {
 
@@ -27,7 +25,7 @@ all = function( comparename, compare, mergesortname, mergesort, n, type ) {
 		array.iota( a, 0, n, 0 );
 
 		// SORT ARRAY
-		shuffle( a, 0, n );
+		random.shuffle( a, 0, n );
 		mergesort( compare, a, 0, n, d, 0, n );
 
 		deepEqual( sort.issorted( compare , d , 0 , n ) , n , "check sorted" );
