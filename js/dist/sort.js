@@ -430,87 +430,90 @@
 
 		/* js/src/sort/fordjohnson.js */
 
-		var fordjohnson = function fordjohnson(compare, swap, a, i, j) {
+		var _fordjohnson = function _fordjohnson(binarysearch) {
 
-			var m, k, t, y, p, q, r, x, l, w, s, pairswap;
+			var fordjohnson = function fordjohnson(compare, swap, a, i, j) {
 
-			k = m = (j - i) / 2 | 0;
+				var m, k, t, y, p, q, r, x, l, w, s, pairswap;
 
-			// compare pairs of elements and put largest elements at the front of the
-			// array
+				if (j - i < 2) return;
 
-			while (k--) {
+				k = m = (j - i) / 2 | 0;
 
-				if (compare(a[i + k], a[i + m + k]) < 0) {
+				// compare pairs of elements and put largest elements at the front of the
+				// array
 
-					swap(a, i + k, i + m + k);
+				while (k--) {
+
+					if (compare(a[i + k], a[i + m + k]) < 0) {
+
+						swap(a, i + k, i + m + k);
+					}
 				}
-			}
 
-			// sort the largest elements at the front recursively
+				// sort the largest elements at the front recursively
 
-			pairswap = function (a, i, j) {
-				swap(a, i, j);
-				swap(a, i + m, j + m);
-			};
+				pairswap = function (a, i, j) {
+					swap(a, i, j);
+					swap(a, i + m, j + m);
+				};
 
-			fordjohnson(compare, pairswap, a, i, i + m);
+				fordjohnson(compare, pairswap, a, i, i + m);
 
-			// merge the rest of the array into the front, one item at a time
+				// merge the rest of the array into the front, one item at a time
 
-			p = y = t = 1;
+				p = y = t = 1;
 
-			q = 0;
+				q = 0;
 
-			while (i + m + t <= j) {
+				while (i + m + t <= j) {
 
-				r = t;
+					r = t;
+
+					while (r-- > q) {
+
+						w = a[i + m + t - 1];
+
+						x = binarysearch(compare, a, i, i + m + q, w);
+						l = x[0] + x[1];
+
+						s = i + m + t;
+
+						while (--s > l) {
+
+							swap(a, s, s - 1);
+						}
+					}
+
+					q = t;
+
+					p *= 2;
+					y = p - 2 * t;
+					t += y;
+				}
+
+				r = j - i - m;
 
 				while (r-- > q) {
 
-					w = a[i + m + t - 1];
+					w = a[j - 1];
 
-					x = binarysearch(compare, a, i, i + t - 1, w);
+					x = binarysearch(compare, a, i, i + m + q, w);
 					l = x[0] + x[1];
 
-					swap(a, i + m + q, i + m + t - 1);
-
-					s = i + m + t;
+					s = j;
 
 					while (--s > l) {
 
 						swap(a, s, s - 1);
 					}
 				}
+			};
 
-				q = t;
-
-				p *= 2;
-				y = p - 2 * t;
-				t += y;
-			}
-
-			r = j - i - m;
-
-			while (r-- > q) {
-
-				w = a[i + m + t - 1];
-
-				x = binarysearch(compare, a, i, i + t - 1, w);
-				l = x[0] + x[1];
-
-				swap(a, i + m + q, i + m + t - 1);
-
-				s = i + m + t;
-
-				while (--s > l) {
-
-					swap(a, s, s - 1);
-				}
-			}
+			return fordjohnson;
 		};
 
-		exports.fordjohnson = fordjohnson;
+		exports._fordjohnson = _fordjohnson;
 
 		/* js/src/sort/heapsort.js */
 

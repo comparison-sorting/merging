@@ -1,8 +1,9 @@
 
-var util, array, random, compare, itertools, functools;
+var util, array, search, random, compare, itertools, functools;
 
 util = require( "util" );
 array = require( "aureooms-js-array" );
+search = require( "aureooms-js-search" );
 random = require( "aureooms-js-random" );
 compare = require( "aureooms-js-compare" );
 itertools = require( "aureooms-js-itertools" );
@@ -65,7 +66,12 @@ itertools.product( [
 	[ "dualpivotquicksort (yaroslavskiy)", sort.__dualpivotquicksort__( sort.yaroslavskiy ) ],
 	[ "insertionsort", sort.insertionsort ],
 	[ "selectionsort", sort.selectionsort ],
-	[ "bubblesort", sort.bubblesort ]
+	[ "bubblesort", sort.bubblesort ],
+	[ "fordjohnson" , function ( compare , a , i , j ) {
+
+		sort._fordjohnson( search.binarysearch )( compare , array.swap , a , i , j ) ;
+
+	} ]
 ],
 
 [
