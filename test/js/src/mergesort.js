@@ -71,7 +71,18 @@ var mergesort = function ( compare , a , ai , aj , b , bi , bj ) {
 	}
 
 } ;
+itertools.exhaust( itertools.map(
+functools.chain( [ itertools.chain , itertools.list , functools.partial( functools.star,
 
+	[ function ( comparename, compare, mergesortname, mergesort, n, type ) {
+
+		if ( type.BYTES_PER_ELEMENT && n > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
+			return;
+		}
+
+		all( comparename, compare, mergesortname, mergesort, n, type );
+	} ]
+) ] ),
 itertools.product( [
 
 [
@@ -84,32 +95,18 @@ itertools.product( [
 	[ "iterative mergesort" , iterativemergesort ]
 ],
 
-[0 , 1 , 2 , 5 , 9 , 10 , 11 , 13 , 17 , 63 , 64 , 65 ] ,
+[ [0] , [1] , [2] , [5] , [9] , [10] , [11] , [13] , [17] , [63] , [64] , [65] ] ,
 
 [
-	Array,
-	Int8Array,
-	Uint8Array,
-	Int16Array,
-	Uint16Array,
-	Int32Array,
-	Uint32Array,
-	Float32Array,
-	Float64Array
+	[ Array ],
+	[ Int8Array ],
+	[ Uint8Array ],
+	[ Int16Array ],
+	[ Uint16Array ],
+	[ Int32Array ],
+	[ Uint32Array ],
+	[ Float32Array ],
+	[ Float64Array ]
 ]
 
-], 1, [] ).forEach(
-
-	functools.partial( functools.star,
-
-		function ( comparename, compare, mergesortname, mergesort, n, type ) {
-
-			if ( type.BYTES_PER_ELEMENT && n > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
-				return;
-			}
-
-			all( comparename, compare, mergesortname, mergesort, n, type );
-		}
-	)
-
-);
+], 1 ) ) ) ;

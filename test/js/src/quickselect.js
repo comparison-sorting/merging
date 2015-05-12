@@ -40,6 +40,20 @@ all = function ( quickselectname, quickselect, comparename, compare, n, type ) {
 	});
 };
 
+itertools.exhaust( itertools.map(
+
+functools.chain( [ itertools.chain , itertools.list , functools.partial( functools.star,
+
+	[ function ( quickselectname, quickselect, comparename, compare, n, type ) {
+
+		if ( type.BYTES_PER_ELEMENT && n > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
+			return;
+		}
+
+		all( quickselectname, quickselect, comparename, compare, n, type );
+	} ]
+) ] ) ,
+
 itertools.product( [
 
 [
@@ -52,32 +66,18 @@ itertools.product( [
 	[ "decreasing", compare.decreasing ]
 ],
 
-[0, 1, 2, 10, 31, 32, 33],
+[ [0], [1], [2], [10], [31], [32], [33] ],
 
 [
-	Array,
-	Int8Array,
-	Uint8Array,
-	Int16Array,
-	Uint16Array,
-	Int32Array,
-	Uint32Array,
-	Float32Array,
-	Float64Array
+	[ Array ],
+	[ Int8Array ],
+	[ Uint8Array ],
+	[ Int16Array ],
+	[ Uint16Array ],
+	[ Int32Array ],
+	[ Uint32Array ],
+	[ Float32Array ],
+	[ Float64Array ]
 ]
 
-], 1, [] ).forEach(
-
-	functools.partial( functools.star,
-
-		function ( quickselectname, quickselect, comparename, compare, n, type ) {
-
-			if ( type.BYTES_PER_ELEMENT && n > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
-				return;
-			}
-
-			all( quickselectname, quickselect, comparename, compare, n, type );
-		}
-	)
-
-);
+], 1 ) ) ) ;

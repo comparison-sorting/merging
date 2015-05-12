@@ -46,6 +46,25 @@ all = function ( comparename, compare, mergename, merge, m, n, type ) {
 	});
 };
 
+itertools.exhaust( itertools.map(
+
+functools.chain( [ itertools.chain , itertools.list , functools.partial( functools.star,
+
+	[ function ( comparename, compare, mergename, merge, m, n, type ) {
+
+		if ( type.BYTES_PER_ELEMENT && m > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
+			return;
+		}
+
+		if ( m < n ) {
+			return;
+		}
+
+		all( comparename, compare, mergename, merge, m, n, type );
+
+	} ]
+) ] ),
+
 itertools.product([
 
 [
@@ -59,37 +78,19 @@ itertools.product([
 	[ "tapemerge" , sort.tapemerge ]
 ],
 
-[0, 1, 2, 10, 63, 64, 65],
-[0, 1, 2, 10, 63, 64, 65],
+[[0], [1], [2], [10], [63], [64], [65]],
+[[0], [1], [2], [10], [63], [64], [65]],
 
 [
-	Array,
-	Int8Array,
-	Uint8Array,
-	Int16Array,
-	Uint16Array,
-	Int32Array,
-	Uint32Array,
-	Float32Array,
-	Float64Array
+	[ Array ],
+	[ Int8Array ],
+	[ Uint8Array ],
+	[ Int16Array ],
+	[ Uint16Array ],
+	[ Int32Array ],
+	[ Uint32Array ],
+	[ Float32Array ],
+	[ Float64Array ]
 ]
 
-], 1, [] ).forEach(
-
-	functools.partial( functools.star,
-
-		function ( comparename, compare, mergename, merge, m, n, type ) {
-
-			if ( type.BYTES_PER_ELEMENT && m > Math.pow( 2, type.BYTES_PER_ELEMENT * 8 ) ) {
-				return;
-			}
-
-			if ( m < n ) {
-				return;
-			}
-
-			all( comparename, compare, mergename, merge, m, n, type );
-
-		}
-	)
-);
+], 1 ) ) ) ;
