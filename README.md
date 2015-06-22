@@ -24,7 +24,7 @@ Can be managed through [duo](https://github.com/duojs/duo),
 let sort = require( "aureooms-js-sort" ) ;
 ```
 
-Example usage:
+## Use
 
 ```js
 let compare = require( "aureooms-js-compare" ) ;
@@ -60,7 +60,7 @@ let selectionsort = sort.selectionsort ;
 let bubblesort = sort.bubblesort ;
 ```
 
-Reference:
+## Reference
 
   - https://kluedo.ub.uni-kl.de/frontdoor/index/index/docId/3463
   - http://sorting.at
