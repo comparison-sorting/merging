@@ -1,10 +1,10 @@
 {
-	"name": "sort",
+	"name": "merging",
 	"code": {
 		"main": [
 			"js",
 			"dist",
-			"sort.js"
+			"merging.js"
 		],
 		"test": [
 			"test",
@@ -14,5 +14,5 @@
 	"debug": false,
 	"src": "js/src/",
 	"out": "js/dist/",
-	"babel" : true
+	"babel": true
 }

@@ -14,25 +14,30 @@
 		"aureooms-js-search": "^0.0.4",
 		"aureooms-js-array": "^2.2.0"
 	},
-	"main": "js/dist/sort.js",
+	"main": "js/dist/merging.js",
 	"bugs": {
-		"url": "https://github.com/aureooms/js-sort/issues"
+		"url": "https://github.com/aureooms/js-merging/issues"
 	},
 	"license": "AGPL-3.0",
-	"homepage": "http://aureooms.github.io/js-sort/",
-	"description": "sorting code bricks for JavaScript",
+	"homepage": "http://aureooms.github.io/js-merging/",
+	"description": "merging code bricks for JavaScript",
 	"dependencies": {},
 	"keywords": [
 		"bricks",
+		"ender",
+		"hwang",
+		"hwang-lin",
 		"javascript",
 		"js",
-		"order",
-		"sort",
-		"sorting"
+		"lin",
+		"merge",
+		"merging",
+		"tape",
+		"tapemerge"
 	],
-	"name": "aureooms-js-sort",
+	"name": "aureooms-js-merging",
 	"repository": {
-		"url": "https://github.com/aureooms/js-sort.git",
+		"url": "https://github.com/aureooms/js-merging.git",
 		"type": "git"
 	},
 	"version": "5.0.4"

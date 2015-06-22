@@ -1,11 +1,11 @@
 {
-	"description": "sorting code bricks for JavaScript",
+	"description": "merging code bricks for JavaScript",
 	"version": "5.0.4",
-	"repo": "aureooms/js-sort",
+	"repo": "aureooms/js-merging",
 	"scripts": [
-		"js/dist/sort.js"
+		"js/dist/merging.js"
 	],
-	"name": "aureooms-js-sort",
+	"name": "aureooms-js-merging",
 	"license": "AGPL-3.0",
-	"main": "js/dist/sort.js"
+	"main": "js/dist/merging.js"
 }
