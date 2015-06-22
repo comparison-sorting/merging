@@ -13,14 +13,32 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "commentsOnly": true,
           "name": "Markdown"
         },
-        "sourcePath": "/home/aureooms/dev/js/js-sort/README.md",
+        "sourcePath": "/home/aureooms/dev/js/js-merging/README.md",
         "projectPath": "README.md",
         "targetPath": "index",
         "pageTitle": "index",
         "title": "index"
       },
       "depth": 1,
-      "outline": []
+      "outline": [
+        {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "Use",
+            "slug": "use"
+          },
+          "depth": 2
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "Reference",
+            "slug": "reference"
+          },
+          "depth": 2
+        }
+      ]
     }, {
       "type": "folder",
       "data": {
@@ -41,7 +59,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/merge/binarymerge.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/merge/binarymerge.js",
             "projectPath": "js/src/merge/binarymerge.js",
             "targetPath": "merge/binarymerge",
             "pageTitle": "merge/binarymerge",
@@ -61,7 +79,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/merge/merge.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/merge/merge.js",
             "projectPath": "js/src/merge/merge.js",
             "targetPath": "merge/merge",
             "pageTitle": "merge/merge",
@@ -81,7 +99,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/merge/tapemerge.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/merge/tapemerge.js",
             "projectPath": "js/src/merge/tapemerge.js",
             "targetPath": "merge/tapemerge",
             "pageTitle": "merge/tapemerge",
@@ -111,7 +129,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/partition/hoare.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/partition/hoare.js",
             "projectPath": "js/src/partition/hoare.js",
             "targetPath": "partition/hoare",
             "pageTitle": "partition/hoare",
@@ -131,7 +149,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/partition/lomuto.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/partition/lomuto.js",
             "projectPath": "js/src/partition/lomuto.js",
             "targetPath": "partition/lomuto",
             "pageTitle": "partition/lomuto",
@@ -151,7 +169,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/partition/yaroslavskiy.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/partition/yaroslavskiy.js",
             "projectPath": "js/src/partition/yaroslavskiy.js",
             "targetPath": "partition/yaroslavskiy",
             "pageTitle": "partition/yaroslavskiy",
@@ -181,7 +199,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/select/multiselect.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/select/multiselect.js",
             "projectPath": "js/src/select/multiselect.js",
             "targetPath": "select/multiselect",
             "pageTitle": "select/multiselect",
@@ -201,7 +219,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/select/quickselect.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/select/quickselect.js",
             "projectPath": "js/src/select/quickselect.js",
             "targetPath": "select/quickselect",
             "pageTitle": "select/quickselect",
@@ -231,7 +249,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/bubblesort.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/sort/bubblesort.js",
             "projectPath": "js/src/sort/bubblesort.js",
             "targetPath": "sort/bubblesort",
             "pageTitle": "sort/bubblesort",
@@ -251,7 +269,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/dualpivotquicksort.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/sort/dualpivotquicksort.js",
             "projectPath": "js/src/sort/dualpivotquicksort.js",
             "targetPath": "sort/dualpivotquicksort",
             "pageTitle": "sort/dualpivotquicksort",
@@ -271,7 +289,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/fordjohnson.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/sort/fordjohnson.js",
             "projectPath": "js/src/sort/fordjohnson.js",
             "targetPath": "sort/fordjohnson",
             "pageTitle": "sort/fordjohnson",
@@ -291,7 +309,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/heapsort.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/sort/heapsort.js",
             "projectPath": "js/src/sort/heapsort.js",
             "targetPath": "sort/heapsort",
             "pageTitle": "sort/heapsort",
@@ -311,7 +329,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/insertionsort.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/sort/insertionsort.js",
             "projectPath": "js/src/sort/insertionsort.js",
             "targetPath": "sort/insertionsort",
             "pageTitle": "sort/insertionsort",
@@ -331,7 +349,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/iterativemergesort.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/sort/iterativemergesort.js",
             "projectPath": "js/src/sort/iterativemergesort.js",
             "targetPath": "sort/iterativemergesort",
             "pageTitle": "sort/iterativemergesort",
@@ -351,7 +369,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/mergesort.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/sort/mergesort.js",
             "projectPath": "js/src/sort/mergesort.js",
             "targetPath": "sort/mergesort",
             "pageTitle": "sort/mergesort",
@@ -371,7 +389,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/quicksort.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/sort/quicksort.js",
             "projectPath": "js/src/sort/quicksort.js",
             "targetPath": "sort/quicksort",
             "pageTitle": "sort/quicksort",
@@ -391,7 +409,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/sort/selectionsort.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/sort/selectionsort.js",
             "projectPath": "js/src/sort/selectionsort.js",
             "targetPath": "sort/selectionsort",
             "pageTitle": "sort/selectionsort",
@@ -421,7 +439,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/utils/issorted.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/utils/issorted.js",
             "projectPath": "js/src/utils/issorted.js",
             "targetPath": "utils/issorted",
             "pageTitle": "utils/issorted",
@@ -441,7 +459,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "JavaScript"
             },
-            "sourcePath": "/home/aureooms/dev/js/js-sort/js/src/utils/whole.js",
+            "sourcePath": "/home/aureooms/dev/js/js-merging/js/src/utils/whole.js",
             "projectPath": "js/src/utils/whole.js",
             "targetPath": "utils/whole",
             "pageTitle": "utils/whole",

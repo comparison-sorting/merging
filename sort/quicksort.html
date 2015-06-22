@@ -1,10 +1,10 @@
-<!DOCTYPE html><html lang="en"><head><title>sort/quicksort</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="sort/quicksort"><meta name="groc-project-path" content="js/src/sort/quicksort.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-sort"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-sort/blob/master/js/src/sort/quicksort.js">js/src/sort/quicksort.js</a></div></div><div id="document"><div class="segment"></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p>Template for the recursive implementation of quicksort.
+<!DOCTYPE html><html lang="en"><head><title>sort/quicksort</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="sort/quicksort"><meta name="groc-project-path" content="js/src/sort/quicksort.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-merging"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-merging/blob/master/js/src/sort/quicksort.js">js/src/sort/quicksort.js</a></div></div><div id="document"><div class="segment"></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p>Template for the recursive implementation of quicksort.
 This template allows to generate a specific version of the quicksort
 algorithm for a certain partitioning algorithm.</p>
 <p>Parameters:</p>
 <ul>
 <li><strong>partition must be a callable.</strong><br/>(the implementation for the partitioning step)</li>
-</ul></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> __quicksort__ = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( partition )</span> </span>{</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p>Sorts interval [left,right) of the array parameter according to a
+</ul></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> __quicksort__ = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> partition </span>) </span>{</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p>Sorts interval [left,right) of the array parameter according to a
 compare method.</p>
 <p>Parameters:</p>
 <ul>
@@ -16,7 +16,7 @@ compare method.</p>
 </li>
 <li><p><strong>right must be an offset.</strong><br/>(outer right bound of the interval to sort)</p>
 </li>
-</ul></div></div><div class="code"><div class="wrapper">	<span class="hljs-keyword">var</span> quicksort = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">( compare , array , left , right )</span> </span>{
+</ul></div></div><div class="code"><div class="wrapper">	<span class="hljs-keyword">var</span> quicksort = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> compare , array , left , right </span>) </span>{
 
 		<span class="hljs-keyword">var</span> pivot ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>in the case where interval [left,right) contains
 only one element we are done!</p></div></div><div class="code"><div class="wrapper">		<span class="hljs-keyword">if</span> ( right - left &lt; <span class="hljs-number">2</span> ) <span class="hljs-keyword">return</span> ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>otherwise we partition interval [left,right) into three disjoint
