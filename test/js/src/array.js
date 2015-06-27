@@ -75,7 +75,7 @@ itertools.product([
 
 [
 	[ "merge" , merging._merge( search.binarysearch, array.copy ) ],
-	[ "binarymerge" , merging._binarymerge( search.binarysearch, array.copy ) ],
+	[ "static hwang-lin" , merging._hlstatic( search.binarysearch, array.copy ) ],
 	[ "tapemerge" , merging.tapemerge ]
 ],
 

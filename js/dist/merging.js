@@ -6,9 +6,10 @@
 
 	var definition = function definition(exports, undefined) {
 
-		/* js/src/_binarymerge.js */
+		/* js/src/array */
+		/* js/src/array/_hlstatic.js */
 
-		var _binarymerge = function _binarymerge(binarysearch, copy) {
+		var _hlstatic = function _hlstatic(binarysearch, copy) {
 
 			/**
     * Merges 2 arrays using the Hwang Lin algorithm.
@@ -26,11 +27,13 @@
 
 				// g is the size of a block
 
-				var g = Math.pow(2, Math.floor(Math.log(m / n) / Math.log(2)));
+				var alpha = Math.floor(Math.log(m / n) / Math.log(2));
+
+				var g = Math.pow(2, alpha);
+
+				// for each block
 
 				blocks: while (bi < bj && (ai + g < aj || (g = aj - ai - 1))) {
-
-					// for each block
 
 					// t is the inner left bound
 					t = ai;
@@ -81,9 +84,9 @@
 			return hwanglin;
 		};
 
-		exports._binarymerge = _binarymerge;
+		exports._hlstatic = _hlstatic;
 
-		/* js/src/_merge.js */
+		/* js/src/array/_merge.js */
 
 		var _merge = function _merge(index, copy) {
 
@@ -111,7 +114,7 @@
 
 		exports._merge = _merge;
 
-		/* js/src/tapemerge.js */
+		/* js/src/array/tapemerge.js */
 
 		var tapemerge = function tapemerge(compare, a, ai, aj, b, bi, bj, c, ci) {
 
@@ -135,6 +138,130 @@
 
 		exports.tapemerge = tapemerge;
 
+		/* js/src/iterable */
+		/* js/src/iterable/iterables.js */
+
+		var iterables = regeneratorRuntime.mark(function iterables(compare, A, B) {
+			var _a, a, _b, b;
+
+			return regeneratorRuntime.wrap(function iterables$(context$3$0) {
+				while (1) switch (context$3$0.prev = context$3$0.next) {
+					case 0:
+
+						A = A[Symbol.iterator]();
+						B = B[Symbol.iterator]();
+
+						_a = A.next();
+
+						if (!_a.done) {
+							context$3$0.next = 6;
+							break;
+						}
+
+						return context$3$0.delegateYield(B, "t0", 5);
+
+					case 5:
+						return context$3$0.abrupt("return");
+
+					case 6:
+						a = _a.value;
+						_b = B.next();
+
+						if (!_b.done) {
+							context$3$0.next = 13;
+							break;
+						}
+
+						context$3$0.next = 11;
+						return a;
+
+					case 11:
+						return context$3$0.delegateYield(A, "t1", 12);
+
+					case 12:
+						return context$3$0.abrupt("return");
+
+					case 13:
+						b = _b.value;
+
+					case 14:
+						if (!true) {
+							context$3$0.next = 38;
+							break;
+						}
+
+						if (!(compare(a, b) <= 0)) {
+							context$3$0.next = 27;
+							break;
+						}
+
+						context$3$0.next = 18;
+						return a;
+
+					case 18:
+
+						_a = A.next();
+
+						if (!_a.done) {
+							context$3$0.next = 24;
+							break;
+						}
+
+						context$3$0.next = 22;
+						return b;
+
+					case 22:
+						return context$3$0.delegateYield(B, "t2", 23);
+
+					case 23:
+						return context$3$0.abrupt("return");
+
+					case 24:
+
+						a = _a.value;
+
+						context$3$0.next = 36;
+						break;
+
+					case 27:
+						context$3$0.next = 29;
+						return b;
+
+					case 29:
+
+						_b = B.next();
+
+						if (!_b.done) {
+							context$3$0.next = 35;
+							break;
+						}
+
+						context$3$0.next = 33;
+						return a;
+
+					case 33:
+						return context$3$0.delegateYield(A, "t3", 34);
+
+					case 34:
+						return context$3$0.abrupt("return");
+
+					case 35:
+
+						b = _b.value;
+
+					case 36:
+						context$3$0.next = 14;
+						break;
+
+					case 38:
+					case "end":
+						return context$3$0.stop();
+				}
+			}, iterables, this);
+		});
+
+		exports.iterables = iterables;
+
 		return exports;
 	};
 	if (typeof exports === "object") {
@@ -147,3 +274,5 @@
 		definition(window["merging"] = {});
 	} else console.error("unable to detect type of module to define for aureooms-js-merging");
 })();
+
+// <= makes merge stable

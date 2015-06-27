@@ -1,7 +1,12 @@
 [js-merging](http://aureooms.github.io/js-merging)
 ==
 
-Sorting code bricks for JavaScript.
+Merging code bricks for JavaScript.
+
+```js
+merging.iterables( compare.increasing , itertools.count( 0 , 2 ) , itertools.count( 1 , 3 ) ) ;
+// 0 1 2 4 4 6 7 8 10 10 ...
+```
 
 [![NPM license](http://img.shields.io/npm/l/aureooms-js-merging.svg?style=flat)](https://raw.githubusercontent.com/aureooms/js-merging/master/LICENSE)
 [![NPM version](http://img.shields.io/npm/v/aureooms-js-merging.svg?style=flat)](https://www.npmjs.org/package/aureooms-js-merging)
@@ -15,54 +20,101 @@ Sorting code bricks for JavaScript.
 [![GitHub issues](http://img.shields.io/github/issues/aureooms/js-merging.svg?style=flat)](https://github.com/aureooms/js-merging/issues)
 [![Inline docs](http://inch-ci.org/github/aureooms/js-merging.svg?branch=master&style=shields)](http://inch-ci.org/github/aureooms/js-merging)
 
-Can be managed through [duo](https://github.com/duojs/duo),
-[component](https://github.com/componentjs/component),
-[bower](https://github.com/bower/bower), or
-[npm](https://github.com/npm/npm).
 
+Can be managed through [jspm](https://github.com/jspm/jspm-cli),
+[duo](https://github.com/duojs/duo),
+[component](https://github.com/componentjs/component),
+[bower](https://github.com/bower/bower),
+[ender](https://github.com/ender-js/Ender),
+[jam](https://github.com/caolan/jam),
+[spm](https://github.com/spmjs/spm),
+and [npm](https://github.com/npm/npm).
+
+## Install
+
+### jspm
+```terminal
+jspm install github:aureooms/js-merging
+# or
+jspm install npm:aureooms-js-merging
+```
+### duo
+No install step needed for duo!
+
+### component
+```terminal
+component install aureooms/js-merging
+```
+
+### bower
+```terminal
+bower install aureooms-js-merging
+```
+
+### ender
+```terminal
+ender add aureooms-js-merging
+```
+
+### jam
+```terminal
+jam install aureooms-js-merging
+```
+
+### spm
+```terminal
+spm install aureooms-js-merging --save
+```
+
+### npm
+```terminal
+npm install aureooms-js-merging --save
+```
+
+## Require
+### jspm
 ```js
-let sort = require( "aureooms-js-merging" ) ;
+let merging = require( "github:aureooms/js-merging" ) ;
+// or
+import merging from 'aureooms-js-merging' ;
+```
+### duo
+```js
+let merging = require( "aureooms/js-merging" ) ;
+```
+
+### component, ender, spm, npm
+```js
+let merging = require( "aureooms-js-merging" ) ;
+```
+
+### bower
+The script tag exposes the global variable `merging`.
+```html
+<script src="bower_components/aureooms-js-merging/js/dist/merging.min.js"></script>
+```
+Alternatively, you can use any tool mentioned [here](http://bower.io/docs/tools/).
+
+### jam
+```js
+require( [ "aureooms-js-merging" ] , function ( merging ) { ... } ) ;
 ```
 
 ## Use
 
 ```js
-let compare = require( "aureooms-js-compare" ) ;
+/** array sequential merge */
+let merge = merging.tapemerge ;
 
-/** quicksort using hoare partitioning */
-let quicksort = sort.__quicksort__( sort.hoare ) ;
+/** iterables sequential merg */
+let merge = merging.iterables ;
 
-let a = [ 1 , 6 , 5 , 3 , 2 , 4 ] ;
-
-quicksort( compare.increasing , a , 0 , a.length ) ;
-
-a ; // [ 1 , 2 , 3 , 4 , 5 , 6 ]
-
-quicksort( compare.decreasing , a , 0 , a.length ) ;
-
-a ; // [ 6 , 5 , 4 , 3 , 2 , 1 ]
-
-// but also
-
-/** binary heapsort */
-let heapsort = sort.__heapsort__( 2 ) ;
-/** ternary heapsort */
-let heapsort = sort.__heapsort__( 3 ) ;
-/** quicksort (lomuto) */
-let quicksort = sort.__quicksort__( sort.lomuto ) ;
-/** dualpivotquicksort (yaroslavskiy) */
-let quicksort = sort.__dualpivotquicksort__( sort.yaroslavskiy ) ;
-/** insertionsort */
-let insertionsort = sort.insertionsort ;
-/** selectionsort */
-let selectionsort = sort.selectionsort ;
-/** bubblesort */
-let bubblesort = sort.bubblesort ;
+/** generic template for a merging algorithm */
+merging.merge ;
+// for example
+let array = require( "aureooms-js-array" ) ;
+let search = require( "aureooms-js-search" ) ;
+let merge = merging._merge( search.binarysearch , array.copy ) ;
+/** Hwang-Lin algorithm (static version)*/
+let merge = merging._hlstatic( search.binarysearch , array.copy ) ;
 ```
-
-## Reference
-
-  - https://kluedo.ub.uni-kl.de/frontdoor/index/index/docId/3463
-  - http://sorting.at
-
-***( forked from [js-sort](https://github.com/aureooms/js-sort) )***

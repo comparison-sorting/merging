@@ -1,6 +1,6 @@
 
 
-let _binarymerge = function ( binarysearch , copy ) {
+let _hlstatic = function ( binarysearch , copy ) {
 
 	/**
 	 * Merges 2 arrays using the Hwang Lin algorithm.
@@ -18,11 +18,13 @@ let _binarymerge = function ( binarysearch , copy ) {
 
 		// g is the size of a block
 
-		let g = Math.pow( 2 , Math.floor( Math.log( m / n ) / Math.log( 2 ) ) ) ;
+		const alpha = Math.floor( Math.log( m / n ) / Math.log( 2 ) ) ;
+
+		let g = Math.pow( 2 , alpha ) ;
+
+		// for each block
 
 		blocks : while ( bi < bj && ( ai + g < aj || ( g = aj - ai - 1 ) ) ) {
-
-			// for each block
 
 			// t is the inner left bound
 			t = ai ;
@@ -78,4 +80,4 @@ let _binarymerge = function ( binarysearch , copy ) {
 
 } ;
 
-exports._binarymerge = _binarymerge ;
+exports._hlstatic = _hlstatic ;
