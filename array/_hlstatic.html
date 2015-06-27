@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><title>array/_hlstatic</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="array/_hlstatic"><meta name="groc-project-path" content="js/src/array/_hlstatic.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-merging"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-merging/blob/master/js/src/array/_hlstatic.js">js/src/array/_hlstatic.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-keyword">let</span> _hlstatic = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> binarysearch , copy </span>) </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Merges 2 arrays using the Hwang Lin algorithm.</p>
+<p>  /!\ aj - ai &gt;= bj - bi</p></div></div><div class="code"><div class="wrapper">	<span class="hljs-keyword">let</span> hwanglin = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> compare , a , ai , aj , b , bi , bj , c , ci </span>) </span>{
+
+		<span class="hljs-keyword">const</span> o = ci - ai - bi ;
+		<span class="hljs-keyword">let</span> t = ai ;
+
+		<span class="hljs-keyword">const</span> m = aj - ai ;
+		<span class="hljs-keyword">const</span> n = bj - ai ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>g is the size of a block</p></div></div><div class="code"><div class="wrapper">		<span class="hljs-keyword">const</span> alpha = <span class="hljs-built_in">Math</span>.floor( <span class="hljs-built_in">Math</span>.log( m / n ) / <span class="hljs-built_in">Math</span>.log( <span class="hljs-number">2</span> ) ) ;
+
+		<span class="hljs-keyword">let</span> g = <span class="hljs-built_in">Math</span>.pow( <span class="hljs-number">2</span> , alpha ) ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>for each block</p></div></div><div class="code"><div class="wrapper">		blocks : <span class="hljs-keyword">while</span> ( bi &lt; bj &amp;&amp; ( ai + g &lt; aj || ( g = aj - ai - <span class="hljs-number">1</span> ) ) ) {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>t is the inner left bound</p></div></div><div class="code"><div class="wrapper">			t = ai ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>ai is the inner right bound</p></div></div><div class="code"><div class="wrapper">			ai = t + g ;
+
+			<span class="hljs-keyword">while</span> ( bi &lt; bj ) {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>we will try to insert b_i in this block</p></div></div><div class="code"><div class="wrapper">				<span class="hljs-keyword">if</span> ( compare( b[bi] , a[ai] ) &gt;= <span class="hljs-number">0</span> ) {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>b_i must be inserted to the left of this block
+we copy the block to the output array and continue
+with the next block</p></div></div><div class="code"><div class="wrapper">					copy( a , t , ai , c , o + t + bi ) ;
+					<span class="hljs-keyword">continue</span> blocks ;
+
+				}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>b_i is inside this block and smaller than a_i
+we search its insertion position using a binary search algorithm</p></div></div><div class="code"><div class="wrapper">				<span class="hljs-keyword">let</span> q = binarysearch( compare , a , t , ai , b[bi] ) ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>z is the insertion position</p></div></div><div class="code"><div class="wrapper">				<span class="hljs-keyword">let</span> z = q[<span class="hljs-number">0</span>] + q[<span class="hljs-number">1</span>] ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>copy everything to the left of the insertion position
+to the output array</p></div></div><div class="code"><div class="wrapper">				copy( a , t , z , c , o + t + bi ) ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>copy b_i to its insertion position in the output array</p></div></div><div class="code"><div class="wrapper">				c[o + bi + z] = b[bi] ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>update the inner left bound of the block</p></div></div><div class="code"><div class="wrapper">				t = z ;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>go to the next b_i</p></div></div><div class="code"><div class="wrapper">				++bi ;
+
+			}
+
+		}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>remaining elements are copied to the output array</p></div></div><div class="code"><div class="wrapper">		copy( a ,  t , aj , c , o +  t + bi ) ;
+		copy( b , bi , bj , c , o + aj + bi ) ;
+
+	} ;
+
+	<span class="hljs-keyword">return</span> hwanglin ;
+
+} ;
+
+exports._hlstatic = _hlstatic ;</div></div></div></div></body></html>
