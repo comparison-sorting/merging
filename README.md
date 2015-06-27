@@ -115,6 +115,7 @@ merging.merge ;
 let array = require( "aureooms-js-array" ) ;
 let search = require( "aureooms-js-search" ) ;
 let merge = merging._merge( search.binarysearch , array.copy ) ;
+
 /** Hwang-Lin algorithm (static version)*/
 let merge = merging._hlstatic( search.binarysearch , array.copy ) ;
 ```
