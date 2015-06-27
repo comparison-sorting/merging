@@ -1,6 +1,6 @@
 {
 	"description": "merging code bricks for JavaScript",
-	"version": "6.0.0",
+	"version": "7.0.0",
 	"repo": "aureooms/js-merging",
 	"scripts": [
 		"js/dist/merging.js"
