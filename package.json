@@ -1,44 +1,45 @@
 {
-	"author": "aureooms",
-	"scripts": {
-		"doc": "./node_modules/.bin/groc",
-		"build": "./node_modules/.bin/aureooms-node-package-build",
-		"test": "./node_modules/.bin/aureooms-node-package-test"
-	},
-	"devDependencies": {
-		"aureooms-node-package": "^4.2.3",
-		"aureooms-js-itertools": "^1.1.1",
-		"aureooms-js-functools": "^2.0.3",
-		"aureooms-js-compare": "^1.4.3",
-		"aureooms-js-random": "^1.0.1",
-		"aureooms-js-search": "^0.0.4",
-		"aureooms-js-array": "^2.2.0"
-	},
-	"main": "js/dist/merging.js",
-	"bugs": {
-		"url": "https://github.com/aureooms/js-merging/issues"
-	},
-	"license": "AGPL-3.0",
-	"homepage": "http://aureooms.github.io/js-merging/",
-	"description": "merging code bricks for JavaScript",
-	"dependencies": {},
-	"keywords": [
-		"bricks",
-		"ender",
-		"hwang",
-		"hwang-lin",
-		"javascript",
-		"js",
-		"lin",
-		"merge",
-		"merging",
-		"tape",
-		"tapemerge"
-	],
-	"name": "aureooms-js-merging",
-	"repository": {
-		"url": "https://github.com/aureooms/js-merging.git",
-		"type": "git"
-	},
-	"version": "6.0.0"
+  "author": "aureooms",
+  "scripts": {
+    "doc": "./node_modules/.bin/groc",
+    "build": "./node_modules/.bin/aureooms-node-package-build",
+    "test": "./node_modules/.bin/aureooms-node-package-test"
+  },
+  "devDependencies": {
+    "aureooms-js-array": "^2.2.1",
+    "aureooms-js-compare": "^1.4.4",
+    "aureooms-js-functools": "^2.0.3",
+    "aureooms-js-itertools": "^1.1.2",
+    "aureooms-js-random": "^1.0.2",
+    "aureooms-js-search": "^0.0.4",
+    "aureooms-js-sort": "^5.0.4",
+    "aureooms-node-package": "^4.2.5"
+  },
+  "main": "js/dist/merging.js",
+  "bugs": {
+    "url": "https://github.com/aureooms/js-merging/issues"
+  },
+  "license": "AGPL-3.0",
+  "homepage": "http://aureooms.github.io/js-merging/",
+  "description": "merging code bricks for JavaScript",
+  "dependencies": {},
+  "keywords": [
+    "bricks",
+    "ender",
+    "hwang",
+    "hwang-lin",
+    "javascript",
+    "js",
+    "lin",
+    "merge",
+    "merging",
+    "tape",
+    "tapemerge"
+  ],
+  "name": "aureooms-js-merging",
+  "repository": {
+    "url": "https://github.com/aureooms/js-merging.git",
+    "type": "git"
+  },
+  "version": "6.0.0"
 }

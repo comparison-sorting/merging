@@ -1,6 +1,7 @@
-var all, util, array, search, random, compare, functools, itertools;
+var all, util, sort, array, search, random, compare, functools, itertools;
 
 util = require( "util" );
+sort = require( "aureooms-js-sort" );
 array = require( "aureooms-js-array" );
 search = require( "aureooms-js-search" );
 random = require( "aureooms-js-random" );
@@ -73,9 +74,9 @@ itertools.product([
 ],
 
 [
-	[ "merge" , sort.__merge__( search.binarysearch, array.copy ) ],
-	[ "binarymerge" , sort.__binarymerge__( search.binarysearch, array.copy ) ],
-	[ "tapemerge" , sort.tapemerge ]
+	[ "merge" , merging._merge( search.binarysearch, array.copy ) ],
+	[ "binarymerge" , merging._binarymerge( search.binarysearch, array.copy ) ],
+	[ "tapemerge" , merging.tapemerge ]
 ],
 
 [[0], [1], [2], [10], [63], [64], [65]],

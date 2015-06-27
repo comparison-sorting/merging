@@ -1,6 +1,6 @@
 
 
-var __binarymerge__ = function ( binarysearch , copy ) {
+let _binarymerge = function ( binarysearch , copy ) {
 
 	/**
 	 * Merges 2 arrays using the Hwang Lin algorithm.
@@ -8,19 +8,17 @@ var __binarymerge__ = function ( binarysearch , copy ) {
 	 *   /!\ aj - ai >= bj - bi
 	 */
 
-	var hwanglin = function ( compare , a , ai , aj , b , bi , bj , c , ci ) {
+	let hwanglin = function ( compare , a , ai , aj , b , bi , bj , c , ci ) {
 
-		var m , n , o , t , g , q , d , z ;
+		const o = ci - ai - bi ;
+		let t = ai ;
 
-		o = ci - ai - bi ;
-		t = ai ;
-
-		m = aj - ai ;
-		n = bj - ai ;
+		const m = aj - ai ;
+		const n = bj - ai ;
 
 		// g is the size of a block
 
-		g = Math.pow( 2 , Math.floor( Math.log( m / n ) / Math.log( 2 ) ) ) ;
+		let g = Math.pow( 2 , Math.floor( Math.log( m / n ) / Math.log( 2 ) ) ) ;
 
 		blocks : while ( bi < bj && ( ai + g < aj || ( g = aj - ai - 1 ) ) ) {
 
@@ -48,10 +46,10 @@ var __binarymerge__ = function ( binarysearch , copy ) {
 
 				// b_i is inside this block and smaller than a_i
 				// we search its insertion position using a binary search algorithm
-				q = binarysearch( compare , a , t , ai , b[bi] ) ;
+				let q = binarysearch( compare , a , t , ai , b[bi] ) ;
 
 				// z is the insertion position
-				z = q[0] + q[1] ;
+				let z = q[0] + q[1] ;
 
 				// copy everything to the left of the insertion position
 				// to the output array
@@ -80,4 +78,4 @@ var __binarymerge__ = function ( binarysearch , copy ) {
 
 } ;
 
-exports.__binarymerge__ = __binarymerge__ ;
+exports._binarymerge = _binarymerge ;
