@@ -1,7 +1,8 @@
 [js-merging](http://aureooms.github.io/js-merging)
 ==
 
-Merging code bricks for JavaScript.
+Merging code bricks for JavaScript. Parent is
+[aureooms/js-sort](https://github.com/aureooms/js-sort).
 
 ```js
 merging.iterables( compare.increasing , count( 0 , 2 ) , count( 1 , 3 ) ) ;
