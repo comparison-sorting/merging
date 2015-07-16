@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en"><head><title>nodes/nodes</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="nodes/nodes"><meta name="groc-project-path" content="js/src/nodes/nodes.js"><meta name="groc-github-url" content="https://github.com/aureooms/js-merging"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/aureooms/js-merging/blob/master/js/src/nodes/nodes.js">js/src/nodes/nodes.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-keyword">const</span> nodes = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> compare , A , m , B , n </span>) </span>{
+
+	<span class="hljs-keyword">if</span> ( m &lt;= <span class="hljs-number">0</span> ) <span class="hljs-keyword">return</span> B ;
+	<span class="hljs-keyword">if</span> ( n &lt;= <span class="hljs-number">0</span> ) <span class="hljs-keyword">return</span> A ;
+
+	<span class="hljs-keyword">if</span> ( compare( A.value , B.value ) &lt;= <span class="hljs-number">0</span> ) {
+
+		A.next = nodes( compare , A.next , --m , B , n ) ;
+
+		<span class="hljs-keyword">return</span> A ;
+
+	}
+
+	<span class="hljs-keyword">else</span> {
+
+		B.next = nodes( compare , A , m , B.next , --n ) ;
+
+		<span class="hljs-keyword">return</span> B ;
+	}
+
+} ;
+
+exports.nodes = nodes ;</div></div></div></div></body></html>
