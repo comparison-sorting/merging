@@ -41,7 +41,7 @@
 		"url": "https://github.com/aureooms/js-merging.git",
 		"type": "git"
 	},
-	"version": "7.0.1",
+	"version": "7.1.0",
 	"spm": {
 		"main": "js/dist/merging.js"
 	}
