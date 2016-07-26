@@ -6,15 +6,15 @@
     "test": "./node_modules/.bin/aureooms-node-package-test"
   },
   "devDependencies": {
-    "aureooms-js-array": "^2.2.1",
+    "aureooms-js-array": "^3.1.0",
     "aureooms-js-compare": "^1.4.4",
     "aureooms-js-functools": "^2.0.3",
     "aureooms-js-itertools": "^1.1.2",
     "aureooms-js-random": "^1.0.2",
     "aureooms-js-search": "^0.0.4",
     "aureooms-js-sll": "^1.0.1",
-    "aureooms-js-sort": "^5.0.4",
-    "aureooms-node-package": "^4.2.5"
+    "aureooms-js-sort": "^6.0.0",
+    "aureooms-node-package": "^6.0.1"
   },
   "main": "js/dist/merging.js",
   "bugs": {
