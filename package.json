@@ -6,14 +6,14 @@
     "test": "./node_modules/.bin/aureooms-node-package-test"
   },
   "devDependencies": {
-    "aureooms-js-array": "^3.1.0",
-    "aureooms-js-compare": "^1.4.4",
-    "aureooms-js-functools": "^2.0.3",
-    "aureooms-js-itertools": "^3.0.0",
-    "aureooms-js-random": "^2.0.0",
-    "aureooms-js-search": "^0.0.4",
-    "aureooms-js-sll": "^1.0.1",
-    "aureooms-js-sort": "^7.0.0",
+    "@aureooms/js-array": "^3.1.0",
+    "@aureooms/js-compare": "^1.4.4",
+    "@aureooms/js-functools": "^2.0.3",
+    "@aureooms/js-itertools": "^3.0.0",
+    "@aureooms/js-random": "^2.0.0",
+    "@aureooms/js-search": "^0.0.4",
+    "@aureooms/js-sll": "^1.0.1",
+    "@aureooms/js-sort": "^7.0.0",
     "aureooms-node-package": "^6.0.1"
   },
   "main": "js/dist/merging.js",
@@ -37,7 +37,7 @@
     "tape",
     "tapemerge"
   ],
-  "name": "aureooms-js-merging",
+  "name": "@aureooms/js-merging",
   "repository": {
     "url": "https://github.com/aureooms/js-merging.git",
     "type": "git"
