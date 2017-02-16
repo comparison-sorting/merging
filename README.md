@@ -9,7 +9,7 @@ merging.iterables( compare.increasing , count( 0 , 2 ) , count( 1 , 3 ) ) ;
 // 0 1 2 4 4 6 7 8 10 10 ...
 ```
 
-[![NPM license](https://img.shields.io/npm/l/@aureooms/js-merging.svg?style=flat)](https://raw.githubusercontent.com/aureooms/js-merging/master/LICENSE)
+[![License](https://img.shields.io/github/license/aureooms/js-merging.svg?style=flat)](https://raw.githubusercontent.com/aureooms/js-merging/master/LICENSE)
 [![NPM version](https://img.shields.io/npm/v/@aureooms/js-merging.svg?style=flat)](https://www.npmjs.org/package/@aureooms/js-merging)
 [![Bower version](https://img.shields.io/bower/v/@aureooms/js-merging.svg?style=flat)](http://bower.io/search/?q=@aureooms/js-merging)
 [![Build Status](https://img.shields.io/travis/aureooms/js-merging.svg?style=flat)](https://travis-ci.org/aureooms/js-merging)
