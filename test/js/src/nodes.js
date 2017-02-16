@@ -1,8 +1,8 @@
 
-var sll = require( "aureooms-js-sll" ) ;
-var compare = require( "aureooms-js-compare" ) ;
-var itertools = require( "aureooms-js-itertools" ) ;
-var functools = require( "aureooms-js-functools" ) ;
+var sll = require( "@aureooms/js-sll" ) ;
+var compare = require( "@aureooms/js-compare" ) ;
+var itertools = require( "@aureooms/js-itertools" ) ;
+var functools = require( "@aureooms/js-functools" ) ;
 
 var w = sll.list ;
 var r = functools.compose( [ itertools.list , sll.iter ] ) ;

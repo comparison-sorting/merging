@@ -1,13 +1,13 @@
 var all, util, sort, array, search, random, compare, functools, itertools;
 
 util = require( "util" );
-sort = require( "aureooms-js-sort" );
-array = require( "aureooms-js-array" );
-search = require( "aureooms-js-search" );
-random = require( "aureooms-js-random" );
-compare = require( "aureooms-js-compare" );
-functools = require( "aureooms-js-functools" );
-itertools = require( "aureooms-js-itertools" );
+sort = require( "@aureooms/js-sort" );
+array = require( "@aureooms/js-array" );
+search = require( "@aureooms/js-search" );
+random = require( "@aureooms/js-random" );
+compare = require( "@aureooms/js-compare" );
+functools = require( "@aureooms/js-functools" );
+itertools = require( "@aureooms/js-itertools" );
 
 all = function ( comparename, compare, mergename, merge, m, n, type ) {
 

@@ -1,6 +1,6 @@
 
-var compare = require( "aureooms-js-compare" ) ;
-var itertools = require( "aureooms-js-itertools" ) ;
+var compare = require( "@aureooms/js-compare" ) ;
+var itertools = require( "@aureooms/js-itertools" ) ;
 
 
 test( "iterables" , function ( ) {
