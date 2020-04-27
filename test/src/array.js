@@ -2,21 +2,17 @@ import test from 'ava';
 import * as merging from '../../src';
 
 import util from "util" ;
-import sort from "@aureooms/js-sort" ;
-import array from "@aureooms/js-array" ;
+import * as sort from "@aureooms/js-sort" ;
+import * as array from "@aureooms/js-array" ;
 import search from "@aureooms/js-search" ;
-import random from "@aureooms/js-random" ;
+import * as random from "@aureooms/js-random" ;
 import compare from "@aureooms/js-compare" ;
 import functools from "@aureooms/js-functools" ;
-import itertools from "@aureooms/js-itertools" ;
+import * as itertools from "@aureooms/js-itertools" ;
 
 function all ( comparename, compare, mergename, merge, m, n, type ) {
 
-	var title;
-
-	title = util.format( "%s (new %s(%d, %d), %s)", mergename, type.name, m, n, comparename );
-
-	console.log( title );
+	const title = util.format( "%s (new %s(%d, %d), %s)", mergename, type.name, m, n, comparename );
 
 test( title, t => {
 

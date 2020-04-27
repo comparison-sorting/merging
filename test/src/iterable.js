@@ -2,7 +2,7 @@ import test from 'ava';
 import * as merging from '../../src';
 
 import compare from "@aureooms/js-compare" ;
-import itertools from "@aureooms/js-itertools" ;
+import * as itertools from "@aureooms/js-itertools" ;
 
 
 test( "iterables" , t => {
