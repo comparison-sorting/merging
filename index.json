@@ -1,0 +1,959 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/array/_hlstatic.js",
+    "content": "\n\nexport function _hlstatic ( binarysearch , copy ) {\n\n\t/**\n\t * Merges 2 arrays using the Hwang Lin algorithm.\n\t *\n\t *   /!\\ aj - ai >= bj - bi\n\t */\n\n\tlet hwanglin = function ( compare , a , ai , aj , b , bi , bj , c , ci ) {\n\n\t\tconst o = ci - ai - bi ;\n\t\tlet t = ai ;\n\n\t\tconst m = aj - ai ;\n\t\tconst n = bj - ai ;\n\n\t\t// g is the size of a block\n\n\t\tconst alpha = Math.floor( Math.log( m / n ) / Math.log( 2 ) ) ;\n\n\t\tlet g = Math.pow( 2 , alpha ) ;\n\n\t\t// for each block\n\n\t\tblocks : while ( bi < bj && ( ai + g < aj || ( g = aj - ai - 1 ) ) ) {\n\n\t\t\t// t is the inner left bound\n\t\t\tt = ai ;\n\n\t\t\t// ai is the inner right bound\n\t\t\tai = t + g ;\n\n\t\t\twhile ( bi < bj ) {\n\n\t\t\t\t// we will try to insert b_i in this block\n\n\t\t\t\tif ( compare( b[bi] , a[ai] ) >= 0 ) {\n\n\t\t\t\t\t// b_i must be inserted to the left of this block\n\t\t\t\t\t// we copy the block to the output array and continue\n\t\t\t\t\t// with the next block\n\t\t\t\t\tcopy( a , t , ai , c , o + t + bi ) ;\n\t\t\t\t\tcontinue blocks ;\n\n\t\t\t\t}\n\n\t\t\t\t// b_i is inside this block and smaller than a_i\n\t\t\t\t// we search its insertion position using a binary search algorithm\n\t\t\t\tlet q = binarysearch( compare , a , t , ai , b[bi] ) ;\n\n\t\t\t\t// z is the insertion position\n\t\t\t\tlet z = q[0] + q[1] ;\n\n\t\t\t\t// copy everything to the left of the insertion position\n\t\t\t\t// to the output array\n\t\t\t\tcopy( a , t , z , c , o + t + bi ) ;\n\n\t\t\t\t// copy b_i to its insertion position in the output array\n\t\t\t\tc[o + bi + z] = b[bi] ;\n\n\t\t\t\t// update the inner left bound of the block\n\t\t\t\tt = z ;\n\n\t\t\t\t// go to the next b_i\n\t\t\t\t++bi ;\n\n\t\t\t}\n\n\t\t}\n\n\t\t// remaining elements are copied to the output array\n\t\tcopy( a ,  t , aj , c , o +  t + bi ) ;\n\t\tcopy( b , bi , bj , c , o + aj + bi ) ;\n\n\t} ;\n\n\treturn hwanglin ;\n\n}\n\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-merging/src/array/_hlstatic.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "function",
+    "name": "_hlstatic",
+    "memberof": "src/array/_hlstatic.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/array/_hlstatic.js~_hlstatic",
+    "access": "private",
+    "export": true,
+    "importPath": "@aureooms/js-merging/src/array/_hlstatic.js",
+    "importStyle": "{_hlstatic}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "binarysearch",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "copy",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 50,
+    "kind": "file",
+    "name": "src/array/_merge.js",
+    "content": "\n\nexport function _merge ( index, copy ) {\n\n\tlet merge = function ( compare, a, ai, aj, b, bi, bj, c, ci ) {\n\n\t\tlet o = ci - ai - bi;\n\t\tlet t = ai;\n\n\t\tfor ( ; bi < bj ; ++bi ) {\n\n\t\t\tlet q = index( compare, a, ai, aj, b[bi] );\n\t\t\tai = q[0] + q[1];\n\n\t\t\tcopy( a, t, ai, c, o + t + bi );\n\n\t\t\tc[o + ai + bi] = b[bi];\n\t\t\tt = ai;\n\t\t}\n\n\t\tcopy( a, t, aj, c, o + t + bi );\n\t};\n\n\treturn merge;\n\n}\n\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-merging/src/array/_merge.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 51,
+    "kind": "function",
+    "name": "_merge",
+    "memberof": "src/array/_merge.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/array/_merge.js~_merge",
+    "access": "private",
+    "export": true,
+    "importPath": "@aureooms/js-merging/src/array/_merge.js",
+    "importStyle": "{_merge}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "index",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "copy",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "file",
+    "name": "src/array/index.js",
+    "content": "export * from './_hlstatic' ;\nexport * from './_merge' ;\nexport * from './tapemerge' ;\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-merging/src/array/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 53,
+    "kind": "file",
+    "name": "src/array/tapemerge.js",
+    "content": "\n\nexport function tapemerge ( compare , a , ai , aj , b , bi , bj , c , ci ) {\n\n\tvar cj ;\n\n\tcj = ci + aj - ai + bj - bi ;\n\n\tfor ( ; ci < cj ; ++ci ) {\n\n\t\tif ( bi >= bj || ( ai < aj && compare( a[ai] , b[bi] ) <= 0 ) ) {\n\n\t\t\tc[ci] = a[ai] ;\n\t\t\t++ai ;\n\n\t\t}\n\n\t\telse {\n\n\t\t\tc[ci] = b[bi] ;\n\t\t\t++bi ;\n\n\t\t}\n\t}\n\n}\n\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-merging/src/array/tapemerge.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 54,
+    "kind": "function",
+    "name": "tapemerge",
+    "memberof": "src/array/tapemerge.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/array/tapemerge.js~tapemerge",
+    "access": "public",
+    "export": true,
+    "importPath": "@aureooms/js-merging/src/array/tapemerge.js",
+    "importStyle": "{tapemerge}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "compare",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "a",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "ai",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "aj",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "b",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "bi",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "bj",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "c",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "ci",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 55,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "export * from './array' ;\nexport * from './iterable' ;\nexport * from './nodes' ;\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-merging/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 56,
+    "kind": "file",
+    "name": "src/iterable/index.js",
+    "content": "export * from './iterables' ;\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-merging/src/iterable/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 57,
+    "kind": "file",
+    "name": "src/iterable/iterables.js",
+    "content": "\nexport function* iterables ( compare , A , B ) {\n\n\tA = A[Symbol.iterator]( ) ;\n\tB = B[Symbol.iterator]( ) ;\n\n\tlet _a = A.next( ) ;\n\n\tif ( _a.done ) { yield* B ; return ; }\n\n\tlet a = _a.value ;\n\n\tlet _b = B.next( ) ;\n\n\tif ( _b.done ) { yield a ; yield* A ; return ; }\n\n\tlet b = _b.value ;\n\n\twhile ( true ) {\n\n\t\t// <= makes merge stable\n\t\tif ( compare( a , b ) <= 0 ) {\n\n\t\t\tyield a ;\n\n\t\t\t_a = A.next( ) ;\n\n\t\t\tif ( _a.done ) {\n\n\t\t\t\tyield b ;\n\t\t\t\tyield* B ;\n\t\t\t\treturn ;\n\n\t\t\t}\n\n\t\t\ta = _a.value ;\n\n\t\t}\n\n\t\telse {\n\n\t\t\tyield b ;\n\n\t\t\t_b = B.next( ) ;\n\n\t\t\tif ( _b.done ) {\n\n\t\t\t\tyield a ;\n\t\t\t\tyield* A ;\n\t\t\t\treturn ;\n\n\t\t\t}\n\n\t\t\tb = _b.value ;\n\n\t\t}\n\n\t}\n\n}\n\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-merging/src/iterable/iterables.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 58,
+    "kind": "function",
+    "name": "iterables",
+    "memberof": "src/iterable/iterables.js",
+    "generator": true,
+    "async": false,
+    "static": true,
+    "longname": "src/iterable/iterables.js~iterables",
+    "access": "public",
+    "export": true,
+    "importPath": "@aureooms/js-merging/src/iterable/iterables.js",
+    "importStyle": "{iterables}",
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "params": [
+      {
+        "name": "compare",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "A",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "B",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 59,
+    "kind": "file",
+    "name": "src/nodes/index.js",
+    "content": "export * from './nodes' ;\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-merging/src/nodes/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 60,
+    "kind": "file",
+    "name": "src/nodes/nodes.js",
+    "content": "\nexport function nodes ( compare , A , m , B , n ) {\n\n\tif ( m <= 0 ) return B ;\n\tif ( n <= 0 ) return A ;\n\n\tif ( compare( A.value , B.value ) <= 0 ) {\n\n\t\tA.next = nodes( compare , A.next , --m , B , n ) ;\n\n\t\treturn A ;\n\n\t}\n\n\telse {\n\n\t\tB.next = nodes( compare , A , m , B.next , --n ) ;\n\n\t\treturn B ;\n\t}\n\n}\n\n",
+    "static": true,
+    "longname": "/home/aureooms/dev/js/js-merging/src/nodes/nodes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 61,
+    "kind": "function",
+    "name": "nodes",
+    "memberof": "src/nodes/nodes.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/nodes/nodes.js~nodes",
+    "access": "public",
+    "export": true,
+    "importPath": "@aureooms/js-merging/src/nodes/nodes.js",
+    "importStyle": "{nodes}",
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "params": [
+      {
+        "name": "compare",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "A",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "m",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "B",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "n",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "index",
+    "content": "[@aureooms/js-merging](https://aureooms.github.io/js-merging)\n==\n\nMerging library for JavaScript.\nSee [docs](https://aureooms.github.io/js-merging).\nParent is [@aureooms/js-sort](https://github.com/aureooms/js-sort).\n\n```js\nmerging.iterables( compare.increasing , count( 0 , 2 ) , count( 1 , 3 ) ) ;\n// 0 1 2 4 4 6 7 8 10 10 ...\n```\n\n[![License](https://img.shields.io/github/license/aureooms/js-merging.svg)](https://raw.githubusercontent.com/aureooms/js-merging/master/LICENSE)\n[![Version](https://img.shields.io/npm/v/@aureooms/js-merging.svg)](https://www.npmjs.org/package/@aureooms/js-merging)\n[![Build](https://img.shields.io/travis/aureooms/js-merging/master.svg)](https://travis-ci.org/aureooms/js-merging/branches)\n[![Dependencies](https://img.shields.io/david/aureooms/js-merging.svg)](https://david-dm.org/aureooms/js-merging)\n[![Dev dependencies](https://img.shields.io/david/dev/aureooms/js-merging.svg)](https://david-dm.org/aureooms/js-merging?type=dev)\n[![GitHub issues](https://img.shields.io/github/issues/aureooms/js-merging.svg)](https://github.com/aureooms/js-merging/issues)\n[![Downloads](https://img.shields.io/npm/dm/@aureooms/js-merging.svg)](https://www.npmjs.org/package/@aureooms/js-merging)\n\n[![Code issues](https://img.shields.io/codeclimate/issues/aureooms/js-merging.svg)](https://codeclimate.com/github/aureooms/js-merging/issues)\n[![Code maintainability](https://img.shields.io/codeclimate/maintainability/aureooms/js-merging.svg)](https://codeclimate.com/github/aureooms/js-merging/trends/churn)\n[![Code coverage (cov)](https://img.shields.io/codecov/c/gh/aureooms/js-merging/master.svg)](https://codecov.io/gh/aureooms/js-merging)\n[![Code technical debt](https://img.shields.io/codeclimate/tech-debt/aureooms/js-merging.svg)](https://codeclimate.com/github/aureooms/js-merging/trends/technical_debt)\n[![Documentation](http://aureooms.github.io/js-merging//badge.svg)](http://aureooms.github.io/js-merging//source.html)\n[![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-merging)](https://bundlephobia.com/result?p=@aureooms/js-merging)\n",
+    "longname": "/home/aureooms/dev/js/js-merging/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"@aureooms/js-merging\",\n  \"description\": \"merging code bricks for JavaScript\",\n  \"version\": \"7.1.0\",\n  \"author\": \"aureooms\",\n  \"ava\": {\n    \"files\": [\n      \"test/src/**/*\"\n    ],\n    \"require\": [\n      \"@babel/polyfill\",\n      \"@babel/register\"\n    ],\n    \"timeout\": \"1m\"\n  },\n  \"babel\": {\n    \"presets\": [\n      \"@babel/preset-env\"\n    ],\n    \"plugins\": [\n      \"@babel/plugin-proposal-async-generator-functions\"\n    ],\n    \"env\": {\n      \"development\": {\n        \"sourceMaps\": \"inline\"\n      }\n    }\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/aureooms/js-merging/issues\"\n  },\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@aureooms/js-array\": \"^4.0.0\",\n    \"@aureooms/js-compare\": \"^1.4.5\",\n    \"@aureooms/js-functools\": \"^2.0.3\",\n    \"@aureooms/js-itertools\": \"^3.4.0\",\n    \"@aureooms/js-random\": \"^2.0.0\",\n    \"@aureooms/js-search\": \"^0.0.4\",\n    \"@aureooms/js-sll\": \"^1.0.2\",\n    \"@aureooms/js-sort\": \"^7.0.0\",\n    \"@babel/cli\": \"7.8.4\",\n    \"@babel/core\": \"7.9.0\",\n    \"@babel/polyfill\": \"7.8.7\",\n    \"@babel/preset-env\": \"7.9.5\",\n    \"@babel/register\": \"7.9.0\",\n    \"ava\": \"3.8.1\",\n    \"coveralls\": \"3.1.0\",\n    \"esdoc\": \"1.1.0\",\n    \"esdoc-inject-script-plugin\": \"1.0.0\",\n    \"esdoc-inject-style-plugin\": \"1.0.0\",\n    \"esdoc-standard-plugin\": \"1.0.0\",\n    \"np\": \"6.2.2\",\n    \"nyc\": \"15.0.1\"\n  },\n  \"files\": [\n    \"lib\"\n  ],\n  \"homepage\": \"http://aureooms.github.io/js-merging/\",\n  \"keywords\": [\n    \"bricks\",\n    \"ender\",\n    \"hwang\",\n    \"hwang-lin\",\n    \"javascript\",\n    \"js\",\n    \"lin\",\n    \"merge\",\n    \"merging\",\n    \"tape\",\n    \"tapemerge\"\n  ],\n  \"license\": \"AGPL-3.0\",\n  \"main\": \"lib/index.js\",\n  \"repository\": {\n    \"url\": \"https://github.com/aureooms/js-merging.git\",\n    \"type\": \"git\"\n  },\n  \"scripts\": {\n    \"build\": \"rm -rf lib && babel src -d lib\",\n    \"cover\": \"nyc --reporter=lcov npm test\",\n    \"esdoc\": \"esdoc\",\n    \"prepare\": \"npm run build\",\n    \"release\": \"np\",\n    \"test\": \"ava\"\n  }\n}\n",
+    "longname": "/home/aureooms/dev/js/js-merging/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manualIndex",
+    "globalIndex": false,
+    "content": null,
+    "longname": "",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/home/aureooms/dev/js/js-merging/doc/manual/overview.md",
+    "name": "./doc/manual/overview.md",
+    "content": "# Overview\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/home/aureooms/dev/js/js-merging/doc/manual/installation.md",
+    "name": "./doc/manual/installation.md",
+    "content": "# Installation\n\nCan be managed using\n[yarn](https://yarnpkg.com/en/docs),\n[npm](https://docs.npmjs.com),\nor [jspm](https://jspm.org/docs).\n\n\n### yarn\n```terminal\nyarn add @aureooms/js-merging\n```\n\n### npm\n```terminal\nnpm install @aureooms/js-merging --save\n```\n\n### jspm\n```terminal\njspm install npm:@aureooms/js-merging\n```\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/home/aureooms/dev/js/js-merging/doc/manual/usage.md",
+    "name": "./doc/manual/usage.md",
+    "content": "# Usage\n\n> :warning: The code needs a ES2015+ polyfill to run (`regeneratorRuntime`),\n> for instance [@babel/polyfill](https://babeljs.io/docs/usage/polyfill).\n\nFirst, require the polyfill at the entry point of your application\n```js\nrequire( '@babel/polyfill' ) ;\n// or\nimport '@babel/polyfill' ;\n```\n\nThen, import the library where needed\n```js\nconst merging = require( '@aureooms/js-merging' ) ;\n// or\nimport * as merging from '@aureooms/js-merging' ;\n```\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/home/aureooms/dev/js/js-merging/doc/manual/example.md",
+    "name": "./doc/manual/example.md",
+    "content": "# Examples\n\n> More examples in [the test files](https://github.com/aureooms/js-merging/tree/master/test/src).\n\n```js\n/** array sequential merge */\nlet merge = merging.tapemerge ;\n\n/** iterables sequential merg */\nlet merge = merging.iterables ;\n\n/** generic template for a merging algorithm */\nmerging.merge ;\n// for example\nlet array = require( \"@aureooms/js-array\" ) ;\nlet search = require( \"@aureooms/js-search\" ) ;\nlet merge = merging._merge( search.binarysearch , array.copy ) ;\n\n/** Hwang-Lin algorithm (static version)*/\nlet merge = merging._hlstatic( search.binarysearch , array.copy ) ;\n```\n",
+    "static": true,
+    "access": "public"
+  }
+]
