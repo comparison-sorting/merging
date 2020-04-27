@@ -1,8 +1,9 @@
-[js-merging](http://aureooms.github.io/js-merging)
+[@aureooms/js-merging](https://aureooms.github.io/js-merging)
 ==
 
-Merging code bricks for JavaScript. Parent is
-[aureooms/js-sort](https://github.com/aureooms/js-sort).
+Merging library for JavaScript.
+See [docs](https://aureooms.github.io/js-merging).
+Parent is [@aureooms/js-sort](https://github.com/aureooms/js-sort).
 
 ```js
 merging.iterables( compare.increasing , count( 0 , 2 ) , count( 1 , 3 ) ) ;
@@ -23,103 +24,3 @@ merging.iterables( compare.increasing , count( 0 , 2 ) , count( 1 , 3 ) ) ;
 [![Code technical debt](https://img.shields.io/codeclimate/tech-debt/aureooms/js-merging.svg)](https://codeclimate.com/github/aureooms/js-merging/trends/technical_debt)
 [![Documentation](http://aureooms.github.io/js-merging//badge.svg)](http://aureooms.github.io/js-merging//source.html)
 [![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-merging)](https://bundlephobia.com/result?p=@aureooms/js-merging)
-
-
-Can be managed through [jspm](https://github.com/jspm/jspm-cli),
-[duo](https://github.com/duojs/duo),
-[component](https://github.com/componentjs/component),
-[bower](https://github.com/bower/bower),
-[ender](https://github.com/ender-js/Ender),
-[jam](https://github.com/caolan/jam),
-[spm](https://github.com/spmjs/spm),
-and [npm](https://github.com/npm/npm).
-
-## Install
-
-### jspm
-```terminal
-jspm install github:aureooms/js-merging
-# or
-jspm install npm:@aureooms/js-merging
-```
-### duo
-No install step needed for duo!
-
-### component
-```terminal
-component install aureooms/js-merging
-```
-
-### bower
-```terminal
-bower install @aureooms/js-merging
-```
-
-### ender
-```terminal
-ender add @aureooms/js-merging
-```
-
-### jam
-```terminal
-jam install @aureooms/js-merging
-```
-
-### spm
-```terminal
-spm install @aureooms/js-merging --save
-```
-
-### npm
-```terminal
-npm install @aureooms/js-merging --save
-```
-
-## Require
-### jspm
-```js
-let merging = require( "github:aureooms/js-merging" ) ;
-// or
-import merging from '@aureooms/js-merging' ;
-```
-### duo
-```js
-let merging = require( "aureooms/js-merging" ) ;
-```
-
-### component, ender, spm, npm
-```js
-let merging = require( "@aureooms/js-merging" ) ;
-```
-
-### bower
-The script tag exposes the global variable `merging`.
-```html
-<script src="bower_components/@aureooms/js-merging/js/dist/merging.min.js"></script>
-```
-Alternatively, you can use any tool mentioned [here](http://bower.io/docs/tools/).
-
-### jam
-```js
-require( [ "@aureooms/js-merging" ] , function ( merging ) { ... } ) ;
-```
-
-## Use
-
-```js
-/** array sequential merge */
-let merge = merging.tapemerge ;
-
-/** iterables sequential merg */
-let merge = merging.iterables ;
-
-/** generic template for a merging algorithm */
-merging.merge ;
-// for example
-let array = require( "@aureooms/js-array" ) ;
-let search = require( "@aureooms/js-search" ) ;
-let merge = merging._merge( search.binarysearch , array.copy ) ;
-
-/** Hwang-Lin algorithm (static version)*/
-let merge = merging._hlstatic( search.binarysearch , array.copy ) ;
-```
