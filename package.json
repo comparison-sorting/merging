@@ -3,7 +3,8 @@
   "scripts": {
     "build": "rm -rf lib && babel src -d lib",
     "test": "ava",
-    "esdoc": "esdoc"
+    "esdoc": "esdoc",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@aureooms/js-array": "^3.1.0",
