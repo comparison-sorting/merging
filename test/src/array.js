@@ -1,15 +1,16 @@
-var all, util, sort, array, search, random, compare, functools, itertools;
+import test from 'ava';
+import * as merging from '../../src';
 
-util = require( "util" );
-sort = require( "@aureooms/js-sort" );
-array = require( "@aureooms/js-array" );
-search = require( "@aureooms/js-search" );
-random = require( "@aureooms/js-random" );
-compare = require( "@aureooms/js-compare" );
-functools = require( "@aureooms/js-functools" );
-itertools = require( "@aureooms/js-itertools" );
+import util from "util" ;
+import sort from "@aureooms/js-sort" ;
+import array from "@aureooms/js-array" ;
+import search from "@aureooms/js-search" ;
+import random from "@aureooms/js-random" ;
+import compare from "@aureooms/js-compare" ;
+import functools from "@aureooms/js-functools" ;
+import itertools from "@aureooms/js-itertools" ;
 
-all = function ( comparename, compare, mergename, merge, m, n, type ) {
+function all ( comparename, compare, mergename, merge, m, n, type ) {
 
 	var title;
 
@@ -17,7 +18,7 @@ all = function ( comparename, compare, mergename, merge, m, n, type ) {
 
 	console.log( title );
 
-	test( title, function () {
+test( title, t => {
 
 		var a, b, d, j;
 
@@ -40,10 +41,10 @@ all = function ( comparename, compare, mergename, merge, m, n, type ) {
 		// MERGE ARRAYS
 		merge( compare, a, 0, m, b, 0, n, d, 0 );
 
-		deepEqual( sort.issorted( compare , d , 0 , n + m ) , n + m , "check sorted" );
-		deepEqual( a.length, m, "check length a" );
-		deepEqual( b.length, n, "check length b" );
-		deepEqual( d.length, n + m, "check length d" );
+		t.deepEqual( sort.issorted( compare , d , 0 , n + m ) , n + m , "check sorted" );
+		t.deepEqual( a.length, m, "check length a" );
+		t.deepEqual( b.length, n, "check length b" );
+		t.deepEqual( d.length, n + m, "check length d" );
 	});
 };
 

@@ -1,29 +1,31 @@
+import test from 'ava';
+import * as merging from '../../src';
 
-var compare = require( "@aureooms/js-compare" ) ;
-var itertools = require( "@aureooms/js-itertools" ) ;
+import compare from "@aureooms/js-compare" ;
+import itertools from "@aureooms/js-itertools" ;
 
 
-test( "iterables" , function ( ) {
+test( "iterables" , t => {
 
-	deepEqual(
+	t.deepEqual(
 		itertools.list( merging.iterables( compare.increasing , [ 1 , 5 ] , [ 2 , 3 , 4 ] ) ) ,
 		[ 1 , 2 , 3 , 4 , 5 ] ,
 		" 1 2 3 4 5"
 	) ;
 
-	deepEqual(
+	t.deepEqual(
 		itertools.list( merging.iterables( compare.increasing , [ 1 ] , [ 2 , 3 , 4 ] ) ) ,
 		[ 1 , 2 , 3 , 4 ] ,
 		" 1 2 3 4"
 	) ;
 
-	deepEqual(
+	t.deepEqual(
 		itertools.list( merging.iterables( compare.increasing , [ 1 , 5 ] , [ ] ) ) ,
 		[ 1 , 5 ] ,
 		" 1 5 "
 	) ;
 
-	deepEqual(
+	t.deepEqual(
 		itertools.list( merging.iterables( compare.increasing , [ ] , [ 2 , 3 , 4 ] ) ) ,
 		[ 2 , 3 , 4 ] ,
 		" 2 3 4 "
