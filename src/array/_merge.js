@@ -1,6 +1,6 @@
 
 
-let _merge = function ( index, copy ) {
+export function _merge ( index, copy ) {
 
 	let merge = function ( compare, a, ai, aj, b, bi, bj, c, ci ) {
 
@@ -23,6 +23,5 @@ let _merge = function ( index, copy ) {
 
 	return merge;
 
-};
+}
 
-exports._merge = _merge;

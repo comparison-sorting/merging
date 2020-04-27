@@ -1,5 +1,5 @@
 
-let iterables = function* ( compare , A , B ) {
+export function iterables* ( compare , A , B ) {
 
 	A = A[Symbol.iterator]( ) ;
 	B = B[Symbol.iterator]( ) ;
@@ -57,6 +57,5 @@ let iterables = function* ( compare , A , B ) {
 
 	}
 
-} ;
+}
 
-exports.iterables = iterables ;

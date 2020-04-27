@@ -1,6 +1,6 @@
 
 
-let _hlstatic = function ( binarysearch , copy ) {
+export function _hlstatic ( binarysearch , copy ) {
 
 	/**
 	 * Merges 2 arrays using the Hwang Lin algorithm.
@@ -78,6 +78,5 @@ let _hlstatic = function ( binarysearch , copy ) {
 
 	return hwanglin ;
 
-} ;
+}
 
-exports._hlstatic = _hlstatic ;

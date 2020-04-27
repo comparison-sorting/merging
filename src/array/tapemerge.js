@@ -1,6 +1,6 @@
 
 
-var tapemerge = function ( compare , a , ai , aj , b , bi , bj , c , ci ) {
+export function tapemerge ( compare , a , ai , aj , b , bi , bj , c , ci ) {
 
 	var cj ;
 
@@ -23,6 +23,5 @@ var tapemerge = function ( compare , a , ai , aj , b , bi , bj , c , ci ) {
 		}
 	}
 
-};
+}
 
-exports.tapemerge = tapemerge;

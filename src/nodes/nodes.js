@@ -1,5 +1,5 @@
 
-const nodes = function ( compare , A , m , B , n ) {
+export function nodes ( compare , A , m , B , n ) {
 
 	if ( m <= 0 ) return B ;
 	if ( n <= 0 ) return A ;
@@ -19,6 +19,5 @@ const nodes = function ( compare , A , m , B , n ) {
 		return B ;
 	}
 
-} ;
+}
 
-exports.nodes = nodes ;
