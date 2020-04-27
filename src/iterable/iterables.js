@@ -1,5 +1,5 @@
 
-export function iterables* ( compare , A , B ) {
+export function* iterables ( compare , A , B ) {
 
 	A = A[Symbol.iterator]( ) ;
 	B = B[Symbol.iterator]( ) ;
