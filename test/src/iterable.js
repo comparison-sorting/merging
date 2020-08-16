@@ -1,7 +1,7 @@
 import test from 'ava';
 import * as merging from '../../src';
 
-import compare from "@aureooms/js-compare" ;
+import * as compare from "@aureooms/js-compare" ;
 import * as itertools from "@aureooms/js-itertools" ;
 
 

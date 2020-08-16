@@ -6,7 +6,7 @@ import * as sort from "@aureooms/js-sort" ;
 import * as array from "@aureooms/js-array" ;
 import search from "@aureooms/js-search" ;
 import * as random from "@aureooms/js-random" ;
-import compare from "@aureooms/js-compare" ;
+import * as compare from "@aureooms/js-compare" ;
 import functools from "@aureooms/js-functools" ;
 import * as itertools from "@aureooms/js-itertools" ;
 

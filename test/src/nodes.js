@@ -2,7 +2,7 @@ import test from 'ava';
 import * as merging from '../../src';
 
 import sll from "@aureooms/js-sll" ;
-import compare from "@aureooms/js-compare" ;
+import * as compare from "@aureooms/js-compare" ;
 import * as itertools from "@aureooms/js-itertools" ;
 import functools from "@aureooms/js-functools" ;
 
