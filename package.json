@@ -40,7 +40,7 @@
     "@aureooms/js-sll": "1.0.2",
     "@aureooms/js-sort": "7.0.0",
     "@babel/cli": "7.12.1",
-    "@babel/core": "7.12.1",
+    "@babel/core": "7.12.3",
     "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.12.1",
     "@babel/register": "7.12.1",
