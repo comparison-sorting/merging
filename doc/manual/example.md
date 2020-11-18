@@ -1,6 +1,6 @@
 # Examples
 
-> More examples in [the test files](https://github.com/aureooms/js-merging/tree/master/test/src).
+> More examples in [the test files](https://github.com/aureooms/js-merging/tree/main/test/src).
 
 ```js
 /** array sequential merge */
