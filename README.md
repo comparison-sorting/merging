@@ -22,5 +22,5 @@ merging.iterables( compare.increasing , count( 0 , 2 ) , count( 1 , 3 ) ) ;
 [![Code maintainability](https://img.shields.io/codeclimate/maintainability/aureooms/js-merging.svg)](https://codeclimate.com/github/aureooms/js-merging/trends/churn)
 [![Code coverage (cov)](https://img.shields.io/codecov/c/gh/aureooms/js-merging/main.svg)](https://codecov.io/gh/aureooms/js-merging)
 [![Code technical debt](https://img.shields.io/codeclimate/tech-debt/aureooms/js-merging.svg)](https://codeclimate.com/github/aureooms/js-merging/trends/technical_debt)
-[![Documentation](http://aureooms.github.io/js-merging//badge.svg)](http://aureooms.github.io/js-merging//source.html)
+[![Documentation](https://aureooms.github.io/js-merging//badge.svg)](https://aureooms.github.io/js-merging//source.html)
 [![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-merging)](https://bundlephobia.com/result?p=@aureooms/js-merging)
