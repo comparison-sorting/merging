@@ -73,7 +73,7 @@
     }
   },
   "bugs": {
-    "url": "https://github.com/aureooms/js-merging/issues"
+    "url": "https://github.com/make-github-pseudonymous-again/js-merging/issues"
   },
   "dependencies": {},
   "devDependencies": {
@@ -124,7 +124,7 @@
   "license": "AGPL-3.0",
   "main": "lib/index.js",
   "repository": {
-    "url": "https://github.com/aureooms/js-merging.git",
+    "url": "https://github.com/make-github-pseudonymous-again/js-merging.git",
     "type": "git"
   },
   "scripts": {
