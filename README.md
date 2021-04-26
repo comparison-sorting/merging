@@ -1,8 +1,8 @@
-[@aureooms/js-merging](https://aureooms.github.io/js-merging)
+[@aureooms/js-merging](https://make-github-pseudonymous-again.github.io/js-merging)
 ==
 
 Merging library for JavaScript.
-See [docs](https://aureooms.github.io/js-merging).
+See [docs](https://make-github-pseudonymous-again.github.io/js-merging).
 Parent is [@aureooms/js-sort](https://github.com/aureooms/js-sort).
 
 ```js
@@ -22,5 +22,5 @@ merging.iterables( compare.increasing , count( 0 , 2 ) , count( 1 , 3 ) ) ;
 [![Code maintainability](https://img.shields.io/codeclimate/maintainability/aureooms/js-merging.svg)](https://codeclimate.com/github/aureooms/js-merging/trends/churn)
 [![Code coverage (cov)](https://img.shields.io/codecov/c/gh/aureooms/js-merging/main.svg)](https://codecov.io/gh/aureooms/js-merging)
 [![Code technical debt](https://img.shields.io/codeclimate/tech-debt/aureooms/js-merging.svg)](https://codeclimate.com/github/aureooms/js-merging/trends/technical_debt)
-[![Documentation](https://aureooms.github.io/js-merging//badge.svg)](https://aureooms.github.io/js-merging//source.html)
+[![Documentation](https://make-github-pseudonymous-again.github.io/js-merging//badge.svg)](https://make-github-pseudonymous-again.github.io/js-merging//source.html)
 [![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-merging)](https://bundlephobia.com/result?p=@aureooms/js-merging)
