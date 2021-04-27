@@ -81,7 +81,7 @@
     "@aureooms/js-compare": "1.4.8",
     "@aureooms/js-functools": "2.0.3",
     "@aureooms/js-itertools": "5.0.1",
-    "@aureooms/js-random": "2.0.0",
+    "@aureooms/js-random": "3.4.0",
     "@aureooms/js-search": "0.0.4",
     "@aureooms/js-sll": "1.0.2",
     "@aureooms/js-sort": "7.0.0",
