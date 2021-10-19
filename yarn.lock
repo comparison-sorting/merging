@@ -1802,10 +1802,10 @@ babel-plugin-transform-remove-console@6.9.4:
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-remove-console/-/babel-plugin-transform-remove-console-6.9.4.tgz#b980360c067384e24b357a588d807d3c83527780"
   integrity sha1-uYA2DAZzhOJLNXpYjYB9PINSd4A=
 
-babel-plugin-unassert@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-unassert/-/babel-plugin-unassert-3.0.1.tgz#cba17c38249a0bb26a72eb3793e0b24e29fcb7cd"
-  integrity sha512-dJvXKECYExv+GGieSm6jNe1H+HRa6hH/qPZWOoUfAN+cO6GbnC9fCbwHeJs0XZ2UqcEtJLpJCMs8q0pUEMI0fw==
+babel-plugin-unassert@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-unassert/-/babel-plugin-unassert-3.2.0.tgz#4ea8f65709905cc540627baf4ce4c837281a317d"
+  integrity sha512-dNeuFtaJ1zNDr59r24NjjIm4SsXXm409iNOVMIERp6ePciII+rTrdwsWcHDqDFUKpOoBNT4ZS63nPEbrANW7DQ==
 
 babel-preset-power-assert@3.0.0:
   version "3.0.0"
