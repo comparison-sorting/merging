@@ -52,10 +52,10 @@
   resolved "https://registry.yarnpkg.com/@aureooms/js-sll/-/js-sll-1.0.2.tgz#c286340bccf471d8ad47c27747c0c0ebe74808ab"
   integrity sha1-woY0C8z0cditR8J3R8DA6+dICKs=
 
-"@aureooms/js-sort@7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@aureooms/js-sort/-/js-sort-7.0.0.tgz#db3c8b93acd93ee0500462b2cec29239c3deb34d"
-  integrity sha1-2zyLk6zZPuBQBGKyzsKSOcPes00=
+"@aureooms/js-sort@8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@aureooms/js-sort/-/js-sort-8.0.0.tgz#5a82b69c0e1b61b8068b1b4f2ecd69e1ae35257f"
+  integrity sha512-aOP63ajdczRgwELnG5eZpMf4/1ygeq01ALeznH4xT6x4ESqBq+g9uXntUh4rvzczgRAwFWazLIRR0fK3tKEMWw==
 
 "@babel/cli@7.13.10":
   version "7.13.10"
